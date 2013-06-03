@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
 
-@interface ODMViewController : UIViewController
+@interface ODMViewController : GLKViewController
 
 @end

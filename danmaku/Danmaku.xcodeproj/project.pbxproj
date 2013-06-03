@@ -18,6 +18,8 @@
 		D63447D2175CCF250065DAC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D63447CA175CCF250065DAC6 /* main.m */; };
 		D63447D6175CCF570065DAC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D63447D3175CCF570065DAC6 /* InfoPlist.strings */; };
 		D63447D8175CCF570065DAC6 /* ODMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D63447D5175CCF570065DAC6 /* ODMViewController.xib */; };
+		D6344D1E175CFE1D0065DAC6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344D1D175CFE1D0065DAC6 /* GLKit.framework */; };
+		D6344D57175D0A5B0065DAC6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344D56175D0A5B0065DAC6 /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -262,6 +264,8 @@
 		D6344A4C175CD9770065DAC6 /* wrap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wrap.hpp; sourceTree = "<group>"; };
 		D6344A4D175CD9770065DAC6 /* wrap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wrap.inl; sourceTree = "<group>"; };
 		D6344A4F175CD9770065DAC6 /* xstream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = xstream.hpp; sourceTree = "<group>"; };
+		D6344D1D175CFE1D0065DAC6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		D6344D56175D0A5B0065DAC6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +273,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6344D57175D0A5B0065DAC6 /* OpenGLES.framework in Frameworks */,
+				D6344D1E175CFE1D0065DAC6 /* GLKit.framework in Frameworks */,
 				D6344793175CCE550065DAC6 /* UIKit.framework in Frameworks */,
 				D6344795175CCE550065DAC6 /* Foundation.framework in Frameworks */,
 				D6344797175CCE550065DAC6 /* CoreGraphics.framework in Frameworks */,
@@ -299,6 +305,8 @@
 		D6344791175CCE550065DAC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6344D56175D0A5B0065DAC6 /* OpenGLES.framework */,
+				D6344D1D175CFE1D0065DAC6 /* GLKit.framework */,
 				D6344792175CCE550065DAC6 /* UIKit.framework */,
 				D6344794175CCE550065DAC6 /* Foundation.framework */,
 				D6344796175CCE550065DAC6 /* CoreGraphics.framework */,
@@ -310,7 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				D63447D3175CCF570065DAC6 /* InfoPlist.strings */,
-				D63447D5175CCF570065DAC6 /* ODMViewController.xib */,
 				D63447BE175CCF250065DAC6 /* Danmaku-Info.plist */,
 				D63447BF175CCF250065DAC6 /* Danmaku-Prefix.pch */,
 				D63447C0175CCF250065DAC6 /* Default-568h@2x.png */,
@@ -321,6 +328,7 @@
 				D63447B9175CCF120065DAC6 /* ODMAppDelegate.m */,
 				D63447BA175CCF120065DAC6 /* ODMViewController.h */,
 				D63447BB175CCF120065DAC6 /* ODMViewController.mm */,
+				D63447D5175CCF570065DAC6 /* ODMViewController.xib */,
 			);
 			path = Danmaku;
 			sourceTree = "<group>";

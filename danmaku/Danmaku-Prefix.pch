@@ -12,3 +12,8 @@
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
 #endif
+
+#ifdef __cplusplus
+#	include <glm/glm.hpp>
+#	include <glm/ext.hpp>
+#endif

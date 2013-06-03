@@ -8,6 +8,8 @@
 
 #import "ODMViewController.h"
 
+
+
 @interface ODMViewController ()
 
 @end
@@ -17,13 +19,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	glm::mat4 test = glm::mat4(1);
+	
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

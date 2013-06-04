@@ -44,9 +44,6 @@
 
 OGM_EXTERN_C_BEGIN
 
-NSException * OGMExceptionMake(NSString * name,NSString *format,...) NS_FORMAT_FUNCTION(2, 3);
-NSException * OGMExceptionMakev(NSString * name,NSString * format,va_list args) NS_FORMAT_FUNCTION(2, 0);
-
 void _OGMLog(NSString *format,...) NS_FORMAT_FUNCTION(1, 2);
 void _OGMLogv(NSString *format,va_list args) NS_FORMAT_FUNCTION(1, 0);
 

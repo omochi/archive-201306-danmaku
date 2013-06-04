@@ -7,6 +7,7 @@
 //
 
 #import "OGMGLUtil.h"
+#import "OGMErrorUtil.h"
 
 NSString * OGMGLErrorCodeToString(GLenum code){
 #define _CASE(x) case x : return @ #x

@@ -8,18 +8,7 @@
 
 #import "OGMCommon.h"
 
-NSException * OGMExceptionMake(NSString * name,NSString *format,...){
-	va_list args;
-	va_start(args, format);
-	NSException *e = OGMExceptionMakev(name,format, args);
-	va_end(args);
-	return e;
-}
-NSException * OGMExceptionMakev(NSString * name,NSString * format,va_list args){
-	return [NSException exceptionWithName:name
-								   reason:[[NSString alloc]initWithFormat:format arguments:args]
-								 userInfo:nil];
-}
+
 void _OGMLog(NSString *format,...){
 	va_list args;
 	va_start(args, format);

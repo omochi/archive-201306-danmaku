@@ -26,6 +26,7 @@
 		D6344D70175E414D0065DAC6 /* OGMStandardShaderColorShader.vsh in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6F175E414D0065DAC6 /* OGMStandardShaderColorShader.vsh */; };
 		D6344D72175E41650065DAC6 /* OGMStandardShaderColorShader.fsh in Sources */ = {isa = PBXBuildFile; fileRef = D6344D71175E41640065DAC6 /* OGMStandardShaderColorShader.fsh */; };
 		D6344D75175E50040065DAC6 /* OGMErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D74175E50030065DAC6 /* OGMErrorUtil.m */; };
+		D6344D79175E5F6B0065DAC6 /* OGMLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D78175E5F6A0065DAC6 /* OGMLog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -283,6 +284,8 @@
 		D6344D73175E50030065DAC6 /* OGMErrorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMErrorUtil.h; sourceTree = "<group>"; };
 		D6344D74175E50030065DAC6 /* OGMErrorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMErrorUtil.m; sourceTree = "<group>"; };
 		D6344D76175E57260065DAC6 /* OGM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGM.h; sourceTree = "<group>"; };
+		D6344D77175E5F690065DAC6 /* OGMLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMLog.h; sourceTree = "<group>"; };
+		D6344D78175E5F6A0065DAC6 /* OGMLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMLog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -645,6 +648,8 @@
 			children = (
 				D6344D65175E23CD0065DAC6 /* OGMCommon.h */,
 				D6344D6D175E28AE0065DAC6 /* OGMCommon.m */,
+				D6344D77175E5F690065DAC6 /* OGMLog.h */,
+				D6344D78175E5F6A0065DAC6 /* OGMLog.m */,
 				D6344D73175E50030065DAC6 /* OGMErrorUtil.h */,
 				D6344D74175E50030065DAC6 /* OGMErrorUtil.m */,
 				D6344D69175E26390065DAC6 /* OGMGLUtil.h */,
@@ -734,6 +739,7 @@
 				D6344D70175E414D0065DAC6 /* OGMStandardShaderColorShader.vsh in Sources */,
 				D6344D72175E41650065DAC6 /* OGMStandardShaderColorShader.fsh in Sources */,
 				D6344D75175E50040065DAC6 /* OGMErrorUtil.m in Sources */,
+				D6344D79175E5F6B0065DAC6 /* OGMLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

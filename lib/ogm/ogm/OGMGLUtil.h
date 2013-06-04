@@ -21,4 +21,7 @@ void _OGMGLAssert(NSString *op);
 #	define OGMGLAssert(op)
 #endif
 
+NSString * OGMGLShaderInfoLog(GLuint shader);
+GLuint OGMGLCompileShader(GLenum type,NSString *source);
+
 OGM_EXTERN_C_END

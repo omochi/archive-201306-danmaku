@@ -39,3 +39,30 @@ void _OGMGLAssert(NSString *op){
 	NSString * error = OGMGLGetError(op);
 	if(error)@throw OGMExceptionMake(NSGenericException,@"OpenGL Error: %@",error);
 }
+
+NSString * OGMGLShaderInfoLog(GLuint shader){
+	GLchar buf[1000];
+	GLsizei len;
+	glGetShaderInfoLog(shader, sizeof(buf), &len, buf);
+	OGMGLAssert(@"glGetShaderInfoLog");
+	return [[NSString alloc]initWithBytes:buf length:len encoding:NSUTF8StringEncoding];
+}
+
+GLuint OGMGLCompileShader(GLenum type,NSString *source){
+	GLuint shader = glCreateShader(type);
+	OGMGLAssert(@"glCreateShader");
+	const GLchar * str = [source UTF8String];
+	GLint len = strlen(str);
+	glShaderSource(shader, 1, &str, &len);
+	OGMGLAssert(@"glShaderSource");
+	glCompileShader(shader);
+	OGMGLAssert(@"glCompileShader");
+	GLint status;
+	glGetShaderiv(shader,GL_COMPILE_STATUS,&status);
+	OGMGLAssert(@"glGetShader/GL_COMPILE_STATUS");
+	if(!status){
+		NSString * log = OGMGLShaderInfoLog(shader);
+		@throw OGMExceptionMake(NSGenericException,@"compile shader failed: %@",log);
+	}
+	return shader;
+}

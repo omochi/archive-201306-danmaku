@@ -13,28 +13,30 @@ extern "C" {
 #endif
 
 #define _NS(name) OGM##name
-
-NSString * const _NS(ErrorDomain);
-
-typedef enum _NS(ErrorCode){
-	_NS(ErrorNoError) = 0,
+#define _NSE(name) _NS(Error##name)
 	
-}_NS(ErrorCode);
+NSString * const _NSE(Domain);
 
-NSString * _NS(ErrorDump)(NSError *error);
+typedef enum _NSE(Code){
+	_NSE(NoError) = 0,
+	
+}_NSE(Code);
 
-NSError * _NS(ErrorMakeBase)(NSString *domain,NSInteger code,NSString * format,...) NS_FORMAT_FUNCTION(3, 4);
-NSError * _NS(ErrorMakeBasev)(NSString *domain,NSInteger code,NSString * format,va_list args)NS_FORMAT_FUNCTION(3, 0);
+NSString * _NSE(Dump)(NSError *error);
 
-NSError * _NS(ErrorMake)(OGMErrorCode code,NSString * format,...) NS_FORMAT_FUNCTION(2,3);
-NSError * _NS(ErrorMakev)(OGMErrorCode code,NSString * format,va_list args) NS_FORMAT_FUNCTION(2,0);
+NSError * _NSE(MakeBase)(NSString *domain,NSInteger code,NSString * format,...) NS_FORMAT_FUNCTION(3, 4);
+NSError * _NSE(MakeBasev)(NSString *domain,NSInteger code,NSString * format,va_list args)NS_FORMAT_FUNCTION(3, 0);
 
+NSError * _NSE(Make)(_NSE(Code) code,NSString * format,...) NS_FORMAT_FUNCTION(2,3);
+NSError * _NSE(Makev)(_NSE(Code) code,NSString * format,va_list args) NS_FORMAT_FUNCTION(2,0);
+BOOL _NSE(Is)(NSError *error,NSString * domain,NSInteger code);
+	
 NSException * _NS(ExceptionMake)(NSString * name,NSString *format,...) NS_FORMAT_FUNCTION(2, 3);
 NSException * _NS(ExceptionMakev)(NSString * name,NSString * format,va_list args) NS_FORMAT_FUNCTION(2, 0);
-
 NSException * _NS(ExceptionMakeWithError)(NSError * error);
 
 #undef _NS
+#undef _NSE
 
 #ifdef __cplusplus
 }

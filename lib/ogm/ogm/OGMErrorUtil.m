@@ -9,10 +9,11 @@
 #import "OGMErrorUtil.h"
 
 #define _NS(name) OGM##name
+#define _NSE(name) _NS(Error##name)
 
-NSString * const _NS(ErrorDomain) = @"com.omochimetaru.OGM.ErrorDomain";
+NSString * const _NSE(Domain) = @"com.omochimetaru.OGM.ErrorDomain";
 
-NSString * _NS(ErrorDump)(NSError *error){
+NSString * _NSE(Dump)(NSError *error){
 	NSMutableArray * lines = [NSMutableArray array];
 	while(error){
 		NSMutableArray * strs = [NSMutableArray arrayWithObject:[NSString stringWithFormat:@"%@(%d)",error.domain,error.code]];
@@ -32,27 +33,30 @@ NSString * _NS(ErrorDump)(NSError *error){
 	return [lines componentsJoinedByString:@"\n"];
 }
 
-NSError * _NS(ErrorMakeBase)(NSString *domain,NSInteger code,NSString * format,...){
+NSError * _NSE(MakeBase)(NSString *domain,NSInteger code,NSString * format,...){
 	va_list args;
 	va_start(args,format);
-	NSError * r = _NS(ErrorMakeBasev)(domain, code, format, args);
+	NSError * r = _NSE(MakeBasev)(domain, code, format, args);
 	va_end(args);
 	return r;
 }
-NSError * _NS(ErrorMakeBaseV)(NSString *domain,NSInteger code,NSString * format,va_list args){
+NSError * _NSE(MakeBaseV)(NSString *domain,NSInteger code,NSString * format,va_list args){
 	NSString * desc = [[NSString alloc]initWithFormat:format arguments:args];
 	return [NSError errorWithDomain:domain code:code userInfo:@{NSLocalizedDescriptionKey:desc}];
 }
 
-NSError * _NS(ErrorMake)(_NS(ErrorCode) code,NSString * format,...){
+NSError * _NSE(Make)(_NSE(Code) code,NSString * format,...){
 	va_list args;
 	va_start(args,format);
-	NSError * r = _NS(ErrorMakev)(code, format, args);
+	NSError * r = _NSE(Makev)(code, format, args);
 	va_end(args);
 	return r;
 }
-NSError * _NS(ErrorMakev)(_NS(ErrorCode) code,NSString * format,va_list args){
-	return _NS(ErrorMakeBasev)(_NS(ErrorDomain), code, format, args);
+NSError * _NSE(Makev)(_NSE(Code) code,NSString * format,va_list args){
+	return _NSE(MakeBasev)(_NSE(Domain), code, format, args);
+}
+BOOL _NSE(Is)(NSError *error,NSString * domain,NSInteger code){
+	return [error.domain isEqualToString:domain] && error.code == code;
 }
 
 NSException *  _NS(ExceptionMake)(NSString * name,NSString *format,...){
@@ -69,7 +73,8 @@ NSException * _NS(ExceptionMakev)(NSString * name,NSString * format,va_list args
 }
 
 NSException * _NS(ExceptionMakeWithError)(NSError * error){
-	return _NS(ExceptionMake)(NSGenericException, @"%@",_NS(ErrorDump)(error));
+	return _NS(ExceptionMake)(NSGenericException, @"%@",_NSE(Dump)(error));
 }
 
 #undef _NS
+#undef _NSE

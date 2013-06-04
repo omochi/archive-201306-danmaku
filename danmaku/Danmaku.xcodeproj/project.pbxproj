@@ -20,6 +20,9 @@
 		D63447D8175CCF570065DAC6 /* ODMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D63447D5175CCF570065DAC6 /* ODMViewController.xib */; };
 		D6344D1E175CFE1D0065DAC6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344D1D175CFE1D0065DAC6 /* GLKit.framework */; };
 		D6344D57175D0A5B0065DAC6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344D56175D0A5B0065DAC6 /* OpenGLES.framework */; };
+		D6344D68175E23CD0065DAC6 /* OGMShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6344D66175E23CD0065DAC6 /* OGMShader.mm */; };
+		D6344D6B175E26390065DAC6 /* OGMGLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6A175E26390065DAC6 /* OGMGLUtil.m */; };
+		D6344D6E175E28AE0065DAC6 /* OGMCommon.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6D175E28AE0065DAC6 /* OGMCommon.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +42,6 @@
 		D63447CA175CCF250065DAC6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		D63447D3175CCF570065DAC6 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		D63447D5175CCF570065DAC6 /* ODMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ODMViewController.xib; sourceTree = SOURCE_ROOT; };
-		D634495E175CD9770065DAC6 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		D6344960175CD9770065DAC6 /* _features.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = _features.hpp; sourceTree = "<group>"; };
 		D6344961175CD9770065DAC6 /* _fixes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = _fixes.hpp; sourceTree = "<group>"; };
 		D6344962175CD9770065DAC6 /* _literals.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = _literals.hpp; sourceTree = "<group>"; };
@@ -266,6 +268,13 @@
 		D6344A4F175CD9770065DAC6 /* xstream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = xstream.hpp; sourceTree = "<group>"; };
 		D6344D1D175CFE1D0065DAC6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		D6344D56175D0A5B0065DAC6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		D6344D5E175E20500065DAC6 /* ODMCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ODMCommon.h; sourceTree = SOURCE_ROOT; };
+		D6344D65175E23CD0065DAC6 /* OGMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMCommon.h; sourceTree = "<group>"; };
+		D6344D66175E23CD0065DAC6 /* OGMShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMShader.mm; sourceTree = "<group>"; };
+		D6344D67175E23CD0065DAC6 /* OGMShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMShader.h; sourceTree = "<group>"; };
+		D6344D69175E26390065DAC6 /* OGMGLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLUtil.h; sourceTree = "<group>"; };
+		D6344D6A175E26390065DAC6 /* OGMGLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLUtil.m; sourceTree = "<group>"; };
+		D6344D6D175E28AE0065DAC6 /* OGMCommon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMCommon.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +333,7 @@
 				D63447C1175CCF250065DAC6 /* Default.png */,
 				D63447C2175CCF250065DAC6 /* Default@2x.png */,
 				D63447CA175CCF250065DAC6 /* main.m */,
+				D6344D5E175E20500065DAC6 /* ODMCommon.h */,
 				D63447B8175CCF120065DAC6 /* ODMAppDelegate.h */,
 				D63447B9175CCF120065DAC6 /* ODMAppDelegate.m */,
 				D63447BA175CCF120065DAC6 /* ODMViewController.h */,
@@ -337,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				D63447DA175CD9750065DAC6 /* glm */,
+				D6344D58175E1EBD0065DAC6 /* ogm */,
 			);
 			name = lib;
 			path = ../lib;
@@ -353,7 +364,6 @@
 		D634495D175CD9770065DAC6 /* glm */ = {
 			isa = PBXGroup;
 			children = (
-				D634495E175CD9770065DAC6 /* CMakeLists.txt */,
 				D634495F175CD9770065DAC6 /* core */,
 				D63449AF175CD9770065DAC6 /* ext.hpp */,
 				D63449B2175CD9770065DAC6 /* glm.hpp */,
@@ -614,6 +624,27 @@
 			path = virtrev;
 			sourceTree = "<group>";
 		};
+		D6344D58175E1EBD0065DAC6 /* ogm */ = {
+			isa = PBXGroup;
+			children = (
+				D6344D64175E23CD0065DAC6 /* ogm */,
+			);
+			path = ogm;
+			sourceTree = "<group>";
+		};
+		D6344D64175E23CD0065DAC6 /* ogm */ = {
+			isa = PBXGroup;
+			children = (
+				D6344D65175E23CD0065DAC6 /* OGMCommon.h */,
+				D6344D6D175E28AE0065DAC6 /* OGMCommon.mm */,
+				D6344D69175E26390065DAC6 /* OGMGLUtil.h */,
+				D6344D6A175E26390065DAC6 /* OGMGLUtil.m */,
+				D6344D67175E23CD0065DAC6 /* OGMShader.h */,
+				D6344D66175E23CD0065DAC6 /* OGMShader.mm */,
+			);
+			path = ogm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -684,6 +715,9 @@
 				D63447BC175CCF120065DAC6 /* ODMAppDelegate.m in Sources */,
 				D63447BD175CCF120065DAC6 /* ODMViewController.mm in Sources */,
 				D63447D2175CCF250065DAC6 /* main.m in Sources */,
+				D6344D68175E23CD0065DAC6 /* OGMShader.mm in Sources */,
+				D6344D6B175E26390065DAC6 /* OGMGLUtil.m in Sources */,
+				D6344D6E175E28AE0065DAC6 /* OGMCommon.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,7 +749,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/../lib/glm\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/../lib/glm\"",
+					"\"$(PROJECT_DIR)/../lib/ogm/include\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -741,7 +778,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/../lib/glm\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/../lib/glm\"",
+					"\"$(PROJECT_DIR)/../lib/ogm/include\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;

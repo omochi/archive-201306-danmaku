@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ODMCommon.h"
+
 @class ODMViewController;
 
 @interface ODMAppDelegate : UIResponder <UIApplicationDelegate>

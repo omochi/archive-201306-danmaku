@@ -10,6 +10,10 @@
 
 #import "ODMAppDelegate.h"
 
+#if HOGEHOGE
+#warning aaaa
+#endif
+
 int main(int argc, char *argv[])
 {
 	@autoreleasepool {

@@ -8,8 +8,6 @@
 
 #import "ODMViewController.h"
 
-
-
 @interface ODMViewController ()
 @property(nonatomic,strong)EAGLContext *glContext;
 @end

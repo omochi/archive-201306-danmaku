@@ -11,6 +11,7 @@
 #import "OGMGLUtil.h"
 
 @interface OGMStandardShader(){
+	
 	GLuint _colorShader;
 }
 @end

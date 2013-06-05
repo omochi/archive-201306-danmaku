@@ -6,19 +6,18 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMStandardShader.h"
+#import "OGMGLStandardShader.h"
 #import "OGMErrorUtil.h"
 #import "OGMGLUtil.h"
 #import "OGMGLReleaser.h"
 
-@interface OGMStandardShader(){
+@interface OGMGLStandardShader(){
 	GLuint _colorShader;
 }
-@property(nonatomic,assign)GLuint colorShader;
 @property(nonatomic,strong)OGMGLReleaser * glReleaser;
 @end
 
-@implementation OGMStandardShader
+@implementation OGMGLStandardShader
 -(id)init{
 	self = [super init];
 	if(self){
@@ -29,12 +28,12 @@
 -(BOOL)prepareWithError:(NSError **)error{
 	
 	if(!_colorShader){
-		NSString * vshPath = [[NSBundle mainBundle] pathForResource:@"OGMStandardShaderColorShader" ofType:@"vsh"];
-		NSString * fshPath = [[NSBundle mainBundle] pathForResource:@"OGMStandardShaderColorShader" ofType:@"fsh"];
+		NSString * vshPath = [[NSBundle mainBundle] pathForResource:@"OGMGLColorShader" ofType:@"vsh"];
+		NSString * fshPath = [[NSBundle mainBundle] pathForResource:@"OGMGLColorShader" ofType:@"fsh"];
 		_colorShader = OGMGLBuildProgramWithPaths(vshPath,fshPath, error);
 		if(!_colorShader)return NO;
 		
-		[self.glReleaser captureWithReleaser:^(OGMStandardShader *welf) {
+		[self.glReleaser captureWithReleaser:^(OGMGLStandardShader *welf) {
 			glDeleteProgram(welf->_colorShader);
 			OGMGLAssert(@"glDeleteProgram/colorShader");
 		} self:self];

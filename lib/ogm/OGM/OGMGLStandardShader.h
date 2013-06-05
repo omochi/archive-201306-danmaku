@@ -9,7 +9,7 @@
 
 #import "OGMCommon.h"
 
-@interface OGMStandardShader : NSObject
+@interface OGMGLStandardShader : NSObject
 
 -(id)init;
 -(BOOL)prepareWithError:(NSError **)error;

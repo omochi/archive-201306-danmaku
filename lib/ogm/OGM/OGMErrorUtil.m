@@ -16,7 +16,9 @@ NSString * const _NSE(Domain) = @"com.omochimetaru.OGM.ErrorDomain";
 NSString * _NSE(Dump)(NSError *error){
 	NSMutableArray * lines = [NSMutableArray array];
 	while(error){
-		NSMutableArray * strs = [NSMutableArray arrayWithObject:[NSString stringWithFormat:@"%@(0x%04x)",error.domain,error.code]];
+		NSMutableArray * strs = [NSMutableArray array];
+		[strs addObject:error.domain];
+		[strs addObject:[NSString stringWithFormat:@"0x%04x",error.code]];
 		if([error localizedDescription]){
 			[strs addObject:[error localizedDescription]];
 		}

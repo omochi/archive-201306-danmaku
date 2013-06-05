@@ -30,6 +30,8 @@
 		D6A4AACD175F882600BA9E4A /* OGMGLReleaser.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */; };
 		D6A4AAD0175F94DB00BA9E4A /* OGMBlockUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */; };
 		D6A4AAD3175F9B8100BA9E4A /* OGMGLVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD2175F9B8100BA9E4A /* OGMGLVertex.mm */; };
+		D6A4AAD6175FA67900BA9E4A /* OGMGLVertexBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */; };
+		D6A4AAD9175FA77D00BA9E4A /* OGMTypeBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -295,6 +297,10 @@
 		D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMBlockUtil.m; sourceTree = "<group>"; };
 		D6A4AAD1175F9B6800BA9E4A /* OGMGLVertex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGMGLVertex.h; sourceTree = "<group>"; };
 		D6A4AAD2175F9B8100BA9E4A /* OGMGLVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLVertex.mm; sourceTree = "<group>"; };
+		D6A4AAD4175FA67900BA9E4A /* OGMGLVertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLVertexBuffer.h; sourceTree = "<group>"; };
+		D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLVertexBuffer.mm; sourceTree = "<group>"; };
+		D6A4AAD7175FA77C00BA9E4A /* OGMTypeBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMTypeBuffer.h; sourceTree = "<group>"; };
+		D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMTypeBuffer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -661,6 +667,8 @@
 				D6344D78175E5F6A0065DAC6 /* OGMLog.m */,
 				D6344D73175E50030065DAC6 /* OGMErrorUtil.h */,
 				D6344D74175E50030065DAC6 /* OGMErrorUtil.m */,
+				D6A4AAD7175FA77C00BA9E4A /* OGMTypeBuffer.h */,
+				D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */,
 				D6344D69175E26390065DAC6 /* OGMGLUtil.h */,
 				D6344D6A175E26390065DAC6 /* OGMGLUtil.m */,
 				D6344D67175E23CD0065DAC6 /* OGMGLStandardShader.h */,
@@ -674,6 +682,8 @@
 				D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */,
 				D6A4AAD1175F9B6800BA9E4A /* OGMGLVertex.h */,
 				D6A4AAD2175F9B8100BA9E4A /* OGMGLVertex.mm */,
+				D6A4AAD4175FA67900BA9E4A /* OGMGLVertexBuffer.h */,
+				D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */,
 			);
 			path = OGM;
 			sourceTree = "<group>";
@@ -758,6 +768,8 @@
 				D6A4AACD175F882600BA9E4A /* OGMGLReleaser.m in Sources */,
 				D6A4AAD0175F94DB00BA9E4A /* OGMBlockUtil.m in Sources */,
 				D6A4AAD3175F9B8100BA9E4A /* OGMGLVertex.mm in Sources */,
+				D6A4AAD6175FA67900BA9E4A /* OGMGLVertexBuffer.mm in Sources */,
+				D6A4AAD9175FA77D00BA9E4A /* OGMTypeBuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

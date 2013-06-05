@@ -19,6 +19,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <OpenGLES/ES2/gl.h>
 
 #ifdef __cplusplus

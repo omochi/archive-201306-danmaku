@@ -11,4 +11,5 @@
 #import "OGMCommon.h"
 #import "OGMErrorUtil.h"
 #import "OGMGLUtil.h"
+#import "OGMGLReleaser.h"
 #import "OGMStandardShader.h"

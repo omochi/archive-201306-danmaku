@@ -41,23 +41,31 @@
 	}
 }
 
--(void)capture:(dispatch_block_t)releaser{
-	if(self.operationQueue){
-		@throw OGMExceptionMake(NSGenericException, @"already captured");
+-(void)setOperationQueue:(NSOperationQueue *)operationQueue{
+	if(_operationQueue && _operationQueue != operationQueue){
+		@throw OGMExceptionMake(NSGenericException, @"already bound to other thread");
 	}
+	_operationQueue = operationQueue;
+}
+-(void)setGlContext:(EAGLContext *)glContext{
+	if(_glContext && _glContext != glContext){
+		@throw OGMExceptionMake(NSGenericException, @"already bound to other gl context");
+	}
+	_glContext = glContext;
+}
+-(void)captureWithReleaser:(OGMWeakSelfBlock)releaser self:(id)aSelf{
 	self.operationQueue = [NSOperationQueue currentQueue];
 	if(!self.operationQueue){
 		@throw OGMExceptionMake(NSGenericException, @"not exists operation queue in this thread");
 	}
+	
 	self.glContext = [EAGLContext currentContext];
 	if(!self.glContext){
-		@throw OGMExceptionMake(NSGenericException, @"get gl context failed");
+		@throw OGMExceptionMake(NSGenericException, @"not exists gl context in this thread");
 	}
-	[self addReleaser:releaser];
+	
+	[self.releaserList addObject:OGMWeakSelfBlockBindSelf(releaser, aSelf)];
 }
 
--(void)addReleaser:(dispatch_block_t)releaser{
-	[self.releaserList addObject:[releaser copy]];
-}
 
 @end

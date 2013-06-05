@@ -7,11 +7,13 @@
 //
 
 #import "OGMGLUtil.h"
+#import "OGMBlockUtil.h"
 
 @interface OGMGLReleaser : NSObject
 
 -(id)init;
--(void)capture:(dispatch_block_t)releaser;
--(void)addReleaser:(dispatch_block_t)releaser;
+//複数個登録可能だが、全部同じスレッド&コンテキストでないといけない
+-(void)captureWithReleaser:(OGMWeakSelfBlock)releaser self:(id)aSelf;
+
 
 @end

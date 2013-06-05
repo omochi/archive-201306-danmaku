@@ -28,6 +28,7 @@
 		D6A4AAC9175F77B200BA9E4A /* OGMStandardShaderColorShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D6F175E414D0065DAC6 /* OGMStandardShaderColorShader.vsh */; };
 		D6A4AACA175F77B200BA9E4A /* OGMStandardShaderColorShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D71175E41640065DAC6 /* OGMStandardShaderColorShader.fsh */; };
 		D6A4AACD175F882600BA9E4A /* OGMGLReleaser.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */; };
+		D6A4AAD0175F94DB00BA9E4A /* OGMBlockUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -289,6 +290,8 @@
 		D6344D78175E5F6A0065DAC6 /* OGMLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMLog.m; sourceTree = "<group>"; };
 		D6A4AACB175F882600BA9E4A /* OGMGLReleaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLReleaser.h; sourceTree = "<group>"; };
 		D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLReleaser.m; sourceTree = "<group>"; };
+		D6A4AACE175F94DB00BA9E4A /* OGMBlockUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMBlockUtil.h; sourceTree = "<group>"; };
+		D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMBlockUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -664,6 +667,8 @@
 				D6344D76175E57260065DAC6 /* OGM.h */,
 				D6A4AACB175F882600BA9E4A /* OGMGLReleaser.h */,
 				D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */,
+				D6A4AACE175F94DB00BA9E4A /* OGMBlockUtil.h */,
+				D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */,
 			);
 			path = OGM;
 			sourceTree = "<group>";
@@ -746,6 +751,7 @@
 				D6344D75175E50040065DAC6 /* OGMErrorUtil.m in Sources */,
 				D6344D79175E5F6B0065DAC6 /* OGMLog.m in Sources */,
 				D6A4AACD175F882600BA9E4A /* OGMGLReleaser.m in Sources */,
+				D6A4AAD0175F94DB00BA9E4A /* OGMBlockUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,34 +9,38 @@
 #import "OGMStandardShader.h"
 #import "OGMErrorUtil.h"
 #import "OGMGLUtil.h"
+#import "OGMGLReleaser.h"
 
 @interface OGMStandardShader(){
-	
 	GLuint _colorShader;
 }
+@property(nonatomic,assign)GLuint colorShader;
+@property(nonatomic,strong)OGMGLReleaser * glReleaser;
 @end
 
 @implementation OGMStandardShader
 -(id)init{
-	NSError * error;
 	self = [super init];
 	if(self){
-		if(!^BOOL (NSError **error){
-			NSString * vshPath = [[NSBundle mainBundle] pathForResource:@"OGMStandardShaderColorShader" ofType:@"vsh"];
-			NSString * fshPath = [[NSBundle mainBundle] pathForResource:@"OGMStandardShaderColorShader" ofType:@"fsh"];
-			_colorShader = OGMGLBuildProgramWithPaths(vshPath,fshPath, error);
-			if(!_colorShader)return NO;
-			
-			return YES;
-		}(&error)){
-			@throw OGMExceptionMakeWithError(error);
-		}
-		
+		_glReleaser = [[OGMGLReleaser alloc]init];
 	}
 	return self;
 }
--(void)dealloc{
-
+-(BOOL)prepareWithError:(NSError **)error{
+	
+	if(!_colorShader){
+		NSString * vshPath = [[NSBundle mainBundle] pathForResource:@"OGMStandardShaderColorShader" ofType:@"vsh"];
+		NSString * fshPath = [[NSBundle mainBundle] pathForResource:@"OGMStandardShaderColorShader" ofType:@"fsh"];
+		_colorShader = OGMGLBuildProgramWithPaths(vshPath,fshPath, error);
+		if(!_colorShader)return NO;
+		
+		[self.glReleaser captureWithReleaser:^(OGMStandardShader *welf) {
+			glDeleteProgram(welf->_colorShader);
+			OGMGLAssert(@"glDeleteProgram/colorShader");
+		} self:self];
+	}
+	
+	return YES;
 }
 @end
 

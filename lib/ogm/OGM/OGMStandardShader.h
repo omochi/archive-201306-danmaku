@@ -12,6 +12,7 @@
 @interface OGMStandardShader : NSObject
 
 -(id)init;
+-(BOOL)prepareWithError:(NSError **)error;
 
 @end
 

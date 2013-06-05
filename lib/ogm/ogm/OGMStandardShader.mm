@@ -17,16 +17,20 @@
 
 @implementation OGMStandardShader
 -(id)init{
-	NSError * error = nil;
+	NSError * error;
 	self = [super init];
 	if(self){
-		{
-			NSString * vshSrc = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OGMStandardShaderColorShader" ofType:@"vsh"] encoding:NSUTF8StringEncoding error:&error];
-			if(!vshSrc)@throw OGMExceptionMakeWithError(error);
+		if(!^BOOL (NSError **error){
+			NSString * vshPath = [[NSBundle mainBundle] pathForResource:@"OGMStandardShaderColorShader" ofType:@"vsh"];
+			NSString * fshPath = [[NSBundle mainBundle] pathForResource:@"OGMStandardShaderColorShader" ofType:@"fsh"];
+			_colorShader = OGMGLBuildProgramWithPaths(vshPath,fshPath, error);
+			if(!_colorShader)return NO;
 			
-			GLuint vsh = OGMGLCompileShader(GL_VERTEX_SHADER, vshSrc);
-#warning TODO: シェーダー構築の続き
+			return YES;
+		}(&error)){
+			@throw OGMExceptionMakeWithError(error);
 		}
+		
 	}
 	return self;
 }

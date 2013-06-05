@@ -8,8 +8,11 @@
 
 #import "ODMViewController.h"
 
+#import <OGM/OGM.h>
+
 @interface ODMViewController ()
 @property(nonatomic,strong)EAGLContext *glContext;
+@property(nonatomic,strong)OGMStandardShader * shader;
 @end
 
 @implementation ODMViewController
@@ -23,8 +26,9 @@
 
 	self.glContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     if (!self.glContext) {
-		[NSException raise:NSGenericException format:@"glcontext create failed"];
+		@throw OGMExceptionMake(NSGenericException, @"glContext create failed");
     }
+	[EAGLContext setCurrentContext:self.glContext];
     
     GLKView *view = (GLKView *)self.view;
     view.context = self.glContext;
@@ -34,6 +38,8 @@
 	view.drawableMultisample = GLKViewDrawableMultisampleNone;
 	
 	self.preferredFramesPerSecond = 60;
+	
+	self.shader = [[OGMStandardShader alloc]init];
 }
 
 -(void)update{

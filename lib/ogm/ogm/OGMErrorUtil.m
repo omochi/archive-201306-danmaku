@@ -16,7 +16,7 @@ NSString * const _NSE(Domain) = @"com.omochimetaru.OGM.ErrorDomain";
 NSString * _NSE(Dump)(NSError *error){
 	NSMutableArray * lines = [NSMutableArray array];
 	while(error){
-		NSMutableArray * strs = [NSMutableArray arrayWithObject:[NSString stringWithFormat:@"%@(%d)",error.domain,error.code]];
+		NSMutableArray * strs = [NSMutableArray arrayWithObject:[NSString stringWithFormat:@"%@(0x%04x)",error.domain,error.code]];
 		if([error localizedDescription]){
 			[strs addObject:[error localizedDescription]];
 		}
@@ -33,27 +33,30 @@ NSString * _NSE(Dump)(NSError *error){
 	return [lines componentsJoinedByString:@"\n"];
 }
 
-NSError * _NSE(MakeBase)(NSString *domain,NSInteger code,NSString * format,...){
+NSError * _NSE(MakeBase)(NSString *domain,NSInteger code,NSError *causer,NSString * format,...){
 	va_list args;
 	va_start(args,format);
-	NSError * r = _NSE(MakeBasev)(domain, code, format, args);
+	NSError * r = _NSE(MakeBasev)(domain, code, causer,format, args);
 	va_end(args);
 	return r;
 }
-NSError * _NSE(MakeBaseV)(NSString *domain,NSInteger code,NSString * format,va_list args){
+NSError * _NSE(MakeBasev)(NSString *domain,NSInteger code,NSError *causer,NSString * format,va_list args){
 	NSString * desc = [[NSString alloc]initWithFormat:format arguments:args];
-	return [NSError errorWithDomain:domain code:code userInfo:@{NSLocalizedDescriptionKey:desc}];
+	NSMutableDictionary *user = [NSMutableDictionary dictionary];
+	user[NSLocalizedDescriptionKey] = desc;
+	if(causer)user[NSUnderlyingErrorKey] = causer;
+	return [NSError errorWithDomain:domain code:code userInfo:user];
 }
 
-NSError * _NSE(Make)(_NSE(Code) code,NSString * format,...){
+NSError * _NSE(Make)(_NSE(Code) code,NSError *causer,NSString * format,...){
 	va_list args;
 	va_start(args,format);
-	NSError * r = _NSE(Makev)(code, format, args);
+	NSError * r = _NSE(Makev)(code, causer,format, args);
 	va_end(args);
 	return r;
 }
-NSError * _NSE(Makev)(_NSE(Code) code,NSString * format,va_list args){
-	return _NSE(MakeBasev)(_NSE(Domain), code, format, args);
+NSError * _NSE(Makev)(_NSE(Code) code,NSError *causer,NSString * format,va_list args){
+	return _NSE(MakeBasev)(_NSE(Domain), code, causer,format, args);
 }
 BOOL _NSE(Is)(NSError *error,NSString * domain,NSInteger code){
 	return [error.domain isEqualToString:domain] && error.code == code;

@@ -23,10 +23,10 @@
 		D6344D68175E23CD0065DAC6 /* OGMStandardShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6344D66175E23CD0065DAC6 /* OGMStandardShader.mm */; };
 		D6344D6B175E26390065DAC6 /* OGMGLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6A175E26390065DAC6 /* OGMGLUtil.m */; };
 		D6344D6E175E28AE0065DAC6 /* OGMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6D175E28AE0065DAC6 /* OGMCommon.m */; };
-		D6344D70175E414D0065DAC6 /* OGMStandardShaderColorShader.vsh in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6F175E414D0065DAC6 /* OGMStandardShaderColorShader.vsh */; };
-		D6344D72175E41650065DAC6 /* OGMStandardShaderColorShader.fsh in Sources */ = {isa = PBXBuildFile; fileRef = D6344D71175E41640065DAC6 /* OGMStandardShaderColorShader.fsh */; };
 		D6344D75175E50040065DAC6 /* OGMErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D74175E50030065DAC6 /* OGMErrorUtil.m */; };
 		D6344D79175E5F6B0065DAC6 /* OGMLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D78175E5F6A0065DAC6 /* OGMLog.m */; };
+		D6A4AAC9175F77B200BA9E4A /* OGMStandardShaderColorShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D6F175E414D0065DAC6 /* OGMStandardShaderColorShader.vsh */; };
+		D6A4AACA175F77B200BA9E4A /* OGMStandardShaderColorShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D71175E41640065DAC6 /* OGMStandardShaderColorShader.fsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -638,12 +638,12 @@
 		D6344D58175E1EBD0065DAC6 /* ogm */ = {
 			isa = PBXGroup;
 			children = (
-				D6344D64175E23CD0065DAC6 /* ogm */,
+				D6344D64175E23CD0065DAC6 /* OGM */,
 			);
 			path = ogm;
 			sourceTree = "<group>";
 		};
-		D6344D64175E23CD0065DAC6 /* ogm */ = {
+		D6344D64175E23CD0065DAC6 /* OGM */ = {
 			isa = PBXGroup;
 			children = (
 				D6344D65175E23CD0065DAC6 /* OGMCommon.h */,
@@ -660,7 +660,7 @@
 				D6344D71175E41640065DAC6 /* OGMStandardShaderColorShader.fsh */,
 				D6344D76175E57260065DAC6 /* OGM.h */,
 			);
-			path = ogm;
+			path = OGM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -715,6 +715,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6A4AAC9175F77B200BA9E4A /* OGMStandardShaderColorShader.vsh in Resources */,
+				D6A4AACA175F77B200BA9E4A /* OGMStandardShaderColorShader.fsh in Resources */,
 				D63447CC175CCF250065DAC6 /* Default-568h@2x.png in Resources */,
 				D63447CD175CCF250065DAC6 /* Default.png in Resources */,
 				D63447CE175CCF250065DAC6 /* Default@2x.png in Resources */,
@@ -736,8 +738,6 @@
 				D6344D68175E23CD0065DAC6 /* OGMStandardShader.mm in Sources */,
 				D6344D6B175E26390065DAC6 /* OGMGLUtil.m in Sources */,
 				D6344D6E175E28AE0065DAC6 /* OGMCommon.m in Sources */,
-				D6344D70175E414D0065DAC6 /* OGMStandardShaderColorShader.vsh in Sources */,
-				D6344D72175E41650065DAC6 /* OGMStandardShaderColorShader.fsh in Sources */,
 				D6344D75175E50040065DAC6 /* OGMErrorUtil.m in Sources */,
 				D6344D79175E5F6B0065DAC6 /* OGMLog.m in Sources */,
 			);
@@ -773,7 +773,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/../lib/glm\"",
-					"\"$(PROJECT_DIR)/../lib/ogm/include\"",
+					"\"$(PROJECT_DIR)/../lib/ogm\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
@@ -802,7 +802,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/../lib/glm\"",
-					"\"$(PROJECT_DIR)/../lib/ogm/include\"",
+					"\"$(PROJECT_DIR)/../lib/ogm\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

@@ -23,7 +23,7 @@ typedef enum _NSE(Code){
 	_NSE(GLShaderCompileFailed) = 0x0101,
 	_NSE(GLProgramLinkFailed),
 }_NSE(Code);
-
+	
 NSString * _NSE(Dump)(NSError *error);
 
 NSError * _NSE(MakeBase)(NSString *domain,NSInteger code,NSError *causer,NSString * format,...) NS_FORMAT_FUNCTION(4,5);

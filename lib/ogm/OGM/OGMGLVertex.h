@@ -20,6 +20,9 @@ typedef enum _NST(){
 }_NST();
 
 NSString * _NST(ToString)(_NST() type);
+size_t _NST(Size)(_NST() type);
+BOOL _NST(HasUv)(_NST() type);
+BOOL _NST(HasNormal)(_NST() type);
 
 #undef _NST
 

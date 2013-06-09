@@ -24,7 +24,14 @@ extern "C" {
 -(uint32_t)size;
 -(uint32_t)allocSize;
 -(void *)ptr;
--(void *)ptrAtIndex:(uint32_t)index;
+-(void *)ptrAt:(uint32_t)index;
+
+-(void)spliceAt:(uint32_t)index len:(uint32_t)len items:(void *)items itemsNum:(uint32_t)itemsNum;
+-(void)removeAt:(uint32_t)index len:(uint32_t)len;
+-(void)removeAt:(uint32_t)index;
+-(void)insertAt:(uint32_t)index items:(void *)items itemsNum:(uint32_t)itemsNum;
+-(void)insertAt:(uint32_t)index item:(void *)item;
+-(void)add:(void *)item;
 
 @end
 

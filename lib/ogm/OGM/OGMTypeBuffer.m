@@ -13,7 +13,9 @@
 #define _NS(name) OGM##name
 
 static inline uint8_t * u8p(void *p){ return (uint8_t *)p; }
-static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + tsz*idx; }
+static inline size_t memLen(size_t tsz,uint32_t num){ return tsz*num; }
+static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + memLen(tsz,idx); }
+
 
 @interface _NS(TypeBuffer)()
 
@@ -56,9 +58,9 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + tsz
 		free(_ptr);
 		_ptr = NULL;
 	}else{
-		_ptr = realloc(_ptr, _typeSize * allocSize);
+		_ptr = realloc(_ptr,memLen(_typeSize, allocSize));
 		if(_allocSize < allocSize){
-			memset(ptrAt(_ptr, _typeSize, _allocSize), 0, _typeSize * (allocSize-_allocSize));
+			memset(ptrAt(_ptr, _typeSize, _allocSize), 0,memLen(_typeSize,allocSize-_allocSize));
 		}
 	}
 	_allocSize = allocSize;
@@ -84,10 +86,44 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + tsz
 	if(index >= self.size)@throw OGMExceptionMake(NSRangeException,@"out of range: index=%d,size=%d",index,self.size);
 }
 
--(void *)ptrAtIndex:(uint32_t)index{
+-(void *)ptrAt:(uint32_t)index{
 	[self assertIndex:index];
 	return ptrAt(_ptr,_typeSize,index);
 }
+
+-(void)spliceAt:(uint32_t)index len:(uint32_t)len items:(void *)items itemsNum:(uint32_t)itemsNum{
+	if(index+len >= _size)@throw OGMExceptionMake(NSRangeException,@"out of range: index=%d,len=%d,size=%d",index,len,_size);
+	int32_t size = _size - len + itemsNum;
+	if(size >= _size){
+		[self reserve:size];
+		self.size = size;
+		memmove(ptrAt(_ptr,_typeSize,index+itemsNum),
+				ptrAt(_ptr,_typeSize,index+len),memLen(_typeSize,_size-(index+len)));
+		memmove(ptrAt(_ptr,_typeSize,index),items,memLen(_typeSize,itemsNum));
+	}else{
+		memmove(ptrAt(_ptr,_typeSize,index),items,memLen(_typeSize,itemsNum));
+		memmove(ptrAt(_ptr,_typeSize,index+itemsNum),
+				ptrAt(_ptr,_typeSize,index+len),memLen(_typeSize,_size-(index+len)));
+		self.size = size;
+	}
+}
+
+-(void)removeAt:(uint32_t)index len:(uint32_t)len{
+	[self spliceAt:index len:len items:NULL itemsNum:0];
+}
+-(void)removeAt:(uint32_t)index{
+	[self spliceAt:index len:1 items:NULL itemsNum:0];
+}
+-(void)insertAt:(uint32_t)index items:(void *)items itemsNum:(uint32_t)itemsNum{
+	[self spliceAt:index len:0 items:items itemsNum:itemsNum];
+}
+-(void)insertAt:(uint32_t)index item:(void *)item{
+	[self spliceAt:index len:0 items:item itemsNum:1];
+}
+-(void)add:(void *)item{
+	[self spliceAt:_size len:0 items:item itemsNum:1];
+}
+
 
 @end
 

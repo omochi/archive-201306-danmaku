@@ -6,18 +6,18 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMGLStandardShader.h"
+#import "OGMGLStandardRenderer.h"
 #import "OGMErrorUtil.h"
 #import "OGMGLUtil.h"
 #import "OGMGLReleaser.h"
 
-@interface OGMGLStandardShader(){
+@interface OGMGLStandardRenderer(){
 	GLuint _colorShader;
 }
 @property(nonatomic,strong)OGMGLReleaser * glReleaser;
 @end
 
-@implementation OGMGLStandardShader
+@implementation OGMGLStandardRenderer
 -(id)init{
 	self = [super init];
 	if(self){
@@ -33,9 +33,11 @@
 		_colorShader = OGMGLBuildProgramWithPaths(vshPath,fshPath, error);
 		if(!_colorShader)return NO;
 		
-		[self.glReleaser captureWithReleaser:^(OGMGLStandardShader *welf) {
-			glDeleteProgram(welf->_colorShader);
-			OGMGLAssert(@"glDeleteProgram/colorShader");
+		[self.glReleaser captureWithReleaser:^(OGMGLStandardRenderer *welf) {
+			if(welf->_colorShader){
+				glDeleteProgram(welf->_colorShader);
+				OGMGLAssert(@"glDeleteProgram/colorShader");
+			}
 		} self:self];
 	}
 	

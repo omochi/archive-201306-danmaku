@@ -20,7 +20,7 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 @interface _NS(TypeBuffer)()
 
 @property(nonatomic,assign)size_t typeSize;
-@property(nonatomic,assign)uint32_t size;
+
 @property(nonatomic,assign)uint32_t allocSize;
 @property(nonatomic,assign)void * ptr;
 

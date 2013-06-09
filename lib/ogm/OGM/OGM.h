@@ -12,4 +12,4 @@
 #import "OGMErrorUtil.h"
 #import "OGMGLUtil.h"
 #import "OGMGLReleaser.h"
-#import "OGMGLStandardShader.h"
+#import "OGMGLStandardRenderer.h"

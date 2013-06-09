@@ -21,10 +21,12 @@ extern "C" {
 -(id)initWithTypeSize:(size_t)typeSize size:(uint32_t)size;
 
 -(size_t)typeSize;
--(uint32_t)size;
+@property(nonatomic,assign)uint32_t size;
 -(uint32_t)allocSize;
 -(void *)ptr;
 -(void *)ptrAt:(uint32_t)index;
+
+-(void)reserve:(uint32_t)size;
 
 -(void)spliceAt:(uint32_t)index len:(uint32_t)len items:(void *)items itemsNum:(uint32_t)itemsNum;
 -(void)removeAt:(uint32_t)index len:(uint32_t)len;

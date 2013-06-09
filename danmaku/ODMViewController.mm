@@ -12,7 +12,7 @@
 
 @interface ODMViewController ()
 @property(nonatomic,strong)EAGLContext *glContext;
-@property(nonatomic,strong)OGMStandardShader * shader;
+@property(nonatomic,strong)OGMGLStandardRenderer * shader;
 @end
 
 @implementation ODMViewController
@@ -39,7 +39,7 @@
 	
 	self.preferredFramesPerSecond = 60;
 	
-	self.shader = [[OGMStandardShader alloc]init];
+	self.shader = [[OGMGLStandardRenderer alloc]init];
 }
 
 -(void)update{

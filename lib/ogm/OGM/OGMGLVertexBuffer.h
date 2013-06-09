@@ -18,4 +18,9 @@
 -(id)initWithType:(OGMGLVertexType)type transfer:(BOOL)transfer;
 -(BOOL)prepare;
 
+-(void)setPosList:(OGMTypeBuffer *)list;
+-(void)setColorList:(OGMTypeBuffer *)list;
+-(void)setUvList:(OGMTypeBuffer *)list;
+-(void)setNormalList:(OGMTypeBuffer *)list;
+
 @end

@@ -11,7 +11,13 @@
 @implementation OGMGLVertexElement
 
 -(void)renderByStandardRenderer:(OGMGLStandardRenderer *)renderer{
-	
+}
 
 
 @end
+
+OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect quad){
+	OGMGLVertexBuffer * vertices = [[OGMGLVertexBuffer alloc]initWithType:type transfer:YES];
+	vertices.buffer.size = 4;
+	
+}

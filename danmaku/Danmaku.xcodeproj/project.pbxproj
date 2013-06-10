@@ -297,6 +297,7 @@
 		D687BD611764CD75001C6759 /* OGMGLVertexElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLVertexElement.mm; sourceTree = "<group>"; };
 		D687BD631764CFE1001C6759 /* OGMGLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLElement.h; sourceTree = "<group>"; };
 		D687BD641764CFE1001C6759 /* OGMGLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLElement.m; sourceTree = "<group>"; };
+		D687BD66176624EB001C6759 /* OGMMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGMMacro.h; sourceTree = "<group>"; };
 		D6A4AACB175F882600BA9E4A /* OGMGLReleaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLReleaser.h; sourceTree = "<group>"; };
 		D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLReleaser.m; sourceTree = "<group>"; };
 		D6A4AACE175F94DB00BA9E4A /* OGMBlockUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMBlockUtil.h; sourceTree = "<group>"; };
@@ -669,6 +670,7 @@
 			children = (
 				D6344D65175E23CD0065DAC6 /* OGMCommon.h */,
 				D6344D6D175E28AE0065DAC6 /* OGMCommon.m */,
+				D687BD66176624EB001C6759 /* OGMMacro.h */,
 				D6344D77175E5F690065DAC6 /* OGMLog.h */,
 				D6344D78175E5F6A0065DAC6 /* OGMLog.m */,
 				D6344D73175E50030065DAC6 /* OGMErrorUtil.h */,

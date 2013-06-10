@@ -21,7 +21,7 @@
 	self = [super init];
 	if(self){
 		_type = type;
-		_buffer = [[OGMTypeBuffer alloc]initWithTypeSize:OGMGLVertexTypeSize(type)];
+		_buffer = [[OGMTypeBuffer alloc]initWithObjCType:OGMGLVertexTypeObjCType(type)];
 		
 		_transfer = transfer;
 		_glReleaser = [[OGMGLReleaser alloc]init];
@@ -50,7 +50,7 @@ case OGMGLVertexType##t:{\
 	break;\
 }
 
-	glm::vec3 * s = (glm::vec3 *)list.ptr;
+	glm::vec3 * s = OGM_TYPEBUFFER_PTR(glm::vec3,self.buffer);
 	switch (self.type) {
 			_CASE(PC);
 			_CASE(PCT);
@@ -74,7 +74,7 @@ d->color = *s;\
 break;\
 }
 	
-	glm::vec4 * s = (glm::vec4 *)list.ptr;
+	glm::vec4 * s = OGM_TYPEBUFFER_PTR(glm::vec4,self.buffer);
 	switch (self.type) {
 			_CASE(PC);
 			_CASE(PCT);
@@ -97,8 +97,8 @@ d->uv = *s;\
 }\
 break;\
 }
-	
-	glm::vec2 * s = (glm::vec2 *)list.ptr;
+		
+	glm::vec2 * s = OGM_TYPEBUFFER_PTR(glm::vec2,self.buffer);
 	switch (self.type) {
 			_CASE(PCT);
 			_CASE(PCTN);
@@ -120,7 +120,7 @@ d->normal = *s;\
 break;\
 }
 	
-	glm::vec3 * s = (glm::vec3 *)list.ptr;
+	glm::vec3 * s = OGM_TYPEBUFFER_PTR(glm::vec3, self.buffer);
 	switch (self.type) {
 			_CASE(PCN);
 			_CASE(PCTN);

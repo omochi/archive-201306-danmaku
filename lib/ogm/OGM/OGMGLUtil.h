@@ -7,7 +7,7 @@
 //
 #pragma once
 
-#import "OGMCommon.h"
+#import "OGMMacro.h"
 
 OGM_EXTERN_C_BEGIN
 

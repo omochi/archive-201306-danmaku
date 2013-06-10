@@ -19,6 +19,7 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 
 @interface _NS(TypeBuffer)()
 
+@property(nonatomic,assign)const char * objCType;
 @property(nonatomic,assign)size_t typeSize;
 
 @property(nonatomic,assign)uint32_t allocSize;
@@ -31,22 +32,23 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 
 @implementation _NS(TypeBuffer)
 
--(id)initWithTypeSize:(size_t)typeSize{
+-(id)initWithObjCType:(const char *)type{
 	self = [super init];
 	if(self){
-		_typeSize = typeSize;
+		NSUInteger size = 0;
+		NSGetSizeAndAlignment(type,&size,NULL);		
+		_objCType = type;
+		_typeSize = size;
 	}
 	return self;
 }
-
--(id)initWithTypeSize:(size_t)typeSize size:(uint32_t)size{
-	self = [self initWithTypeSize:typeSize];
+-(id)initWithObjCType:(const char *)type size:(uint32_t)size{
+	self = [self initWithObjCType:type];
 	if(self){
 		self.size = size;
 	}
 	return self;
 }
-
 - (void)dealloc
 {
 	self.allocSize = 0;
@@ -89,6 +91,11 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 -(void *)ptrAt:(uint32_t)index{
 	[self assertIndex:index];
 	return ptrAt(_ptr,_typeSize,index);
+}
+
+-(void *)ptrWithTypeAssert:(const char *)objCType{
+	if(strcmp(_objCType,objCType))@throw OGMExceptionMake(NSGenericException,@"type assertion failed: type=%s,assert=%s",_objCType,objCType);
+	return _ptr;
 }
 
 -(void)spliceAt:(uint32_t)index len:(uint32_t)len items:(void *)items itemsNum:(uint32_t)itemsNum{

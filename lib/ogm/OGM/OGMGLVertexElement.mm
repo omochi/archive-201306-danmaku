@@ -20,4 +20,5 @@ OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect qua
 	OGMGLVertexBuffer * vertices = [[OGMGLVertexBuffer alloc]initWithType:type transfer:YES];
 	vertices.buffer.size = 4;
 	
+	
 }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMCommon.h"
+#import "OGMMacro.h"
 
 OGM_EXTERN_C_BEGIN
 
@@ -21,6 +21,7 @@ typedef enum _NST(){
 
 NSString * _NST(ToString)(_NST() type);
 size_t _NST(Size)(_NST() type);
+const char * _NST(ObjCType)(_NST() type);
 BOOL _NST(HasUv)(_NST() type);
 BOOL _NST(HasNormal)(_NST() type);
 

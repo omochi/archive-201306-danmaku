@@ -22,14 +22,6 @@
 #include <string.h>
 #include <OpenGLES/ES2/gl.h>
 
-#ifdef __cplusplus
-#	define OGM_EXTERN_C_BEGIN extern "C" {
-#	define OGM_EXTERN_C_END }
-#else
-#	define OGM_EXTERN_C_BEGIN
-#	define OGM_EXTERN_C_END
-#endif
-
 #if DEBUG
 #	define OGM_BUILD_DEBUG 1
 #else

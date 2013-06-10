@@ -14,17 +14,22 @@ extern "C" {
 #endif
 
 #define _NS(name) OGM##name
+	
+#define OGM_TYPEBUFFER_PTR(type,tb) (type *)([(tb) ptrWithTypeAssert:@encode(type)])
 
 @interface _NS(TypeBuffer) : NSObject
 
--(id)initWithTypeSize:(size_t)typeSize;
--(id)initWithTypeSize:(size_t)typeSize size:(uint32_t)size;
+-(id)initWithObjCType:(const char *)type;
+-(id)initWithObjCType:(const char *)type size:(uint32_t)size;
 
+-(const char *)objCType;
 -(size_t)typeSize;
 @property(nonatomic,assign)uint32_t size;
 -(uint32_t)allocSize;
 -(void *)ptr;
 -(void *)ptrAt:(uint32_t)index;
+
+-(void *)ptrWithTypeAssert:(const char *)objCType;
 
 -(void)reserve:(uint32_t)size;
 

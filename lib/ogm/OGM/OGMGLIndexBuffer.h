@@ -16,6 +16,4 @@
 -(id)initWithDrawMode:(GLenum)drawMode transfer:(BOOL)transfer;
 -(BOOL)prepare;
 
--(void)setIndexList:(OGMTypeBuffer *)list;
-
 @end

@@ -35,9 +35,18 @@ OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect qua
 		for(int i=0;i<4;i++)normal[i] = glm::vec3(0,0,1);
 		[vertices setNormalList:normalList];
 	}
-
+	
+	OGMGLIndexBuffer * indices = [[OGMGLIndexBuffer alloc]initWithDrawMode:GL_TRIANGLE_STRIP transfer:YES];
+	indices.buffer.size = 4;
+	uint16_t * index = OGM_TYPEBUFFER_PTR(uint16_t,indices);
+	index[0] = 0;
+	index[1] = 1;
+	index[2] = 3;
+	index[3] = 2;
+	
 	OGMGLVertexElement * element = [[OGMGLVertexElement alloc]init];
 	element.vertices = vertices;
-	
+	element.indices = indices;
+	return element;
 }
 

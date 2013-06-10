@@ -15,5 +15,7 @@
 
 -(id)initWithDrawMode:(GLenum)drawMode transfer:(BOOL)transfer;
 -(BOOL)prepare;
+-(BOOL)transferred;
+-(void)assertNotTransferred;
 
 @end

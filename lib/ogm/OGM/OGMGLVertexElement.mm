@@ -8,7 +8,26 @@
 
 #import "OGMGLVertexElement.h"
 
-@implementation OGMGLVertexElement
+@implementation OGMGLVertexElement{
+	glm::vec4 _color;
+}
+
+-(glm::vec4)color{
+	return _color;
+}
+-(void)setColor:(glm::vec4)color{
+	[self.vertices assertNotTransferred];
+	OGMTypeBuffer * colorList = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec4)
+																  size:self.vertices.buffer.size];
+	glm::vec4 * d = OGM_TYPEBUFFER_PTR(glm::vec4, colorList);
+	for(int i=0;i<colorList.size;i++,d++){
+		*d = color;
+	}
+	[self.vertices setColorList:colorList];
+	
+	_color = color;
+}
+
 
 -(void)renderByStandardRenderer:(OGMGLStandardRenderer *)renderer{
 }

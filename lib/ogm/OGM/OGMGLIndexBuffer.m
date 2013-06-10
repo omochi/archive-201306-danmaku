@@ -36,9 +36,15 @@
 		}
 	}
 }
+-(BOOL)transferred{
+	return !_buffer;
+}
+-(void)assertNotTransferred{
+	if(_transfer && [self transferred])@throw OGMExceptionMake(NSGenericException, @"assertion failed: transferred");
+}
 
 -(void)setIndexList:(OGMTypeBuffer *)list{
-	if(_transfer && !_buffer)@throw OGMExceptionMake(NSGenericException, @"already transferred");
+	[self assertNotTransferred];
 	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
 	
 	uint16_t * s = OGM_TYPEBUFFER_PTR(uint16_t,list);

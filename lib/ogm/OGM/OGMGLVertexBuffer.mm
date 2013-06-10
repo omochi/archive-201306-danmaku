@@ -38,8 +38,16 @@
 	}
 }
 
+-(BOOL)transferred{
+	return !_buffer;
+}
+
+-(void)assertNotTransferred{
+	if(_transfer && [self transferred])@throw OGMExceptionMake(NSGenericException, @"assertion failed: transferred");
+}
+
 -(void)setPosList:(OGMTypeBuffer *)list{
-	if(_transfer && !_buffer)@throw OGMExceptionMake(NSGenericException, @"already transferred");
+	[self assertNotTransferred];
 	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
 	
 #define _CASE(t) \
@@ -64,7 +72,7 @@ case OGMGLVertexType##t:{\
 #undef _CASE
 }
 -(void)setColorList:(OGMTypeBuffer *)list{
-	if(_transfer && !_buffer)@throw OGMExceptionMake(NSGenericException, @"already transferred");
+	[self assertNotTransferred];
 	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
 	
 #define _CASE(t) \
@@ -89,7 +97,7 @@ break;\
 #undef _CASE
 }
 -(void)setUvList:(OGMTypeBuffer *)list{
-	if(_transfer && !_buffer)@throw OGMExceptionMake(NSGenericException, @"already transferred");
+	[self assertNotTransferred];
 	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
 	
 #define _CASE(t) \
@@ -112,7 +120,7 @@ break;\
 #undef _CASE
 }
 -(void)setNormalList:(OGMTypeBuffer *)list{
-	if(_transfer && !_buffer)@throw OGMExceptionMake(NSGenericException, @"already transferred");
+	[self assertNotTransferred];
 	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
 	
 #define _CASE(t) \

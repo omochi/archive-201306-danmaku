@@ -17,6 +17,8 @@
 
 -(id)initWithType:(OGMGLVertexType)type transfer:(BOOL)transfer;
 -(BOOL)prepare;
+-(BOOL)transferred;
+-(void)assertNotTransferred;
 
 //転送後の変更不可
 -(void)setPosList:(OGMTypeBuffer *)list;

@@ -27,6 +27,7 @@
 		D6344D79175E5F6B0065DAC6 /* OGMLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D78175E5F6A0065DAC6 /* OGMLog.m */; };
 		D687BD621764CD75001C6759 /* OGMGLVertexElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = D687BD611764CD75001C6759 /* OGMGLVertexElement.mm */; };
 		D687BD651764CFE1001C6759 /* OGMGLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD641764CFE1001C6759 /* OGMGLElement.m */; };
+		D687BD6917662E50001C6759 /* OGMGLIndexBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD6817662E4F001C6759 /* OGMGLIndexBuffer.m */; };
 		D6A4AAC9175F77B200BA9E4A /* OGMGLColorShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D6F175E414D0065DAC6 /* OGMGLColorShader.vsh */; };
 		D6A4AACA175F77B200BA9E4A /* OGMGLColorShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D71175E41640065DAC6 /* OGMGLColorShader.fsh */; };
 		D6A4AACD175F882600BA9E4A /* OGMGLReleaser.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */; };
@@ -298,6 +299,8 @@
 		D687BD631764CFE1001C6759 /* OGMGLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLElement.h; sourceTree = "<group>"; };
 		D687BD641764CFE1001C6759 /* OGMGLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLElement.m; sourceTree = "<group>"; };
 		D687BD66176624EB001C6759 /* OGMMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGMMacro.h; sourceTree = "<group>"; };
+		D687BD6717662E4F001C6759 /* OGMGLIndexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLIndexBuffer.h; sourceTree = "<group>"; };
+		D687BD6817662E4F001C6759 /* OGMGLIndexBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLIndexBuffer.m; sourceTree = "<group>"; };
 		D6A4AACB175F882600BA9E4A /* OGMGLReleaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLReleaser.h; sourceTree = "<group>"; };
 		D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLReleaser.m; sourceTree = "<group>"; };
 		D6A4AACE175F94DB00BA9E4A /* OGMBlockUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMBlockUtil.h; sourceTree = "<group>"; };
@@ -692,6 +695,8 @@
 				D6A4AAD2175F9B8100BA9E4A /* OGMGLVertex.mm */,
 				D6A4AAD4175FA67900BA9E4A /* OGMGLVertexBuffer.h */,
 				D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */,
+				D687BD6717662E4F001C6759 /* OGMGLIndexBuffer.h */,
+				D687BD6817662E4F001C6759 /* OGMGLIndexBuffer.m */,
 				D687BD631764CFE1001C6759 /* OGMGLElement.h */,
 				D687BD641764CFE1001C6759 /* OGMGLElement.m */,
 				D687BD601764CD75001C6759 /* OGMGLVertexElement.h */,
@@ -784,6 +789,7 @@
 				D6A4AAD9175FA77D00BA9E4A /* OGMTypeBuffer.m in Sources */,
 				D687BD621764CD75001C6759 /* OGMGLVertexElement.mm in Sources */,
 				D687BD651764CFE1001C6759 /* OGMGLElement.m in Sources */,
+				D687BD6917662E50001C6759 /* OGMGLIndexBuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

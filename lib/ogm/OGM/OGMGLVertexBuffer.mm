@@ -39,11 +39,12 @@
 }
 
 -(void)setPosList:(OGMTypeBuffer *)list{
+	if(_transfer && !_buffer)@throw OGMExceptionMake(NSGenericException, @"already transferred");
 	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
 	
 #define _CASE(t) \
 case OGMGLVertexType##t:{\
-	OGMGLVertex##t * d = (OGMGLVertex##t *)self.buffer.ptr;\
+	OGMGLVertex##t * d = OGM_TYPEBUFFER_PTR(OGMGLVertex##t,self.buffer);\
 	for(int i=0;i<list.size;i++,s++,d++){\
 		d->pos = *s;\
 	}\
@@ -63,11 +64,12 @@ case OGMGLVertexType##t:{\
 #undef _CASE
 }
 -(void)setColorList:(OGMTypeBuffer *)list{
+	if(_transfer && !_buffer)@throw OGMExceptionMake(NSGenericException, @"already transferred");
 	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
 	
 #define _CASE(t) \
 case OGMGLVertexType##t:{\
-OGMGLVertex##t * d = (OGMGLVertex##t *)self.buffer.ptr;\
+OGMGLVertex##t * d = OGM_TYPEBUFFER_PTR(OGMGLVertex##t,self.buffer);\
 for(int i=0;i<list.size;i++,s++,d++){\
 d->color = *s;\
 }\
@@ -87,11 +89,12 @@ break;\
 #undef _CASE
 }
 -(void)setUvList:(OGMTypeBuffer *)list{
+	if(_transfer && !_buffer)@throw OGMExceptionMake(NSGenericException, @"already transferred");
 	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
 	
 #define _CASE(t) \
 case OGMGLVertexType##t:{\
-OGMGLVertex##t * d = (OGMGLVertex##t *)self.buffer.ptr;\
+OGMGLVertex##t * d = OGM_TYPEBUFFER_PTR(OGMGLVertex##t,self.buffer);\
 for(int i=0;i<list.size;i++,s++,d++){\
 d->uv = *s;\
 }\
@@ -109,11 +112,12 @@ break;\
 #undef _CASE
 }
 -(void)setNormalList:(OGMTypeBuffer *)list{
+	if(_transfer && !_buffer)@throw OGMExceptionMake(NSGenericException, @"already transferred");
 	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
 	
 #define _CASE(t) \
 case OGMGLVertexType##t:{\
-OGMGLVertex##t * d = (OGMGLVertex##t *)self.buffer.ptr;\
+OGMGLVertex##t * d = OGM_TYPEBUFFER_PTR(OGMGLVertex##t,self.buffer);\
 for(int i=0;i<list.size;i++,s++,d++){\
 d->normal = *s;\
 }\

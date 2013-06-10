@@ -18,5 +18,7 @@
 @end
 
 
+
+
 //prepare前にtransfer=NOで転送防止可能
 OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect quad);

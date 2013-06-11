@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
+#import "OGMGLUtil.h"
 #import "OGMGLStandardShader.h"
 
 @interface OGMGLElement : NSObject

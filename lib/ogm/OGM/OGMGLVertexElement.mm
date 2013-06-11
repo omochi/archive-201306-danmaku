@@ -28,6 +28,18 @@
 }
 
 -(void)renderWithStandardShader:(OGMGLStandardShader *)shader{
+	[shader prepare];
+	
+	int posIndex = [shader locationOfVar:OGMGLStandardShaderVar_pos];
+	glEnableVertexAttribArray(posIndex);
+	OGMGLAssert(@"glEnableVertexAttribArray");
+	
+	[self.vertices prepare];
+	
+	glVertexAttribPointer(posIndex,3,GL_FLOAT,GL_FALSE,self.vertices.stride, <#const GLvoid *ptr#>)
+	
+	glDisableVertexAttribArray(posIndex);
+	
 }
 
 

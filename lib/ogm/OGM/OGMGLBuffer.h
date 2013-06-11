@@ -22,7 +22,9 @@
 
 -(void)prepare;
 
+-(const char *)type;
 -(OGMTypeBuffer *)buffer;
+-(uint32_t)stride;
 
 -(void)updateSize:(uint32_t)size;
 //初回prepare前まで変化を許すかどうか

@@ -16,6 +16,7 @@
 
 @property(nonatomic,assign)GLuint glBufId;
 @property(nonatomic,assign)const char * type;
+@property(nonatomic,assign)uint32_t stride;//キャッシュしておく
 @property(nonatomic,strong)OGMTypeBuffer *buffer;
 
 @property(nonatomic,assign)BOOL bufferDirty;
@@ -31,6 +32,13 @@
 		_type = type;
 		_usage = usage;
 		_keepData = keepData;
+		
+		NSUInteger typeSize = 0;
+		NSUInteger typeAlign = 0;
+		NSGetSizeAndAlignment(_type,&typeSize,&typeAlign);
+		NSAssert(typeSize!=typeAlign,@"not support");
+		
+		_stride = typeSize;
 	}
 	return self;
 }

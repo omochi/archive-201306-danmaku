@@ -36,7 +36,9 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 	self = [super init];
 	if(self){
 		NSUInteger size = 0;
-		NSGetSizeAndAlignment(type,&size,NULL);		
+		NSUInteger align = 0;
+		NSGetSizeAndAlignment(type,&size,&align);
+		NSAssert(size==align, @"not support alignment");
 		_objCType = type;
 		_typeSize = size;
 	}

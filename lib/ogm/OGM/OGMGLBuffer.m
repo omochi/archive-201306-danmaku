@@ -71,8 +71,8 @@
 	[self updateSize:size initOnly:NO];
 }
 -(void)updateSize:(uint32_t)size initOnly:(BOOL)initOnly{
-	if(initOnly && _size!=0 && _size!=size){
-		@throw OGMExceptionMake(NSGenericException, @"set size init only check error: bufferSize=%d,size=%d",self.buffer.size,size);
+	if(initOnly && _glBufId!=0){
+		@throw OGMExceptionMake(NSGenericException, @"init only check error: bufferSize=%d,size=%d",self.buffer.size,size);
 	}
 	
 	if(_size != size){
@@ -84,6 +84,17 @@
 	}
 	_buffer.size = size;
 	_size = size;
+}
+
+-(void)updateUsage:(GLenum)usage{
+	if(_glBufId!=0){
+		@throw OGMExceptionMake(NSGenericException, @"init pnly check error");
+	}
+	
+	if(_usage != usage){
+		_bufferDirty = YES;
+	}
+	_usage = usage;
 }
 
 @end

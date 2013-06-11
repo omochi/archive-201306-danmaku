@@ -25,7 +25,10 @@
 -(OGMTypeBuffer *)buffer;
 
 -(void)updateSize:(uint32_t)size;
-//0からの変化だけ許すかどうか
+//初回prepare前まで変化を許すかどうか
 -(void)updateSize:(uint32_t)size initOnly:(BOOL)initOnly;
+
+//初回のみ許す
+-(void)updateUsage:(GLenum)usage;
 
 @end

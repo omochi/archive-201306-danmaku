@@ -15,11 +15,11 @@
 @property(nonatomic,strong)OGMGLVertexBuffer * vertices;
 @property(nonatomic,strong)OGMGLIndexBuffer * indices;
 
-//単色塗り
+//colorを単色塗り。keepDataでない場合はcolor以外の再構築が必要。
 -(glm::vec4)color;
 -(void)setColor:(glm::vec4)color;
 
 @end
 
-//prepare前にtransfer=NOで転送防止可能
+//GL_DYNAMIC_DRAW + keepDataで作られる。
 OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect quad);

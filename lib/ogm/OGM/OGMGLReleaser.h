@@ -13,7 +13,7 @@
 
 -(id)init;
 //複数個登録可能だが、全部同じスレッド&コンテキストでないといけない
--(void)captureWithReleaser:(OGMWeakSelfBlock)releaser self:(id)aSelf;
+-(void)addReleaser:(OGMWeakSelfBlock)releaser self:(id)aSelf;
 
 
 @end

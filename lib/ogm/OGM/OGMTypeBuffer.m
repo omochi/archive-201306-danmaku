@@ -54,6 +54,10 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 	self.allocSize = 0;
 }
 
+-(uint32_t)byteSize{
+	return _typeSize * _size;
+}
+
 -(void)setAllocSize:(uint32_t)allocSize{
 	if(_allocSize == allocSize)return;
 	if(allocSize == 0){

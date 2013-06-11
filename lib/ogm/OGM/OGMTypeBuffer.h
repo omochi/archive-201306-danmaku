@@ -22,10 +22,19 @@ extern "C" {
 -(id)initWithObjCType:(const char *)type;
 -(id)initWithObjCType:(const char *)type size:(uint32_t)size;
 
+//要素型について
 -(const char *)objCType;
 -(size_t)typeSize;
+
+
+//要素数
 @property(nonatomic,assign)uint32_t size;
+//内部確保要素数
 -(uint32_t)allocSize;
+//typeSize x size
+-(uint32_t)byteSize;
+
+
 -(void *)ptr;
 -(void *)ptrAt:(uint32_t)index;
 

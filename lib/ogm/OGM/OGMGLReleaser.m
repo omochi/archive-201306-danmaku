@@ -31,12 +31,18 @@
 		NSArray * releaserList = self.releaserList;
 		EAGLContext * glContext = self.glContext;
 		[self.operationQueue addOperationWithBlock:^{
-			EAGLContext * oldContext = [EAGLContext currentContext];			
-			[EAGLContext setCurrentContext:glContext];
+			EAGLContext * oldContext = [EAGLContext currentContext];
+			if(oldContext != glContext){
+				glFlush();
+				[EAGLContext setCurrentContext:glContext];
+			}
 			for(dispatch_block_t releaser in releaserList){
 				releaser();
 			}
-			[EAGLContext setCurrentContext:oldContext];
+			if(oldContext != glContext){
+				glFlush();
+				[EAGLContext setCurrentContext:oldContext];
+			}
 		}];
 	}
 }
@@ -53,7 +59,7 @@
 	}
 	_glContext = glContext;
 }
--(void)captureWithReleaser:(OGMWeakSelfBlock)releaser self:(id)aSelf{
+-(void)addReleaser:(OGMWeakSelfBlock)releaser self:(id)aSelf{
 	self.operationQueue = [NSOperationQueue currentQueue];
 	if(!self.operationQueue){
 		@throw OGMExceptionMake(NSGenericException, @"not exists operation queue in this thread");

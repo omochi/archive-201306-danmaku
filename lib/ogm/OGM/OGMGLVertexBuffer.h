@@ -13,14 +13,22 @@
 @interface OGMGLVertexBuffer : NSObject
 
 @property(nonatomic,readonly)OGMGLVertexType type;
-@property(nonatomic,readonly)OGMTypeBuffer *buffer;
+@property(nonatomic,readonly)GLenum usage;
+@property(nonatomic,readonly)uint32_t size;
 
--(id)initWithType:(OGMGLVertexType)type transfer:(BOOL)transfer;
--(BOOL)prepare;
--(BOOL)transferred;
--(void)assertNotTransferred;
+//転送後にデータを保持し続けるかどうか
+@property(nonatomic,assign)BOOL keepData;
 
-//転送後の変更不可
+-(id)initWithType:(OGMGLVertexType)type usage:(GLenum)usage keepData:(BOOL)keepData;
+
+-(void)prepare;
+
+-(OGMTypeBuffer *)buffer;
+
+-(void)updateSize:(uint32_t)size;
+-(void)updateSize:(uint32_t)size initOnly:(BOOL)initOnly;
+
+//転送済みの場合は全て再構築が必要
 -(void)setPosList:(OGMTypeBuffer *)list;
 -(void)setColorList:(OGMTypeBuffer *)list;
 -(void)setUvList:(OGMTypeBuffer *)list;

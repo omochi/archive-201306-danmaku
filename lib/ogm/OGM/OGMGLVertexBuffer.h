@@ -8,19 +8,19 @@
 
 #import "OGMGLBuffer.h"
 
-#import "OGMGLVertex.h"
+#import "OGMGLVertexFormat.h"
 
 @interface OGMGLVertexBuffer : OGMGLBuffer
 
-@property(nonatomic,readonly)OGMGLVertexType vertexType;
+@property(nonatomic,readonly)OGMGLVertexFormat * vertexFormat;
 
--(id)initWithVertexType:(OGMGLVertexType)vertexType usage:(GLenum)usage keepData:(BOOL)keepData;
+-(id)initWithVertexFormat:(OGMGLVertexFormat *)vertexFormat usage:(GLenum)usage keepData:(BOOL)keepData;
 
 //転送済みの場合は全て再構築が必要
 //型に存在しない属性を転送すると例外
--(void)setPosList:(OGMTypeBuffer *)list;
--(void)setColorList:(OGMTypeBuffer *)list;
--(void)setUvList:(OGMTypeBuffer *)list;
--(void)setNormalList:(OGMTypeBuffer *)list;
+//-(void)setPosList:(OGMTypeBuffer *)list;
+//-(void)setColorList:(OGMTypeBuffer *)list;
+//-(void)setUvList:(OGMTypeBuffer *)list;
+//-(void)setNormalList:(OGMTypeBuffer *)list;
 
 @end

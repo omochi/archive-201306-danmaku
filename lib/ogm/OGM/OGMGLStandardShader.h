@@ -10,7 +10,7 @@
 #import "OGMPPCppOnly.h"
 
 #import "OGMCommon.h"
-#import "OGMGLStandardVertexFormat.h"
+#import "OGMGLStandardVertex.h"
 #import "OGMGLVertexBuffer.h"
 #import "OGMGLIndexBuffer.h"
 

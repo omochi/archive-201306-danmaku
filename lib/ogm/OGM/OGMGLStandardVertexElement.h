@@ -7,10 +7,11 @@
 //
 
 #import "OGMGLElement.h"
+#import "OGMGLVertexFormat.h"
 #import "OGMGLVertexBuffer.h"
 #import "OGMGLIndexBuffer.h"
 
-@interface OGMGLVertexElement : OGMGLElement
+@interface OGMGLStandardVertexElement : OGMGLElement
 
 @property(nonatomic,strong)OGMGLVertexBuffer * vertices;
 @property(nonatomic,strong)OGMGLIndexBuffer * indices;
@@ -22,4 +23,4 @@
 @end
 
 //GL_DYNAMIC_DRAW + keepDataで作られる。
-OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect quad);
+OGMGLStandardVertexElement  * OGMGLQuadVertexElementMake(OGMGLStandardVertexFormat * format,CGRect quad);

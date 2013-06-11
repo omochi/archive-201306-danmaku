@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMGLVertexElement.h"
+#import "OGMGLStandardVertexElement.h"
 
-@implementation OGMGLVertexElement{
+@implementation OGMGLStandardVertexElement{
 	glm::vec4 _color;
 }
 
@@ -22,7 +22,7 @@
 	for(int i=0;i<colorList.size;i++,d++){
 		*d = color;
 	}
-	[self.vertices setColorList:colorList];
+//	[self.vertices setColorList:colorList];
 	
 	_color = color;
 }
@@ -36,7 +36,7 @@
 	
 	[self.vertices prepare];
 	
-	glVertexAttribPointer(posIndex,3,GL_FLOAT,GL_FALSE,self.vertices.stride, <#const GLvoid *ptr#>)
+//	glVertexAttribPointer(posIndex,3,GL_FLOAT,GL_FALSE,self.vertices.stride, <#const GLvoid *ptr#>)
 	
 	glDisableVertexAttribArray(posIndex);
 	
@@ -46,8 +46,8 @@
 @end
 
 // 左上、左下、右下、右上
-OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect quad){
-	OGMGLVertexBuffer * vertices = [[OGMGLVertexBuffer alloc]initWithVertexType:type usage:GL_DYNAMIC_DRAW keepData:YES];
+OGMGLStandardVertexElement  * OGMGLQuadVertexElementMake(OGMGLStandardVertexFormat * format,CGRect quad){
+	OGMGLVertexBuffer * vertices = [[OGMGLVertexBuffer alloc]initWithVertexFormat:format usage:GL_DYNAMIC_DRAW keepData:YES];
 	
 	OGMTypeBuffer * posList = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec3) size:4];
 	glm::vec3 * pos = OGM_TYPEBUFFER_PTR(glm::vec3, posList);
@@ -55,13 +55,13 @@ OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect qua
 	pos[1] = glm::vec3(CGRectGetMinX(quad),CGRectGetMinY(quad),0);
 	pos[2] = glm::vec3(CGRectGetMaxX(quad),CGRectGetMinY(quad),0);
 	pos[3] = glm::vec3(CGRectGetMaxX(quad),CGRectGetMaxY(quad),0);
-	[vertices setPosList:posList];
+//	[vertices setPosList:posList];
 	
-	if(OGMGLVertexTypeHasNormal(type)){
+	if(format.hasNormal){
 		OGMTypeBuffer * normalList = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec3) size:4];
 		glm::vec3 * normal = OGM_TYPEBUFFER_PTR(glm::vec3, normalList);
 		for(int i=0;i<4;i++)normal[i] = glm::vec3(0,0,1);
-		[vertices setNormalList:normalList];
+//		[vertices setNormalList:normalList];
 	}
 	
 	OGMGLIndexBuffer * indices = [[OGMGLIndexBuffer alloc]initWithDrawMode:GL_TRIANGLE_STRIP usage:GL_DYNAMIC_DRAW keepData:YES];
@@ -74,7 +74,7 @@ OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect qua
 	index[3] = 2;
 	[indices setIndexList:indexList];
 	
-	OGMGLVertexElement * element = [[OGMGLVertexElement alloc]init];
+	OGMGLStandardVertexElement * element = [[OGMGLStandardVertexElement alloc]init];
 	element.vertices = vertices;
 	element.indices = indices;
 	

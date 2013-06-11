@@ -37,7 +37,6 @@
 // 左上、左下、右下、右上
 OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect quad){
 	OGMGLVertexBuffer * vertices = [[OGMGLVertexBuffer alloc]initWithVertexType:type usage:GL_DYNAMIC_DRAW keepData:YES];
-	vertices.buffer.size = 4;
 	
 	OGMTypeBuffer * posList = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec3) size:4];
 	glm::vec3 * pos = OGM_TYPEBUFFER_PTR(glm::vec3, posList);
@@ -55,16 +54,20 @@ OGMGLVertexElement  * OGMGLQuadVertexElementMake(OGMGLVertexType type,CGRect qua
 	}
 	
 	OGMGLIndexBuffer * indices = [[OGMGLIndexBuffer alloc]initWithDrawMode:GL_TRIANGLE_STRIP usage:GL_DYNAMIC_DRAW keepData:YES];
-	indices.buffer.size = 4;
-	uint16_t * index = OGM_TYPEBUFFER_PTR(uint16_t,indices);
+
+	OGMTypeBuffer * indexList = [[OGMTypeBuffer alloc]initWithObjCType:@encode(uint16_t) size:4];
+	uint16_t * index = OGM_TYPEBUFFER_PTR(uint16_t,indexList);
 	index[0] = 0;
 	index[1] = 1;
 	index[2] = 3;
 	index[3] = 2;
+	[indices setIndexList:indexList];
 	
 	OGMGLVertexElement * element = [[OGMGLVertexElement alloc]init];
 	element.vertices = vertices;
 	element.indices = indices;
+	
+	[element setColor:glm::vec4(1,1,1,1)];
 	return element;
 }
 

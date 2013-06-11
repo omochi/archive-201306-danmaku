@@ -33,7 +33,7 @@
 		_colorShader = OGMGLBuildProgramWithPaths(vshPath,fshPath, error);
 		if(!_colorShader)return NO;
 		
-		[self.glReleaser captureWithReleaser:^(OGMGLStandardRenderer *welf) {
+		[self.glReleaser addReleaser:^(OGMGLStandardRenderer *welf) {
 			if(welf->_colorShader){
 				glDeleteProgram(welf->_colorShader);
 				OGMGLAssert(@"glDeleteProgram/colorShader");

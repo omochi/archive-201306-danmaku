@@ -6,29 +6,18 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
+#import "OGMGLBuffer.h"
+
 #import "OGMGLVertex.h"
 
-#import "OGMTypeBuffer.h"
+@interface OGMGLVertexBuffer : OGMGLBuffer
 
-@interface OGMGLVertexBuffer : NSObject
+@property(nonatomic,readonly)OGMGLVertexType vertexType;
 
-@property(nonatomic,readonly)OGMGLVertexType type;
-@property(nonatomic,readonly)GLenum usage;
-@property(nonatomic,readonly)uint32_t size;
-
-//転送後にデータを保持し続けるかどうか
-@property(nonatomic,assign)BOOL keepData;
-
--(id)initWithType:(OGMGLVertexType)type usage:(GLenum)usage keepData:(BOOL)keepData;
-
--(void)prepare;
-
--(OGMTypeBuffer *)buffer;
-
--(void)updateSize:(uint32_t)size;
--(void)updateSize:(uint32_t)size initOnly:(BOOL)initOnly;
+-(id)initWithVertexType:(OGMGLVertexType)vertexType usage:(GLenum)usage keepData:(BOOL)keepData;
 
 //転送済みの場合は全て再構築が必要
+//型に存在しない属性を転送すると例外
 -(void)setPosList:(OGMTypeBuffer *)list;
 -(void)setColorList:(OGMTypeBuffer *)list;
 -(void)setUvList:(OGMTypeBuffer *)list;

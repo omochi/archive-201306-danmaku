@@ -6,16 +6,14 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMTypeBuffer.h"
+#import "OGMGLBuffer.h"
 
-@interface OGMGLIndexBuffer : NSObject
+@interface OGMGLIndexBuffer : OGMGLBuffer
 
 @property(nonatomic,assign)GLenum drawMode;
-@property(nonatomic,readonly)OGMTypeBuffer *buffer;
 
--(id)initWithDrawMode:(GLenum)drawMode transfer:(BOOL)transfer;
--(BOOL)prepare;
--(BOOL)transferred;
--(void)assertNotTransferred;
+-(id)initWithDrawMode:(GLenum)drawMode usage:(GLenum)usage keepData:(BOOL)keepData;
+
+-(void)setIndexList:(OGMTypeBuffer *)list;
 
 @end

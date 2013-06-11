@@ -7,45 +7,25 @@
 //
 
 #import "OGMGLIndexBuffer.h"
+
+#import "OGMGLBuffer+Protected.h"
 #import "OGMGLReleaser.h"
 #import "OGMErrorUtil.h"
 
-@interface OGMGLIndexBuffer()
-@property(nonatomic,assign)BOOL transfer;
-@property(nonatomic,strong)OGMGLReleaser * glReleaser;
-@end
-
 @implementation OGMGLIndexBuffer
 
--(id)initWithDrawMode:(GLenum)drawMode transfer:(BOOL)transfer{
-	self = [super init];
+-(id)initWithDrawMode:(GLenum)drawMode usage:(GLenum)usage keepData:(BOOL)keepData{
+	self = [super initWithTarget:GL_ELEMENT_ARRAY_BUFFER
+							type:@encode(uint16_t) usage:usage keepData:keepData];
 	if(self){
 		_drawMode = drawMode;
-		_buffer = [[OGMTypeBuffer alloc]initWithObjCType:@encode(uint16_t)];
-		
-		_transfer = transfer;
-		_glReleaser = [[OGMGLReleaser alloc]init];
 	}
 	return self;
 }
--(BOOL)prepare{
-	if(_transfer){
-		if(_buffer){
-#warning todo: transfer
-			_buffer = nil;
-		}
-	}
-}
--(BOOL)transferred{
-	return !_buffer;
-}
--(void)assertNotTransferred{
-	if(_transfer && [self transferred])@throw OGMExceptionMake(NSGenericException, @"assertion failed: transferred");
-}
 
 -(void)setIndexList:(OGMTypeBuffer *)list{
-	[self assertNotTransferred];
-	if(self.buffer.size != list.size)@throw OGMExceptionMake(NSInvalidArgumentException, @"invalid list size: buffer = %d,list = %d",self.buffer.size,list.size);
+	[self updateSize:list.size initOnly:YES];
+	[self setDataDirty:YES];
 	
 	uint16_t * s = OGM_TYPEBUFFER_PTR(uint16_t,list);
 	uint16_t * d = OGM_TYPEBUFFER_PTR(uint16_t,self.buffer);

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMMacro.h"
+#import "OGMPPMacro.h"
 
 OGM_EXTERN_C_BEGIN
 

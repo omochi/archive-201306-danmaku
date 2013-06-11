@@ -6,10 +6,10 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMGLStandardRenderer.h"
+#import "OGMGLStandardShader.h"
 
 @interface OGMGLElement : NSObject
 
--(void)renderByStandardRenderer:(OGMGLStandardRenderer *)renderer;
+-(void)renderWithStandardShader:(OGMGLStandardShader *)shader;
 
 @end

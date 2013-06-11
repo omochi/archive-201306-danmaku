@@ -27,8 +27,7 @@
 	_color = color;
 }
 
-
--(void)renderByStandardRenderer:(OGMGLStandardRenderer *)renderer{
+-(void)renderWithStandardShader:(OGMGLStandardShader *)shader{
 }
 
 

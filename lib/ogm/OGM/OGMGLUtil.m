@@ -26,8 +26,18 @@ NSString * OGMGLErrorCodeToString(GLenum code){
 NSString * OGMGLEnumToString(GLenum e){
 #define _CASE(x) case x : return @ #x
 	switch(e){
+			_CASE(GL_POINTS);
+			_CASE(GL_LINES);
+			_CASE(GL_LINE_LOOP);
+			_CASE(GL_LINE_STRIP);
+			_CASE(GL_TRIANGLES);
+			_CASE(GL_TRIANGLE_STRIP);
+			_CASE(GL_TRIANGLE_FAN);
+			
 			_CASE(GL_VERTEX_SHADER);
 			_CASE(GL_FRAGMENT_SHADER);
+			_CASE(GL_ARRAY_BUFFER);
+			_CASE(GL_ELEMENT_ARRAY_BUFFER);
 		default:
 			@throw OGMExceptionMake(NSInvalidArgumentException, @"unknown enum: 0x%04x",e);
 	}

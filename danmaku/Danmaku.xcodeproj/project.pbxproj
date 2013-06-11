@@ -20,13 +20,13 @@
 		D63447D8175CCF570065DAC6 /* ODMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D63447D5175CCF570065DAC6 /* ODMViewController.xib */; };
 		D6344D1E175CFE1D0065DAC6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344D1D175CFE1D0065DAC6 /* GLKit.framework */; };
 		D6344D57175D0A5B0065DAC6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344D56175D0A5B0065DAC6 /* OpenGLES.framework */; };
-		D6344D68175E23CD0065DAC6 /* OGMGLStandardRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6344D66175E23CD0065DAC6 /* OGMGLStandardRenderer.mm */; };
+		D6344D68175E23CD0065DAC6 /* OGMGLStandardShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6344D66175E23CD0065DAC6 /* OGMGLStandardShader.mm */; };
 		D6344D6B175E26390065DAC6 /* OGMGLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6A175E26390065DAC6 /* OGMGLUtil.m */; };
 		D6344D6E175E28AE0065DAC6 /* OGMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6D175E28AE0065DAC6 /* OGMCommon.m */; };
 		D6344D75175E50040065DAC6 /* OGMErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D74175E50030065DAC6 /* OGMErrorUtil.m */; };
 		D6344D79175E5F6B0065DAC6 /* OGMLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D78175E5F6A0065DAC6 /* OGMLog.m */; };
 		D687BD621764CD75001C6759 /* OGMGLVertexElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = D687BD611764CD75001C6759 /* OGMGLVertexElement.mm */; };
-		D687BD651764CFE1001C6759 /* OGMGLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD641764CFE1001C6759 /* OGMGLElement.m */; };
+		D687BD651764CFE1001C6759 /* OGMGLElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = D687BD641764CFE1001C6759 /* OGMGLElement.mm */; };
 		D687BD6917662E50001C6759 /* OGMGLIndexBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD6817662E4F001C6759 /* OGMGLIndexBuffer.m */; };
 		D687BD6C17677592001C6759 /* OGMGLBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD6B17677591001C6759 /* OGMGLBuffer.m */; };
 		D6A4AAC9175F77B200BA9E4A /* OGMGLColorShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D6F175E414D0065DAC6 /* OGMGLColorShader.vsh */; };
@@ -283,8 +283,8 @@
 		D6344D56175D0A5B0065DAC6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		D6344D5E175E20500065DAC6 /* ODMCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ODMCommon.h; sourceTree = SOURCE_ROOT; };
 		D6344D65175E23CD0065DAC6 /* OGMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMCommon.h; sourceTree = "<group>"; };
-		D6344D66175E23CD0065DAC6 /* OGMGLStandardRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLStandardRenderer.mm; sourceTree = "<group>"; };
-		D6344D67175E23CD0065DAC6 /* OGMGLStandardRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLStandardRenderer.h; sourceTree = "<group>"; };
+		D6344D66175E23CD0065DAC6 /* OGMGLStandardShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLStandardShader.mm; sourceTree = "<group>"; };
+		D6344D67175E23CD0065DAC6 /* OGMGLStandardShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLStandardShader.h; sourceTree = "<group>"; };
 		D6344D69175E26390065DAC6 /* OGMGLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLUtil.h; sourceTree = "<group>"; };
 		D6344D6A175E26390065DAC6 /* OGMGLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLUtil.m; sourceTree = "<group>"; };
 		D6344D6D175E28AE0065DAC6 /* OGMCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMCommon.m; sourceTree = "<group>"; };
@@ -298,13 +298,14 @@
 		D687BD601764CD75001C6759 /* OGMGLVertexElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLVertexElement.h; sourceTree = "<group>"; };
 		D687BD611764CD75001C6759 /* OGMGLVertexElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLVertexElement.mm; sourceTree = "<group>"; };
 		D687BD631764CFE1001C6759 /* OGMGLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLElement.h; sourceTree = "<group>"; };
-		D687BD641764CFE1001C6759 /* OGMGLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLElement.m; sourceTree = "<group>"; };
-		D687BD66176624EB001C6759 /* OGMMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGMMacro.h; sourceTree = "<group>"; };
+		D687BD641764CFE1001C6759 /* OGMGLElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLElement.mm; sourceTree = "<group>"; };
+		D687BD66176624EB001C6759 /* OGMPPMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGMPPMacro.h; sourceTree = "<group>"; };
 		D687BD6717662E4F001C6759 /* OGMGLIndexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLIndexBuffer.h; sourceTree = "<group>"; };
 		D687BD6817662E4F001C6759 /* OGMGLIndexBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLIndexBuffer.m; sourceTree = "<group>"; };
 		D687BD6A17677591001C6759 /* OGMGLBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLBuffer.h; sourceTree = "<group>"; };
 		D687BD6B17677591001C6759 /* OGMGLBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLBuffer.m; sourceTree = "<group>"; };
 		D687BD6D17677805001C6759 /* OGMGLBuffer+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OGMGLBuffer+Protected.h"; sourceTree = "<group>"; };
+		D687BD6E17678F5D001C6759 /* OGMPPCppOnly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGMPPCppOnly.h; sourceTree = "<group>"; };
 		D6A4AACB175F882600BA9E4A /* OGMGLReleaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLReleaser.h; sourceTree = "<group>"; };
 		D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLReleaser.m; sourceTree = "<group>"; };
 		D6A4AACE175F94DB00BA9E4A /* OGMBlockUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMBlockUtil.h; sourceTree = "<group>"; };
@@ -677,7 +678,8 @@
 			children = (
 				D6344D65175E23CD0065DAC6 /* OGMCommon.h */,
 				D6344D6D175E28AE0065DAC6 /* OGMCommon.m */,
-				D687BD66176624EB001C6759 /* OGMMacro.h */,
+				D687BD6E17678F5D001C6759 /* OGMPPCppOnly.h */,
+				D687BD66176624EB001C6759 /* OGMPPMacro.h */,
 				D6344D77175E5F690065DAC6 /* OGMLog.h */,
 				D6344D78175E5F6A0065DAC6 /* OGMLog.m */,
 				D6344D73175E50030065DAC6 /* OGMErrorUtil.h */,
@@ -686,8 +688,8 @@
 				D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */,
 				D6344D69175E26390065DAC6 /* OGMGLUtil.h */,
 				D6344D6A175E26390065DAC6 /* OGMGLUtil.m */,
-				D6344D67175E23CD0065DAC6 /* OGMGLStandardRenderer.h */,
-				D6344D66175E23CD0065DAC6 /* OGMGLStandardRenderer.mm */,
+				D6344D67175E23CD0065DAC6 /* OGMGLStandardShader.h */,
+				D6344D66175E23CD0065DAC6 /* OGMGLStandardShader.mm */,
 				D6344D6F175E414D0065DAC6 /* OGMGLColorShader.vsh */,
 				D6344D71175E41640065DAC6 /* OGMGLColorShader.fsh */,
 				D6344D76175E57260065DAC6 /* OGM.h */,
@@ -705,7 +707,7 @@
 				D687BD6717662E4F001C6759 /* OGMGLIndexBuffer.h */,
 				D687BD6817662E4F001C6759 /* OGMGLIndexBuffer.m */,
 				D687BD631764CFE1001C6759 /* OGMGLElement.h */,
-				D687BD641764CFE1001C6759 /* OGMGLElement.m */,
+				D687BD641764CFE1001C6759 /* OGMGLElement.mm */,
 				D687BD601764CD75001C6759 /* OGMGLVertexElement.h */,
 				D687BD611764CD75001C6759 /* OGMGLVertexElement.mm */,
 			);
@@ -784,7 +786,7 @@
 				D63447BC175CCF120065DAC6 /* ODMAppDelegate.m in Sources */,
 				D63447BD175CCF120065DAC6 /* ODMViewController.mm in Sources */,
 				D63447D2175CCF250065DAC6 /* main.m in Sources */,
-				D6344D68175E23CD0065DAC6 /* OGMGLStandardRenderer.mm in Sources */,
+				D6344D68175E23CD0065DAC6 /* OGMGLStandardShader.mm in Sources */,
 				D6344D6B175E26390065DAC6 /* OGMGLUtil.m in Sources */,
 				D6344D6E175E28AE0065DAC6 /* OGMCommon.m in Sources */,
 				D6344D75175E50040065DAC6 /* OGMErrorUtil.m in Sources */,
@@ -795,7 +797,7 @@
 				D6A4AAD6175FA67900BA9E4A /* OGMGLVertexBuffer.mm in Sources */,
 				D6A4AAD9175FA77D00BA9E4A /* OGMTypeBuffer.m in Sources */,
 				D687BD621764CD75001C6759 /* OGMGLVertexElement.mm in Sources */,
-				D687BD651764CFE1001C6759 /* OGMGLElement.m in Sources */,
+				D687BD651764CFE1001C6759 /* OGMGLElement.mm in Sources */,
 				D687BD6917662E50001C6759 /* OGMGLIndexBuffer.m in Sources */,
 				D687BD6C17677592001C6759 /* OGMGLBuffer.m in Sources */,
 			);

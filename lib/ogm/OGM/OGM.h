@@ -9,8 +9,8 @@
 #pragma once
 
 #import "OGMCommon.h"
-#import "OGMMacro.h"
+#import "OGMPPMacro.h"
 #import "OGMErrorUtil.h"
 #import "OGMGLUtil.h"
 #import "OGMGLReleaser.h"
-#import "OGMGLStandardRenderer.h"
+#import "OGMGLStandardShader.h"

@@ -6,9 +6,8 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMMacro.h"
-
-OGM_EXTERN_C_BEGIN
+#import "OGMPPCppOnly.h"
+#import "OGMPPMacro.h"
 
 #define _NST(x) OGMGLVertexType##x
 typedef enum _NST(){
@@ -51,5 +50,4 @@ typedef struct OGMGLVertexPCTN{
 	glm::vec3 normal;
 }OGMGLVertexPCTN;
 
-OGM_EXTERN_C_END
 

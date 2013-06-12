@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMGLBuffer+Protected.h"
+#import "OGMGLBuffer.h"
 
 #import "OGMErrorUtil.h"
 #import "OGMGLReleaser.h"
@@ -43,8 +43,8 @@
 	return self;
 }
 
--(void)setDataDirty:(BOOL)dataDirty{
-	_dataDirty = dataDirty;
+-(void)needDataUpdate{
+	_dataDirty = YES;
 }
 
 -(void)prepare{

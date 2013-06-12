@@ -22,24 +22,40 @@
 	for(int i=0;i<colorList.size;i++,d++){
 		*d = color;
 	}
-//	[self.vertices setColorList:colorList];
+	OGMGLVertexBufferSetColorList(self.vertices,colorList);
 	
 	_color = color;
 }
 
 -(void)renderWithStandardShader:(OGMGLStandardShader *)shader{
+	OGMGLStandardVertexFormat * format = (OGMGLStandardVertexFormat *)self.vertices.vertexFormat;
+	
 	[shader prepare];
 	
 	int posIndex = [shader locationOfVar:OGMGLStandardShaderVar_pos];
-	glEnableVertexAttribArray(posIndex);
-	OGMGLAssert(@"glEnableVertexAttribArray");
+	int colorIndex = [shader locationOfVar:OGMGLStandardShaderVar_color];
 	
 	[self.vertices prepare];
 	
-//	glVertexAttribPointer(posIndex,3,GL_FLOAT,GL_FALSE,self.vertices.stride, <#const GLvoid *ptr#>)
+	glEnableVertexAttribArray(posIndex);
+	OGMGLAssert(@"glEnableVertexAttribArray/pos");
+	glVertexAttribPointer(posIndex,3,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.posOffset);
+	OGMGLAssert(@"glVertexAttribPointer/pos");
 	
+#warning todo colorEnabled
+	if(format.hasColor){
+		glEnableVertexAttribArray(colorIndex);
+		OGMGLAssert(@"glEnableVertexAttribArray/color");
+		glVertexAttribPointer(colorIndex,4,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.colorOffset);
+		OGMGLAssert(@"glVertexAttribPointer/color");
+	}
+	
+#warning todo uv,normal
+
 	glDisableVertexAttribArray(posIndex);
-	
+	OGMGLAssert(@"glDisableVertexAttribArray/pos");
+	glDisableVertexAttribArray(colorIndex);
+	OGMGLAssert(@"glDisableVertexAttribArray/color");	
 }
 
 
@@ -55,13 +71,13 @@ OGMGLStandardVertexElement  * OGMGLQuadVertexElementMake(OGMGLStandardVertexForm
 	pos[1] = glm::vec3(CGRectGetMinX(quad),CGRectGetMinY(quad),0);
 	pos[2] = glm::vec3(CGRectGetMaxX(quad),CGRectGetMinY(quad),0);
 	pos[3] = glm::vec3(CGRectGetMaxX(quad),CGRectGetMaxY(quad),0);
-//	[vertices setPosList:posList];
+	OGMGLVertexBufferSetPosList(vertices, posList);
 	
 	if(format.hasNormal){
 		OGMTypeBuffer * normalList = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec3) size:4];
 		glm::vec3 * normal = OGM_TYPEBUFFER_PTR(glm::vec3, normalList);
 		for(int i=0;i<4;i++)normal[i] = glm::vec3(0,0,1);
-//		[vertices setNormalList:normalList];
+		OGMGLVertexBufferSetNormalList(vertices, normalList);
 	}
 	
 	OGMGLIndexBuffer * indices = [[OGMGLIndexBuffer alloc]initWithDrawMode:GL_TRIANGLE_STRIP usage:GL_DYNAMIC_DRAW keepData:YES];

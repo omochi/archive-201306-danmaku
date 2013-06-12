@@ -31,6 +31,7 @@
 		D687BD6C17677592001C6759 /* OGMGLBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD6B17677591001C6759 /* OGMGLBuffer.m */; };
 		D687BD7117679B25001C6759 /* OGMGLVertexFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD7017679B24001C6759 /* OGMGLVertexFormat.m */; };
 		D687BD7417679C19001C6759 /* OGMGLStandardVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = D687BD7317679C18001C6759 /* OGMGLStandardVertex.mm */; };
+		D687BD771767EBAF001C6759 /* OGMMemoryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD761767EBAD001C6759 /* OGMMemoryUtil.m */; };
 		D6A4AAC9175F77B200BA9E4A /* OGMGLColorShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D6F175E414D0065DAC6 /* OGMGLColorShader.vsh */; };
 		D6A4AACA175F77B200BA9E4A /* OGMGLColorShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D71175E41640065DAC6 /* OGMGLColorShader.fsh */; };
 		D6A4AACD175F882600BA9E4A /* OGMGLReleaser.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */; };
@@ -305,12 +306,13 @@
 		D687BD6817662E4F001C6759 /* OGMGLIndexBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLIndexBuffer.m; sourceTree = "<group>"; };
 		D687BD6A17677591001C6759 /* OGMGLBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLBuffer.h; sourceTree = "<group>"; };
 		D687BD6B17677591001C6759 /* OGMGLBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLBuffer.m; sourceTree = "<group>"; };
-		D687BD6D17677805001C6759 /* OGMGLBuffer+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OGMGLBuffer+Protected.h"; sourceTree = "<group>"; };
 		D687BD6E17678F5D001C6759 /* OGMPPCppOnly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGMPPCppOnly.h; sourceTree = "<group>"; };
 		D687BD6F17679B22001C6759 /* OGMGLVertexFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLVertexFormat.h; sourceTree = "<group>"; };
 		D687BD7017679B24001C6759 /* OGMGLVertexFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLVertexFormat.m; sourceTree = "<group>"; };
 		D687BD7217679C17001C6759 /* OGMGLStandardVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLStandardVertex.h; sourceTree = "<group>"; };
 		D687BD7317679C18001C6759 /* OGMGLStandardVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLStandardVertex.mm; sourceTree = "<group>"; };
+		D687BD751767EBAC001C6759 /* OGMMemoryUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMMemoryUtil.h; sourceTree = "<group>"; };
+		D687BD761767EBAD001C6759 /* OGMMemoryUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMMemoryUtil.m; sourceTree = "<group>"; };
 		D6A4AACB175F882600BA9E4A /* OGMGLReleaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLReleaser.h; sourceTree = "<group>"; };
 		D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLReleaser.m; sourceTree = "<group>"; };
 		D6A4AACE175F94DB00BA9E4A /* OGMBlockUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMBlockUtil.h; sourceTree = "<group>"; };
@@ -683,6 +685,8 @@
 				D6344D6D175E28AE0065DAC6 /* OGMCommon.m */,
 				D687BD6E17678F5D001C6759 /* OGMPPCppOnly.h */,
 				D687BD66176624EB001C6759 /* OGMPPMacro.h */,
+				D687BD751767EBAC001C6759 /* OGMMemoryUtil.h */,
+				D687BD761767EBAD001C6759 /* OGMMemoryUtil.m */,
 				D6344D77175E5F690065DAC6 /* OGMLog.h */,
 				D6344D78175E5F6A0065DAC6 /* OGMLog.m */,
 				D6344D73175E50030065DAC6 /* OGMErrorUtil.h */,
@@ -703,7 +707,6 @@
 				D687BD7217679C17001C6759 /* OGMGLStandardVertex.h */,
 				D687BD7317679C18001C6759 /* OGMGLStandardVertex.mm */,
 				D687BD6A17677591001C6759 /* OGMGLBuffer.h */,
-				D687BD6D17677805001C6759 /* OGMGLBuffer+Protected.h */,
 				D687BD6B17677591001C6759 /* OGMGLBuffer.m */,
 				D6A4AAD4175FA67900BA9E4A /* OGMGLVertexBuffer.h */,
 				D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */,
@@ -806,6 +809,7 @@
 				D687BD6C17677592001C6759 /* OGMGLBuffer.m in Sources */,
 				D687BD7117679B25001C6759 /* OGMGLVertexFormat.m in Sources */,
 				D687BD7417679C19001C6759 /* OGMGLStandardVertex.mm in Sources */,
+				D687BD771767EBAF001C6759 /* OGMMemoryUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

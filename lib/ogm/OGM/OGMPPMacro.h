@@ -20,3 +20,4 @@
 
 #define OGM_PP_STR(x) #x
 
+#define OGM_MEMBER_SIZE(type,member) sizeof(((type *)0)->member)

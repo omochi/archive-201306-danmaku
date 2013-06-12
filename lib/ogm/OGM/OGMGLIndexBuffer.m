@@ -8,7 +8,6 @@
 
 #import "OGMGLIndexBuffer.h"
 
-#import "OGMGLBuffer+Protected.h"
 #import "OGMGLReleaser.h"
 #import "OGMErrorUtil.h"
 
@@ -25,7 +24,7 @@
 
 -(void)setIndexList:(OGMTypeBuffer *)list{
 	[self updateSize:list.size initOnly:YES];
-	[self setDataDirty:YES];
+	[self needDataUpdate];
 	
 	uint16_t * s = OGM_TYPEBUFFER_PTR(uint16_t,list);
 	uint16_t * d = OGM_TYPEBUFFER_PTR(uint16_t,self.buffer);

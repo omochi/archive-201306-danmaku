@@ -33,4 +33,6 @@
 //初回のみ許す
 -(void)updateUsage:(GLenum)usage;
 
+-(void)needDataUpdate;
+
 @end

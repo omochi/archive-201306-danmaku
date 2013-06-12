@@ -21,7 +21,7 @@
 
 @property(nonatomic,strong)OGMTypeBuffer *glLocationTable;
 
--(void)setLocationOfVar:(int)var location:(GLint)location;
+-(void)setLocation:(GLint) location ofVar:(int)var;
 
 @end
 
@@ -39,7 +39,7 @@
 	return static_cast<GLint*>(_glLocationTable.ptr)[var];
 }
 
--(void)setLocationOfVar:(int)var location:(GLint)location{
+-(void)setLocation:(GLint) location ofVar:(int)var{
 	static_cast<GLint*>(_glLocationTable.ptr)[var] = location;
 }
 
@@ -60,11 +60,11 @@
 		} self:self];
 
 #define _BIND_LU(x) {\
-		[self setLocationOfVar:_SV(x) location:glGetUniformLocation(_glProgId,#x)];\
+		[self setLocation:glGetUniformLocation(_glProgId,#x) ofVar:_SV(x)];\
 		OGMGLAssert(@"glGetUniformLocation/" @#x);\
 	}
 #define _BIND_LV(x) {\
-		[self setLocationOfVar:_SV(x) location:glGetAttribLocation(_glProgId,#x)];\
+		[self setLocation:glGetAttribLocation(_glProgId,#x) ofVar:_SV(x)];\
 		OGMGLAssert(@"glGetAttribLocation/" @#x);\
 	}
 		

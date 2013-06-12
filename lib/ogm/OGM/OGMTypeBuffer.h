@@ -25,7 +25,7 @@ extern "C" {
 //要素型について
 -(const char *)objCType;
 -(size_t)typeSize;
-
+-(void)assertType:(const char *)objCType;
 
 //要素数
 @property(nonatomic,assign)uint32_t size;

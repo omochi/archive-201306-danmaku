@@ -56,6 +56,10 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 	self.allocSize = 0;
 }
 
+-(void)assertType:(const char *)objCType{
+	if(strcmp(_objCType,objCType))@throw OGMExceptionMake(NSGenericException,@"type assertion failed: type=%s,assert=%s",_objCType,objCType);
+}
+
 -(uint32_t)byteSize{
 	return _typeSize * _size;
 }
@@ -100,7 +104,7 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 }
 
 -(void *)ptrWithTypeAssert:(const char *)objCType{
-	if(strcmp(_objCType,objCType))@throw OGMExceptionMake(NSGenericException,@"type assertion failed: type=%s,assert=%s",_objCType,objCType);
+	[self assertType:objCType];
 	return _ptr;
 }
 

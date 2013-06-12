@@ -7,7 +7,7 @@
 //
 
 #import "OGMGLElement.h"
-#import "OGMGLVertexFormat.h"
+#import "OGMGLStandardVertex.h"
 #import "OGMGLVertexBuffer.h"
 #import "OGMGLIndexBuffer.h"
 

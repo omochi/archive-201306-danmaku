@@ -1,13 +1,15 @@
 //
-//  OGMGLBuffer+Protected.h
+//  OGMMemoryUtil.h
 //  Danmaku
 //
 //  Created by おもちメタル on 13/06/12.
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMGLBuffer.h"
+#import "OGMPPMacro.h"
 
-@interface OGMGLBuffer(Protected)
--(void)setDataDirty:(BOOL)dataDirty;
-@end
+OGM_EXTERN_C_BEGIN
+
+void * OGMMemoryByteOffset(void *ptr,uint32_t offset);
+
+OGM_EXTERN_C_END

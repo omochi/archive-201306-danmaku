@@ -16,11 +16,6 @@
 
 -(id)initWithVertexFormat:(OGMGLVertexFormat *)vertexFormat usage:(GLenum)usage keepData:(BOOL)keepData;
 
-//転送済みの場合は全て再構築が必要
-//型に存在しない属性を転送すると例外
-//-(void)setPosList:(OGMTypeBuffer *)list;
-//-(void)setColorList:(OGMTypeBuffer *)list;
-//-(void)setUvList:(OGMTypeBuffer *)list;
-//-(void)setNormalList:(OGMTypeBuffer *)list;
+-(void)setAttributeList:(OGMTypeBuffer *)list size:(uint32_t)size offset:(uint32_t)offset;
 
 @end

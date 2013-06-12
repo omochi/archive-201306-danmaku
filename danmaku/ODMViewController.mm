@@ -13,6 +13,7 @@
 @interface ODMViewController ()
 @property(nonatomic,strong)EAGLContext *glContext;
 @property(nonatomic,strong)OGMGLStandardShader * shader;
+@property(nonatomic,strong)OGMGLStandardElement * quadElement;
 @end
 
 @implementation ODMViewController
@@ -40,6 +41,7 @@
 	self.preferredFramesPerSecond = 60;
 	
 	self.shader = [[OGMGLStandardShader alloc]init];
+	self.quadElement = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPC],CGRectMake(0.1, 0.1, 0.8, 0.8));
 }
 
 -(void)update{
@@ -49,6 +51,12 @@
 -(void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
 	glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	self.shader.projection = glm::mat4(1);
+	self.shader.modelView = glm::mat4(1);
+	
+	[self.quadElement renderWithStandardShader:self.shader];
+	
 }
 
 @end

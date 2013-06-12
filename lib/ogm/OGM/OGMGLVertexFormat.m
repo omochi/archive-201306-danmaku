@@ -7,6 +7,7 @@
 //
 
 #import "OGMGLVertexFormat.h"
+#import "OGMObjCUtil.h"
 
 @implementation OGMGLVertexFormat
 
@@ -14,11 +15,7 @@
 	self = [super init];
 	if(self){
 		_type = type;
-		NSUInteger size = 0;
-		NSUInteger align = 0;
-		NSGetSizeAndAlignment(type,&size,&align);
-		NSAssert(size==align, @"not support alignment");
-		_stride = size;
+		_stride = OGMObjCTypeSize(_type);
 	}
 	return self;
 }

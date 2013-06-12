@@ -9,8 +9,14 @@
 #import "OGMObjCUtil.h"
 #import "OGMErrorUtil.h"
 
+
 void OGMAbstractClassNotAllocCheck(id self,Class aClass){
 	if([self isMemberOfClass:aClass]){
 		@throw OGMExceptionMake(NSGenericException, @"%@ is abstract class but alloced",NSStringFromClass(aClass));
 	}
+}
+uint32_t OGMObjCTypeSize(const char * type){
+	NSUInteger size;
+	NSGetSizeAndAlignment(type, &size, NULL);
+	return size;
 }

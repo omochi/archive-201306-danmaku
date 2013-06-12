@@ -33,4 +33,6 @@ GLuint OGMGLLinkProgram(GLuint vsh,GLuint fsh,NSError **error);
 GLuint OGMGLBuildProgram(NSString * vshSource,NSString * fshSource,NSError **error);
 GLuint OGMGLBuildProgramWithPaths(NSString *vshPath,NSString *fshPath,NSError **error);
 
+
+
 OGM_EXTERN_C_END

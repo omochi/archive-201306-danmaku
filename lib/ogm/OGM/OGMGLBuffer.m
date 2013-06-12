@@ -11,6 +11,7 @@
 #import "OGMErrorUtil.h"
 #import "OGMGLReleaser.h"
 #import "OGMObjCUtil.h"
+#import "OGMObjCUtil.h"
 
 @interface OGMGLBuffer()
 @property(nonatomic,strong)OGMGLReleaser * glReleaser;
@@ -35,13 +36,7 @@
 		_type = type;
 		_usage = usage;
 		_keepData = keepData;
-		
-		NSUInteger typeSize = 0;
-		NSUInteger typeAlign = 0;
-		NSGetSizeAndAlignment(_type,&typeSize,&typeAlign);
-		NSAssert(typeSize!=typeAlign,@"not support");
-		
-		_stride = typeSize;
+		_stride = OGMObjCTypeSize(_type);
 	}
 	return self;
 }

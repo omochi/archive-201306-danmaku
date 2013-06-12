@@ -8,6 +8,7 @@
 
 #import "OGMTypeBuffer.h"
 
+#import "OGMObjCUtil.h"
 #import "OGMErrorUtil.h"
 
 #define _NS(name) OGM##name
@@ -35,12 +36,8 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 -(id)initWithObjCType:(const char *)type{
 	self = [super init];
 	if(self){
-		NSUInteger size = 0;
-		NSUInteger align = 0;
-		NSGetSizeAndAlignment(type,&size,&align);
-		NSAssert(size==align, @"not support alignment");
 		_objCType = type;
-		_typeSize = size;
+		_typeSize = OGMObjCTypeSize(_objCType);
 	}
 	return self;
 }

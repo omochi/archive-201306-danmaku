@@ -10,6 +10,7 @@
 
 #import "OGMErrorUtil.h"
 #import "OGMGLReleaser.h"
+#import "OGMObjCUtil.h"
 
 @interface OGMGLBuffer()
 @property(nonatomic,strong)OGMGLReleaser * glReleaser;
@@ -28,6 +29,8 @@
 -(id)initWithTarget:(GLenum)target type:(const char *)type usage:(GLenum)usage keepData:(BOOL)keepData{
 	self = [super init];
 	if(self){
+		OGMAbstractClassNotAllocCheck(self,[OGMGLBuffer class]);
+		
 		_target = target;
 		_type = type;
 		_usage = usage;

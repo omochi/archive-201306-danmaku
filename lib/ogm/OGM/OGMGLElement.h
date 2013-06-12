@@ -7,10 +7,11 @@
 //
 
 #import "OGMGLUtil.h"
-#import "OGMGLStandardShader.h"
+
+#import "OGMGLShader.h"
 
 @interface OGMGLElement : NSObject
 
--(void)renderWithStandardShader:(OGMGLStandardShader *)shader;
+-(void)renderWithShader:(OGMGLShader *)shader;
 
 @end

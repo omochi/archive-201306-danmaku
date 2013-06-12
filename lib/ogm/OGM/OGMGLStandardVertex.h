@@ -13,9 +13,7 @@
 
 @class OGMGLVertexBuffer;
 
-
 @interface OGMGLStandardVertexFormat : OGMGLVertexFormat
-
 
 @property(nonatomic,readonly)uint32_t posOffset;
 

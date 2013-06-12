@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-#import "OGMGLStandardVertexElement.h"
+#import "OGMGLStandardElement.h"
 
-@implementation OGMGLStandardVertexElement{
+@implementation OGMGLStandardElement{
 	glm::vec4 _color;
 }
 
@@ -52,17 +52,16 @@
 	
 #warning todo uv,normal
 
-	glDisableVertexAttribArray(posIndex);
-	OGMGLAssert(@"glDisableVertexAttribArray/pos");
-	glDisableVertexAttribArray(colorIndex);
-	OGMGLAssert(@"glDisableVertexAttribArray/color");	
+	//draw
+	
+	[shader clear];
 }
 
 
 @end
 
 // 左上、左下、右下、右上
-OGMGLStandardVertexElement  * OGMGLQuadVertexElementMake(OGMGLStandardVertexFormat * format,CGRect quad){
+OGMGLStandardElement  * OGMGLQuadElementMake(OGMGLStandardVertexFormat * format,CGRect quad){
 	OGMGLVertexBuffer * vertices = [[OGMGLVertexBuffer alloc]initWithVertexFormat:format usage:GL_DYNAMIC_DRAW keepData:YES];
 	
 	OGMTypeBuffer * posList = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec3) size:4];
@@ -90,7 +89,7 @@ OGMGLStandardVertexElement  * OGMGLQuadVertexElementMake(OGMGLStandardVertexForm
 	index[3] = 2;
 	[indices setIndexList:indexList];
 	
-	OGMGLStandardVertexElement * element = [[OGMGLStandardVertexElement alloc]init];
+	OGMGLStandardElement * element = [[OGMGLStandardElement alloc]init];
 	element.vertices = vertices;
 	element.indices = indices;
 	

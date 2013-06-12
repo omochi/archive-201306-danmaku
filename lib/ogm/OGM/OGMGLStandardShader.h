@@ -9,6 +9,8 @@
 
 #import "OGMPPCppOnly.h"
 
+#import "OGMGLShader.h"
+
 #import "OGMCommon.h"
 #import "OGMGLStandardVertex.h"
 #import "OGMGLVertexBuffer.h"
@@ -25,7 +27,8 @@ typedef enum OGMGLStandardShaderVar{
 }OGMGLStandardShaderVar;
 #undef _SV
 
-@interface OGMGLStandardShader : NSObject
+
+@interface OGMGLStandardShader : OGMGLShader
 
 @property(nonatomic,assign)glm::mat4 projection;
 @property(nonatomic,assign)glm::mat4 modelView;
@@ -34,11 +37,9 @@ typedef enum OGMGLStandardShaderVar{
 
 -(id)init;
 
--(GLint)locationOfVar:(int)var;
+@end
 
-
-//描画直前に呼ぶ
--(void)prepare;
-
+@protocol OGMGLStandardShaderRenderable
+-(void)renderWithStandardShader:(OGMGLStandardShader *)shader;
 @end
 

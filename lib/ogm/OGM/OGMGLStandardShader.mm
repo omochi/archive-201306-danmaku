@@ -7,6 +7,9 @@
 //
 
 #import "OGMGLStandardShader.h"
+#import "OGMGLShader+Protected.h"
+
+#import "OGMGLElement.h"
 #import "OGMTypeBuffer.h"
 #import "OGMErrorUtil.h"
 #import "OGMGLUtil.h"
@@ -15,32 +18,24 @@
 #define _SV(x) OGMGLStandardShaderVar_##x
 
 @interface OGMGLStandardShader()
-@property(nonatomic,strong)OGMGLReleaser * glReleaser;
 
 @property(nonatomic,assign)GLuint glProgId;
-
-@property(nonatomic,strong)OGMTypeBuffer *glLocationTable;
-
--(void)setLocation:(GLint) location ofVar:(int)var;
 
 @end
 
 @implementation OGMGLStandardShader
 -(id)init{
-	self = [super init];
+	self = [super initWithLocationNum:_SV(Max)];
 	if(self){
-		_glReleaser = [[OGMGLReleaser alloc]init];
-		
-		_glLocationTable = [[OGMTypeBuffer alloc]initWithObjCType:@encode(GLint) size:_SV(Max)];
+
 	}
 	return self;
 }
--(GLint)locationOfVar:(int)var{
-	return static_cast<GLint*>(_glLocationTable.ptr)[var];
-}
 
--(void)setLocation:(GLint) location ofVar:(int)var{
-	static_cast<GLint*>(_glLocationTable.ptr)[var] = location;
+-(void)dispatchElementRender:(OGMGLElement *)element{
+	if([element conformsToProtocol:@protocol(OGMGLStandardShaderRenderable)]){
+		[(id)element renderWithStandardShader:self];
+	}
 }
 
 -(void)prepare{
@@ -83,5 +78,18 @@
 	OGMGLAssert(@"glUniformMatrix/modelView");
 	
 }
+
+-(void)clear{
+	glDisableVertexAttribArray([self locationOfVar:_SV(pos)]);
+	OGMGLAssert(@"glDisableVertexAttribArray/pos");
+	glDisableVertexAttribArray([self locationOfVar:_SV(color)]);
+	OGMGLAssert(@"glDisableVertexAttribArray/color");
+#warning todo
+//	glDisableVertexAttribArray([self locationOfVar:_SV(uv)]);
+//	OGMGLAssert(@"glDisableVertexAttribArray/uv");
+//	glDisableVertexAttribArray([self locationOfVar:_SV(normal)]);
+//	OGMGLAssert(@"glDisableVertexAttribArray/normal");
+}
+
 @end
 

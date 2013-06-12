@@ -11,7 +11,7 @@
 
 @implementation OGMGLElement
 
--(void)renderWithStandardShader:(OGMGLStandardShader *)shader{
+-(void)renderWithShader:(OGMGLShader *)shader{
 	@throw OGMExceptionMake(NSGenericException,@"unimplemented");
 }
 

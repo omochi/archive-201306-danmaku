@@ -31,7 +31,7 @@
 	static_cast<GLint*>(_glLocationTable.ptr)[var] = location;
 }
 -(void)dispatchElementRender:(OGMGLElement *)element{
-	@throw OGMExceptionMake(NSGenericException,@"unimplemented");
+	@throw OGMExceptionMake(NSGenericException,@"can't render this element");
 }
 -(void)prepare{
 	

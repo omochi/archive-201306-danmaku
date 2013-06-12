@@ -54,6 +54,10 @@
 
 	//draw
 	
+	[self.indices prepare];
+	glDrawElements(self.indices.drawMode,self.indices.stride,GL_UNSIGNED_SHORT,0);
+	OGMGLAssert(@"glDrawElements");
+	
 	[shader clear];
 }
 

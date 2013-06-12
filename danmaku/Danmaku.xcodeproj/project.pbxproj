@@ -30,7 +30,6 @@
 		D687BD6917662E50001C6759 /* OGMGLIndexBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD6817662E4F001C6759 /* OGMGLIndexBuffer.m */; };
 		D687BD6C17677592001C6759 /* OGMGLBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD6B17677591001C6759 /* OGMGLBuffer.m */; };
 		D687BD7117679B25001C6759 /* OGMGLVertexFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD7017679B24001C6759 /* OGMGLVertexFormat.m */; };
-		D687BD7417679C19001C6759 /* OGMGLStandardVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = D687BD7317679C18001C6759 /* OGMGLStandardVertex.mm */; };
 		D687BD771767EBAF001C6759 /* OGMMemoryUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD761767EBAD001C6759 /* OGMMemoryUtil.m */; };
 		D687BD7A1768B8D8001C6759 /* OGMGLShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = D687BD791768B8D7001C6759 /* OGMGLShader.mm */; };
 		D687BD801768BFEE001C6759 /* OGMObjCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD7F1768BFEC001C6759 /* OGMObjCUtil.m */; };
@@ -311,8 +310,6 @@
 		D687BD6E17678F5D001C6759 /* OGMPPCppOnly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGMPPCppOnly.h; sourceTree = "<group>"; };
 		D687BD6F17679B22001C6759 /* OGMGLVertexFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLVertexFormat.h; sourceTree = "<group>"; };
 		D687BD7017679B24001C6759 /* OGMGLVertexFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLVertexFormat.m; sourceTree = "<group>"; };
-		D687BD7217679C17001C6759 /* OGMGLStandardVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLStandardVertex.h; sourceTree = "<group>"; };
-		D687BD7317679C18001C6759 /* OGMGLStandardVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLStandardVertex.mm; sourceTree = "<group>"; };
 		D687BD751767EBAC001C6759 /* OGMMemoryUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMMemoryUtil.h; sourceTree = "<group>"; };
 		D687BD761767EBAD001C6759 /* OGMMemoryUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMMemoryUtil.m; sourceTree = "<group>"; };
 		D687BD781768B8D6001C6759 /* OGMGLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLShader.h; sourceTree = "<group>"; };
@@ -700,6 +697,8 @@
 				D6344D78175E5F6A0065DAC6 /* OGMLog.m */,
 				D6344D73175E50030065DAC6 /* OGMErrorUtil.h */,
 				D6344D74175E50030065DAC6 /* OGMErrorUtil.m */,
+				D6A4AACE175F94DB00BA9E4A /* OGMBlockUtil.h */,
+				D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */,
 				D6A4AAD7175FA77C00BA9E4A /* OGMTypeBuffer.h */,
 				D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */,
 				D6344D69175E26390065DAC6 /* OGMGLUtil.h */,
@@ -709,12 +708,8 @@
 				D6344D76175E57260065DAC6 /* OGM.h */,
 				D6A4AACB175F882600BA9E4A /* OGMGLReleaser.h */,
 				D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */,
-				D6A4AACE175F94DB00BA9E4A /* OGMBlockUtil.h */,
-				D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */,
 				D687BD6F17679B22001C6759 /* OGMGLVertexFormat.h */,
 				D687BD7017679B24001C6759 /* OGMGLVertexFormat.m */,
-				D687BD7217679C17001C6759 /* OGMGLStandardVertex.h */,
-				D687BD7317679C18001C6759 /* OGMGLStandardVertex.mm */,
 				D687BD6A17677591001C6759 /* OGMGLBuffer.h */,
 				D687BD6B17677591001C6759 /* OGMGLBuffer.m */,
 				D6A4AAD4175FA67900BA9E4A /* OGMGLVertexBuffer.h */,
@@ -820,7 +815,6 @@
 				D687BD6917662E50001C6759 /* OGMGLIndexBuffer.m in Sources */,
 				D687BD6C17677592001C6759 /* OGMGLBuffer.m in Sources */,
 				D687BD7117679B25001C6759 /* OGMGLVertexFormat.m in Sources */,
-				D687BD7417679C19001C6759 /* OGMGLStandardVertex.mm in Sources */,
 				D687BD771767EBAF001C6759 /* OGMMemoryUtil.m in Sources */,
 				D687BD7A1768B8D8001C6759 /* OGMGLShader.mm in Sources */,
 				D687BD801768BFEE001C6759 /* OGMObjCUtil.m in Sources */,

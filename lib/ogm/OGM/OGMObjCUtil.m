@@ -20,3 +20,8 @@ uint32_t OGMObjCTypeSize(const char * type){
 	NSGetSizeAndAlignment(type, &size, NULL);
 	return size;
 }
+void OGMClassAssert(id obj,Class aClass){
+	if(![obj isKindOfClass:aClass]){
+		@throw OGMExceptionMake(NSGenericException, @"%@ is not %@",obj,NSStringFromClass(aClass));
+	}
+}

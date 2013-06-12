@@ -60,10 +60,12 @@
 	
 	if(_bufferDirty){
 		glBufferData(_target,_buffer.byteSize,NULL,_usage);
+		OGMGLAssert(@"glBufferData");
 		_bufferDirty = NO;
 	}
 	if(_dataDirty){
 		glBufferSubData(_target,0,_buffer.byteSize,_buffer.ptr);
+		OGMGLAssert(@"glBufferSubData");
 		_dataDirty = NO;
 		
 		if(!_keepData){

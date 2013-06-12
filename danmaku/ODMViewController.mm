@@ -42,6 +42,14 @@
 	
 	self.shader = [[OGMGLStandardShader alloc]init];
 	self.quadElement = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPC],CGRectMake(0.1, 0.1, 0.8, 0.8));
+		
+	OGMGLVertexBufferSetColorList(self.quadElement.vertices,
+								  OGM_TYPEBUFFER_MAKE(glm::vec4,
+													  glm::vec4(1,0,0,1),
+													  glm::vec4(1,1,0,1),
+													  glm::vec4(0,1,0,1),
+													  glm::vec4(0,0,1,1))
+								  );
 }
 
 -(void)update{

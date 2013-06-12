@@ -48,6 +48,13 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 	}
 	return self;
 }
+-(id)initWithObjCType:(const char *)type ptr:(const void *)ptr size:(uint32_t)size{
+	self = [self initWithObjCType:type size:size];
+	if(self){
+		memcpy(_ptr,ptr,memLen(_typeSize, size));
+	}
+	return self;
+}
 - (void)dealloc
 {
 	self.allocSize = 0;

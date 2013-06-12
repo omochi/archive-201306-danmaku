@@ -11,6 +11,7 @@
 OGM_EXTERN_C_BEGIN
 void OGMAbstractClassNotAllocCheck(id self,Class aClass);
 uint32_t OGMObjCTypeSize(const char * type);
+void OGMClassAssert(id obj,Class aClass);
 
 OGM_EXTERN_C_END
 

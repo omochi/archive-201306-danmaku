@@ -54,7 +54,7 @@
 
 	[self.indices prepare];
 	
-	glDrawElements(self.indices.drawMode,self.indices.stride,GL_UNSIGNED_SHORT,0);
+	glDrawElements(self.indices.drawMode,self.indices.size,GL_UNSIGNED_SHORT,0);
 	OGMGLAssert(@"glDrawElements");
 	
 	[shader clear];
@@ -67,13 +67,13 @@
 OGMGLStandardElement  * OGMGLQuadElementMake(OGMGLStandardVertexFormat * format,CGRect quad){
 	OGMGLVertexBuffer * vertices = [[OGMGLVertexBuffer alloc]initWithVertexFormat:format usage:GL_DYNAMIC_DRAW keepData:YES];
 	
-	OGMTypeBuffer * posList = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec3) size:4];
-	glm::vec3 * pos = OGM_TYPEBUFFER_PTR(glm::vec3, posList);
-	pos[0] = glm::vec3(CGRectGetMinX(quad),CGRectGetMaxY(quad),0);
-	pos[1] = glm::vec3(CGRectGetMinX(quad),CGRectGetMinY(quad),0);
-	pos[2] = glm::vec3(CGRectGetMaxX(quad),CGRectGetMinY(quad),0);
-	pos[3] = glm::vec3(CGRectGetMaxX(quad),CGRectGetMaxY(quad),0);
-	OGMGLVertexBufferSetPosList(vertices, posList);
+	OGMGLVertexBufferSetPosList(vertices,
+								OGM_TYPEBUFFER_MAKE(glm::vec3,
+													glm::vec3(CGRectGetMinX(quad),CGRectGetMaxY(quad),0),
+													glm::vec3(CGRectGetMinX(quad),CGRectGetMinY(quad),0),
+													glm::vec3(CGRectGetMaxX(quad),CGRectGetMinY(quad),0),
+													glm::vec3(CGRectGetMaxX(quad),CGRectGetMaxY(quad),0)
+													));
 	
 	if(format.hasNormal){
 		OGMTypeBuffer * normalList = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec3) size:4];

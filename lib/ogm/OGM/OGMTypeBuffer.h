@@ -8,6 +8,7 @@
 #pragma once
 
 #import "OGMCommon.h"
+#import "OGMPPMacro.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,11 +17,21 @@ extern "C" {
 #define _NS(name) OGM##name
 	
 #define OGM_TYPEBUFFER_PTR(type,tb) (type *)([(tb) ptrWithTypeAssert:@encode(type)])
+	
+#define OGM_TYPEBUFFER_MAKE(T,...) (^OGMTypeBuffer *(){\
+	T p[] = { __VA_ARGS__ };\
+	return [[OGMTypeBuffer alloc]initWithObjCType:@encode(T) \
+		ptr:p size:OGM_ARRAY_SIZE(p)];\
+}() )
+	
+//
+//	
 
 @interface _NS(TypeBuffer) : NSObject
 
 -(id)initWithObjCType:(const char *)type;
 -(id)initWithObjCType:(const char *)type size:(uint32_t)size;
+-(id)initWithObjCType:(const char *)type ptr:(const void *)ptr size:(uint32_t)size;
 
 //要素型について
 -(const char *)objCType;

@@ -21,3 +21,5 @@
 #define OGM_PP_STR(x) #x
 
 #define OGM_MEMBER_SIZE(type,member) sizeof(((type *)0)->member)
+
+#define OGM_ARRAY_SIZE(a) (sizeof((a))/sizeof((a)[0]))

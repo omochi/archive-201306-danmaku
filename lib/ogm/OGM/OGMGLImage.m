@@ -138,7 +138,10 @@
 				}
 				s = row + rowStride;
 			}
-			
+		
+#warning todo: 24bit RGB support
+		}else{
+			@throw OGMExceptionMake(NSGenericException,@"unsupported bpp: %d",bpp);
 		}
 	}
 	return self;

@@ -127,6 +127,11 @@
 						d += 3;
 					}else{
 						d[3] = ss & 0xFF;
+						if(alphaPremultiplied){
+							d[0] = ((int)d[0] * 255 / d[3]) & 0xFF;
+							d[1] = ((int)d[1] * 255 / d[3]) & 0xFF;
+							d[2] = ((int)d[2] * 255 / d[3]) & 0xFF;
+						}
 						d += 4;
 					}
 					s += 4;

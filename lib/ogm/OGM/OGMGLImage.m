@@ -106,8 +106,6 @@ static inline uint32_t U32RotLeft8(uint32_t x){
 				_data = [NSData dataWithBytes:NULL length:_width*_height*4];
 			}
 			
-			
-			
 			uint8_t *s = (uint8_t *)imageData.bytes;
 			uint8_t *d = (uint8_t *)_data.bytes;
 			

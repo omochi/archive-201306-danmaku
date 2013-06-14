@@ -10,8 +10,8 @@
 
 @interface OGMGLImage : NSObject
 
-@property(nonatomic,readonly)GLsizei width;
-@property(nonatomic,readonly)GLsizei height;
+@property(nonatomic,readonly)uint32_t width;
+@property(nonatomic,readonly)uint32_t height;
 @property(nonatomic,readonly)GLenum format;
 @property(nonatomic,readonly)NSData * data;
 

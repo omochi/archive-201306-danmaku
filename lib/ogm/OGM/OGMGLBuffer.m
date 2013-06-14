@@ -97,7 +97,7 @@
 -(void)updateUsage:(GLenum)usage{
 	if(_usage != usage){
 		if(_glBufId!=0){
-			@throw OGMExceptionMake(NSGenericException, @"init pnly check error");
+			@throw OGMExceptionMake(NSGenericException, @"init only check error");
 		}
 		
 		_bufferDirty = YES;

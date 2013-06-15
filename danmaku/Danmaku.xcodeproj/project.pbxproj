@@ -41,6 +41,7 @@
 		D6A4AAD0175F94DB00BA9E4A /* OGMBlockUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */; };
 		D6A4AAD6175FA67900BA9E4A /* OGMGLVertexBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */; };
 		D6A4AAD9175FA77D00BA9E4A /* OGMTypeBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */; };
+		D6FE35F8176CB0D600F46E39 /* redbull-miku.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35F7176CB0D600F46E39 /* redbull-miku.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -331,6 +332,7 @@
 		D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLVertexBuffer.mm; sourceTree = "<group>"; };
 		D6A4AAD7175FA77C00BA9E4A /* OGMTypeBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMTypeBuffer.h; sourceTree = "<group>"; };
 		D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMTypeBuffer.m; sourceTree = "<group>"; };
+		D6FE35F7176CB0D600F46E39 /* redbull-miku.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redbull-miku.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +384,7 @@
 		D6344798175CCE550065DAC6 /* Danmaku */ = {
 			isa = PBXGroup;
 			children = (
+				D6FE35F6176CB0D600F46E39 /* res */,
 				D63447D3175CCF570065DAC6 /* InfoPlist.strings */,
 				D63447BE175CCF250065DAC6 /* Danmaku-Info.plist */,
 				D63447BF175CCF250065DAC6 /* Danmaku-Prefix.pch */,
@@ -739,6 +742,14 @@
 			path = OGM;
 			sourceTree = "<group>";
 		};
+		D6FE35F6176CB0D600F46E39 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				D6FE35F7176CB0D600F46E39 /* redbull-miku.png */,
+			);
+			path = res;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -798,6 +809,7 @@
 				D63447CE175CCF250065DAC6 /* Default@2x.png in Resources */,
 				D63447D6175CCF570065DAC6 /* InfoPlist.strings in Resources */,
 				D63447D8175CCF570065DAC6 /* ODMViewController.xib in Resources */,
+				D6FE35F8176CB0D600F46E39 /* redbull-miku.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

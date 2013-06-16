@@ -24,7 +24,7 @@
 
 -(id)initWithImage:(OGMGLImage *)image;
 
--(void)prepare;
+-(void)prepareWithUnit:(int)unit;
 
 -(void)updateImage:(OGMGLImage *)image;
 

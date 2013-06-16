@@ -11,6 +11,9 @@
 #import "OGMGLReleaser.h"
 #import "OGMTypeBuffer.h"
 
+#define OGM_GLSHADER_BIND_UNIFORM(prefix,var) [self bindUniform:#var ofVar:prefix##var];
+#define OGM_GLSHADER_BIND_ATTRIB(prefix,var) [self bindAttribute:#var ofVar:prefix##var];
+
 @interface OGMGLShader()
 
 @property(nonatomic,strong)OGMGLReleaser * glReleaser;

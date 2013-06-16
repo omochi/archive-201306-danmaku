@@ -14,6 +14,9 @@
 @property(nonatomic,strong)EAGLContext *glContext;
 @property(nonatomic,strong)OGMGLStandardRenderer * renderer;
 @property(nonatomic,strong)OGMGLStandardElement * quadElement;
+@property(nonatomic,strong)OGMGLStandardElement * colorQuad;
+@property(nonatomic,strong)OGMGLStandardElement * textureQuad;
+
 @end
 
 @implementation ODMViewController
@@ -50,6 +53,18 @@
 	OGMGLQuadElementUpdateTexture(self.quadElement,
 								  [OGMGLTexture textureWithUIImage:[UIImage imageNamed:@"redbull-miku"]]);
 	
+	self.colorQuad = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPC],CGRectMake(-0.9,0.1, 0.8,0.8));
+	OGMGLVertexBufferSetColorList(self.colorQuad.vertices,
+								  OGM_TYPEBUFFER_MAKE(glm::vec4,
+													  glm::vec4(1,0,0,1),
+													  glm::vec4(1,1,0,1),
+													  glm::vec4(0,1,0,1),
+													  glm::vec4(0,0,1,1))
+								  );
+	
+	self.textureQuad = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPT],CGRectMake(0.1,-0.9, 0.8,0.8));
+	OGMGLQuadElementUpdateTexture(self.textureQuad,
+								  [OGMGLTexture textureWithUIImage:[UIImage imageNamed:@"redbull-miku"]]);
 	
 }
 
@@ -64,7 +79,14 @@
 	self.renderer.projection = glm::mat4(1);
 	self.renderer.modelView = glm::mat4(1);
 	
+	//テクスチャシェーダー
 	[self.quadElement renderWithStandardRenderer:self.renderer];
+	
+	//カラーシェーダー
+	[self.colorQuad renderWithStandardRenderer:self.renderer];
+	
+	//テクスチャシェーダー+自動白
+	[self.textureQuad renderWithStandardRenderer:self.renderer];
 	
 }
 

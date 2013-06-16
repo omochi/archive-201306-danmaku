@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D62970F6176E05D000377BCB /* OGMGLStandardVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = D62970F5176E05D000377BCB /* OGMGLStandardVertex.mm */; };
 		D62970F9176E07E100377BCB /* OGMGLColorShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = D62970F8176E07E100377BCB /* OGMGLColorShader.mm */; };
+		D62970FC176E152600377BCB /* OGMGLTextureShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = D62970FB176E152500377BCB /* OGMGLTextureShader.mm */; };
 		D6344793175CCE550065DAC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344792175CCE550065DAC6 /* UIKit.framework */; };
 		D6344795175CCE550065DAC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344794175CCE550065DAC6 /* Foundation.framework */; };
 		D6344797175CCE550065DAC6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344796175CCE550065DAC6 /* CoreGraphics.framework */; };
@@ -22,7 +23,6 @@
 		D63447D8175CCF570065DAC6 /* ODMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D63447D5175CCF570065DAC6 /* ODMViewController.xib */; };
 		D6344D1E175CFE1D0065DAC6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344D1D175CFE1D0065DAC6 /* GLKit.framework */; };
 		D6344D57175D0A5B0065DAC6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344D56175D0A5B0065DAC6 /* OpenGLES.framework */; };
-		D6344D68175E23CD0065DAC6 /* OGMGLStandardShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6344D66175E23CD0065DAC6 /* OGMGLStandardShader.mm */; };
 		D6344D6B175E26390065DAC6 /* OGMGLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6A175E26390065DAC6 /* OGMGLUtil.m */; };
 		D6344D6E175E28AE0065DAC6 /* OGMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D6D175E28AE0065DAC6 /* OGMCommon.m */; };
 		D6344D75175E50040065DAC6 /* OGMErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6344D74175E50030065DAC6 /* OGMErrorUtil.m */; };
@@ -42,8 +42,6 @@
 		D6A4AAD6175FA67900BA9E4A /* OGMGLVertexBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */; };
 		D6A4AAD9175FA77D00BA9E4A /* OGMTypeBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */; };
 		D6FE35F8176CB0D600F46E39 /* redbull-miku.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35F7176CB0D600F46E39 /* redbull-miku.png */; };
-		D6FE35FA176CE50800F46E39 /* OGMGLTextureShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35F9176CE50800F46E39 /* OGMGLTextureShader.vsh */; };
-		D6FE35FC176CE5F600F46E39 /* OGMGLTextureShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35FB176CE5F600F46E39 /* OGMGLTextureShader.fsh */; };
 		D6FE35FE176D042D00F46E39 /* C08040FF.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35FD176D042D00F46E39 /* C08040FF.png */; };
 		D6FE3600176DBBC000F46E39 /* BF7E3Faa.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35FF176DBBC000F46E39 /* BF7E3Faa.png */; };
 		D6FE3603176E012F00F46E39 /* OGMGLRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6FE3602176E012D00F46E39 /* OGMGLRenderer.mm */; };
@@ -55,6 +53,8 @@
 		D62970F5176E05D000377BCB /* OGMGLStandardVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLStandardVertex.mm; sourceTree = "<group>"; };
 		D62970F7176E07E100377BCB /* OGMGLColorShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLColorShader.h; sourceTree = "<group>"; };
 		D62970F8176E07E100377BCB /* OGMGLColorShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLColorShader.mm; sourceTree = "<group>"; };
+		D62970FA176E152500377BCB /* OGMGLTextureShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLTextureShader.h; sourceTree = "<group>"; };
+		D62970FB176E152500377BCB /* OGMGLTextureShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLTextureShader.mm; sourceTree = "<group>"; };
 		D634478F175CCE550065DAC6 /* Danmaku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Danmaku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6344792175CCE550065DAC6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6344794175CCE550065DAC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -299,8 +299,6 @@
 		D6344D56175D0A5B0065DAC6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		D6344D5E175E20500065DAC6 /* ODMCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ODMCommon.h; sourceTree = SOURCE_ROOT; };
 		D6344D65175E23CD0065DAC6 /* OGMCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMCommon.h; sourceTree = "<group>"; };
-		D6344D66175E23CD0065DAC6 /* OGMGLStandardShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLStandardShader.mm; sourceTree = "<group>"; };
-		D6344D67175E23CD0065DAC6 /* OGMGLStandardShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLStandardShader.h; sourceTree = "<group>"; };
 		D6344D69175E26390065DAC6 /* OGMGLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLUtil.h; sourceTree = "<group>"; };
 		D6344D6A175E26390065DAC6 /* OGMGLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLUtil.m; sourceTree = "<group>"; };
 		D6344D6D175E28AE0065DAC6 /* OGMCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMCommon.m; sourceTree = "<group>"; };
@@ -341,8 +339,6 @@
 		D6A4AAD7175FA77C00BA9E4A /* OGMTypeBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMTypeBuffer.h; sourceTree = "<group>"; };
 		D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMTypeBuffer.m; sourceTree = "<group>"; };
 		D6FE35F7176CB0D600F46E39 /* redbull-miku.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redbull-miku.png"; sourceTree = "<group>"; };
-		D6FE35F9176CE50800F46E39 /* OGMGLTextureShader.vsh */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = OGMGLTextureShader.vsh; sourceTree = "<group>"; };
-		D6FE35FB176CE5F600F46E39 /* OGMGLTextureShader.fsh */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = OGMGLTextureShader.fsh; sourceTree = "<group>"; };
 		D6FE35FD176D042D00F46E39 /* C08040FF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C08040FF.png; sourceTree = "<group>"; };
 		D6FE35FF176DBBC000F46E39 /* BF7E3Faa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BF7E3Faa.png; sourceTree = "<group>"; };
 		D6FE3601176E012D00F46E39 /* OGMGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLRenderer.h; sourceTree = "<group>"; };
@@ -728,8 +724,6 @@
 				D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */,
 				D6344D69175E26390065DAC6 /* OGMGLUtil.h */,
 				D6344D6A175E26390065DAC6 /* OGMGLUtil.m */,
-				D6FE35F9176CE50800F46E39 /* OGMGLTextureShader.vsh */,
-				D6FE35FB176CE5F600F46E39 /* OGMGLTextureShader.fsh */,
 				D6344D76175E57260065DAC6 /* OGM.h */,
 				D6A4AACB175F882600BA9E4A /* OGMGLReleaser.h */,
 				D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */,
@@ -744,10 +738,10 @@
 				D687BD781768B8D6001C6759 /* OGMGLShader.h */,
 				D687BD7B1768B970001C6759 /* OGMGLShader+Protected.h */,
 				D687BD791768B8D7001C6759 /* OGMGLShader.mm */,
-				D6344D67175E23CD0065DAC6 /* OGMGLStandardShader.h */,
-				D6344D66175E23CD0065DAC6 /* OGMGLStandardShader.mm */,
 				D62970F7176E07E100377BCB /* OGMGLColorShader.h */,
 				D62970F8176E07E100377BCB /* OGMGLColorShader.mm */,
+				D62970FA176E152500377BCB /* OGMGLTextureShader.h */,
+				D62970FB176E152500377BCB /* OGMGLTextureShader.mm */,
 				D6FE3601176E012D00F46E39 /* OGMGLRenderer.h */,
 				D6FE3602176E012D00F46E39 /* OGMGLRenderer.mm */,
 				D62970F4176E05D000377BCB /* OGMGLStandardVertex.h */,
@@ -828,8 +822,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6FE35FA176CE50800F46E39 /* OGMGLTextureShader.vsh in Resources */,
-				D6FE35FC176CE5F600F46E39 /* OGMGLTextureShader.fsh in Resources */,
 				D63447CC175CCF250065DAC6 /* Default-568h@2x.png in Resources */,
 				D63447CD175CCF250065DAC6 /* Default.png in Resources */,
 				D63447CE175CCF250065DAC6 /* Default@2x.png in Resources */,
@@ -851,7 +843,6 @@
 				D63447BC175CCF120065DAC6 /* ODMAppDelegate.m in Sources */,
 				D63447BD175CCF120065DAC6 /* ODMViewController.mm in Sources */,
 				D63447D2175CCF250065DAC6 /* main.m in Sources */,
-				D6344D68175E23CD0065DAC6 /* OGMGLStandardShader.mm in Sources */,
 				D6344D6B175E26390065DAC6 /* OGMGLUtil.m in Sources */,
 				D6344D6E175E28AE0065DAC6 /* OGMCommon.m in Sources */,
 				D6344D75175E50040065DAC6 /* OGMErrorUtil.m in Sources */,
@@ -874,6 +865,7 @@
 				D6FE3606176E026100F46E39 /* OGMGLStandardRenderer.mm in Sources */,
 				D62970F6176E05D000377BCB /* OGMGLStandardVertex.mm in Sources */,
 				D62970F9176E07E100377BCB /* OGMGLColorShader.mm in Sources */,
+				D62970FC176E152600377BCB /* OGMGLTextureShader.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

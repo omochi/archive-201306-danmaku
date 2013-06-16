@@ -172,3 +172,31 @@ GLuint OGMGLGetAttribLocation(GLuint program,const char *var){
 	OGMGLAssert(@"glGetAttribLocation");
 	return loc;
 }
+
+void OGMGLUniform1i (GLint location, GLint x){
+	glUniform1i(location, x);
+	OGMGLAssert(@"glUniform");
+}
+
+void OGMGLUniformMatrix4fv(GLint location, GLsizei count,const GLfloat* value){
+	glUniformMatrix4fv(location,count,GL_FALSE,value);
+	OGMGLAssert(@"glUniformMatrix");
+}
+void OGMGLEnableVertexAttribArray (GLuint index){
+	glEnableVertexAttribArray(index);
+	OGMGLAssert(@"glEnableVertexAttribArray");
+}
+void OGMGLVertexAttribPointer (GLuint indx, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* ptr){
+	glVertexAttribPointer(indx, size, type, normalized, stride, ptr);
+	OGMGLAssert(@"glVertexAttribPointer");
+}
+
+void OGMGLDrawElements (GLenum mode, GLsizei count, GLenum type, const GLvoid* indices){
+	glDrawElements(mode, count, type, indices);
+	OGMGLAssert(@"glDrawElements");
+}
+
+void OGMGLActiveTexture(int unit){
+	glActiveTexture(GL_TEXTURE0 + unit);
+	OGMGLAssert(@"glActiveTexture");
+}

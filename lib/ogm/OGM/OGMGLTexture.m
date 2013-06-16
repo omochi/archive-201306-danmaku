@@ -44,7 +44,8 @@
 	return self;
 }
 
--(void)prepare{
+-(void)prepareWithUnit:(int)unit{
+	
 	if(_glTexId == 0){
 		glGenTextures(1, &_glTexId);
 		OGMGLAssert(@"glGenTextures");
@@ -53,6 +54,8 @@
 			OGMGLAssert(@"glDeleteTextures");
 		} self:self];
 	}
+	
+	OGMGLActiveTexture(unit);
 	
 	glBindTexture(GL_TEXTURE_2D, _glTexId);
 	OGMGLAssert(@"glBindTexture");

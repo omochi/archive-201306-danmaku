@@ -27,13 +27,6 @@
 	_color = color;
 }
 
--(void)renderWithStandardShader:(OGMGLStandardShader *)shader{
-	shader.vertexBuffer = self.vertices;
-	shader.indexBuffer = self.indices;
-	shader.texture = self.texture;
-	[shader render];
-}
-
 -(void)renderWithStandardRenderer:(OGMGLStandardRenderer *)renderer{
 	renderer.vertices = self.vertices;
 	renderer.indices = self.indices;

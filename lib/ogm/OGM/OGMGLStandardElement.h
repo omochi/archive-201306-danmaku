@@ -7,7 +7,6 @@
 //
 
 #import "OGMGLElement.h"
-#import "OGMGLStandardShader.h"
 #import "OGMGLStandardRenderer.h"
 
 #import "OGMGLVertexBuffer.h"

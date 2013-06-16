@@ -34,8 +34,16 @@ GLuint OGMGLBuildProgram(NSString * vshSource,NSString * fshSource,NSError **err
 GLuint OGMGLBuildProgramWithPaths(NSString *vshPath,NSString *fshPath,NSError **error);
 
 //ただのassert付き
-GLuint OGMGLGetUniformLocation(GLuint program,const char * var);
-GLuint OGMGLGetAttribLocation(GLuint program,const char *var);
+inline GLuint OGMGLGetUniformLocation(GLuint program,const char * var);
+inline GLuint OGMGLGetAttribLocation(GLuint program,const char *var);
 
+inline void OGMGLUniform1i (GLint location, GLint x);
+inline void OGMGLUniformMatrix4fv(GLint location, GLsizei count,const GLfloat* value);
+
+inline void OGMGLEnableVertexAttribArray (GLuint index);
+inline void OGMGLVertexAttribPointer (GLuint indx, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* ptr);
+inline void OGMGLDrawElements (GLenum mode, GLsizei count, GLenum type, const GLvoid* indices);
+
+inline void OGMGLActiveTexture(int unit);
 
 OGM_EXTERN_C_END

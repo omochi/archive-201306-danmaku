@@ -39,10 +39,10 @@ void main(void){\
 }
 
 -(void)onBuild{
-	[self bindUniform:"projection" ofVar:_SV(projection)];
-	[self bindUniform:"modelView" ofVar:_SV(modelView)];
-	[self bindAttribute:"pos" ofVar:_SV(pos)];
-	[self bindAttribute:"color" ofVar:_SV(color)];
+	OGM_GLSHADER_BIND_UNIFORM(OGMGLColorShaderVar_,projection);
+	OGM_GLSHADER_BIND_UNIFORM(OGMGLColorShaderVar_,modelView);
+	OGM_GLSHADER_BIND_ATTRIB(OGMGLColorShaderVar_,pos);
+	OGM_GLSHADER_BIND_ATTRIB(OGMGLColorShaderVar_,color);	
 }
 
 @end

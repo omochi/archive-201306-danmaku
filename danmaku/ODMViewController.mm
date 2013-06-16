@@ -21,9 +21,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	glm::mat4 test = glm::mat4(1);
-	std::string str = glm::to_string(test);
-	NSLog(@"%s",str.c_str());
 
 	self.glContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     if (!self.glContext) {
@@ -45,10 +42,10 @@
 	
 	OGMGLVertexBufferSetColorList(self.quadElement.vertices,
 								  OGM_TYPEBUFFER_MAKE(glm::vec4,
-													  glm::vec4(1,1,1,1),
-													  glm::vec4(1,1,1,1),
-													  glm::vec4(1,1,1,1),
-													  glm::vec4(1,1,1,1))
+													  glm::vec4(1,0,0,1),
+													  glm::vec4(1,1,0,1),
+													  glm::vec4(0,1,0,1),
+													  glm::vec4(0,0,1,1))
 								  );
 	OGMGLQuadElementUpdateTexture(self.quadElement,
 								  [OGMGLTexture textureWithUIImage:[UIImage imageNamed:@"redbull-miku"]]);

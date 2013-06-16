@@ -14,6 +14,7 @@
 #import "OGMGLVertexFormat.h"
 #import "OGMGLVertexBuffer.h"
 #import "OGMGLIndexBuffer.h"
+#import "OGMGLTexture.h"
 
 @interface OGMGLStandardVertexFormat : OGMGLVertexFormat
 
@@ -33,6 +34,7 @@
 
 //実インスタンス
 +(OGMGLStandardVertexFormat *)formatPC;
++(OGMGLStandardVertexFormat *)formatPT;
 +(OGMGLStandardVertexFormat *)formatPCT;
 +(OGMGLStandardVertexFormat *)formatPCN;
 +(OGMGLStandardVertexFormat *)formatPCTN;
@@ -48,6 +50,11 @@ typedef struct OGMGLStandardVertexPC{
 	glm::vec3 pos;
 	glm::vec4 color;
 }OGMGLStandardVertexPC;
+
+typedef struct OGMGLStandardVertexPT{
+	glm::vec3 pos;
+	glm::vec2 uv;
+}OGMGLStandardVertexPT;
 
 typedef struct OGMGLStandardVertexPCT{
 	glm::vec3 pos;
@@ -87,8 +94,11 @@ typedef enum OGMGLStandardShaderVar{
 @property(nonatomic,assign)glm::mat4 modelView;
 @property(nonatomic,strong)OGMGLVertexBuffer * vertexBuffer;
 @property(nonatomic,strong)OGMGLIndexBuffer * indexBuffer;
+@property(nonatomic,strong)OGMGLTexture * texture;
 
 -(id)init;
+
+-(void)render;
 
 @end
 

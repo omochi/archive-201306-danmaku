@@ -18,4 +18,6 @@
 
 -(void)setAttributeList:(OGMTypeBuffer *)list size:(uint32_t)size offset:(uint32_t)offset;
 
++(void)clear;
+
 @end

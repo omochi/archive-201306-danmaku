@@ -43,6 +43,17 @@ static inline BOOL AlphaInfoIsNone(CGImageAlphaInfo alphaInfo){
 
 @implementation OGMGLImage
 
+-(id)initWithWidth:(uint32_t)width height:(uint32_t)height format:(GLenum)format data:(NSData *)data{
+	self = [super init];
+	if(self){
+		_width = width;
+		_height = height;
+		_format = format;
+		_data = data;
+	}
+	return self;
+}
+
 -(id)initWithUIImage:(UIImage *)image{
 	self = [self initWithCGImage:image.CGImage];
 	if(self){
@@ -52,8 +63,11 @@ static inline BOOL AlphaInfoIsNone(CGImageAlphaInfo alphaInfo){
 -(id)initWithCGImage:(CGImageRef)image{
 	self = [super init];
 	if(self){
-		_width = CGImageGetWidth(image);
-		_height = CGImageGetHeight(image);
+		uint32_t width = CGImageGetWidth(image);
+		uint32_t height = CGImageGetHeight(image);
+		GLenum format = 0;
+		NSData *data = nil;
+		
 		
 		CGColorSpaceRef colorSpace = CGImageGetColorSpace(image);
 		CGColorSpaceModel colorSpaceModel = CGColorSpaceGetModel(colorSpace);
@@ -99,19 +113,19 @@ static inline BOOL AlphaInfoIsNone(CGImageAlphaInfo alphaInfo){
 			NSData *imageData = CFBridgingRelease(CGDataProviderCopyData(CGImageGetDataProvider(image)));
 			
 			if(alphaNone){
-				_format = GL_RGB;
-				_data = [NSMutableData dataWithLength:_width*_height*3];
+				format = GL_RGB;
+				data = [NSMutableData dataWithLength:width*height*3];
 			}else{
-				_format = GL_RGBA;
-				_data = [NSMutableData dataWithLength:_width*_height*4];
+				format = GL_RGBA;
+				data = [NSMutableData dataWithLength:width*height*4];
 			}
 			
 			uint8_t *s = (uint8_t *)imageData.bytes;
-			uint8_t *d = (uint8_t *)_data.bytes;
+			uint8_t *d = (uint8_t *)data.bytes;
 			
-			for(int y=0;y<_height;y++){
+			for(int y=0;y<height;y++){
 				uint8_t * row = s;
-				for(int x=0;x<_width;x++){
+				for(int x=0;x<width;x++){
 					uint8_t pixel[4] = { s[0],s[1],s[2],s[3] };
 					if(swapByteOrder)PixelSwap(pixel);
 					if(alphaFirst)PixelRotL(pixel);
@@ -138,6 +152,9 @@ static inline BOOL AlphaInfoIsNone(CGImageAlphaInfo alphaInfo){
 				}
 				s = row + bytesPerRow;
 			}
+			
+			self = [self initWithWidth:width height:height format:format data:data];
+			
 		}else if(bpp == 24){
 		
 			uint32_t byteOrder = info & kCGBitmapByteOrderMask;
@@ -152,15 +169,15 @@ static inline BOOL AlphaInfoIsNone(CGImageAlphaInfo alphaInfo){
 			
 			OGMLog(@"bpp=%d\n",bpp);
 			
-			_format = GL_RGB;
-			_data = [NSMutableData dataWithLength:_width*_height*3];
+			format = GL_RGB;
+			data = [NSMutableData dataWithLength:width*height*3];
 			
 			uint8_t *s = (uint8_t *)imageData.bytes;
-			uint8_t *d = (uint8_t *)_data.bytes;
+			uint8_t *d = (uint8_t *)data.bytes;
 	
-			for(int y=0;y<_height;y++){
+			for(int y=0;y<height;y++){
 				uint8_t * row = s;
-				for(int x=0;x<_width;x++){
+				for(int x=0;x<width;x++){
 					d[0] = s[0];
 					d[1] = s[1];
 					d[2] = s[2];
@@ -170,6 +187,8 @@ static inline BOOL AlphaInfoIsNone(CGImageAlphaInfo alphaInfo){
 				}
 				s = row + bytesPerRow;
 			}
+			
+			self = [self initWithWidth:width height:height format:format data:data];
 		}else{
 			@throw OGMExceptionMake(NSGenericException,@"unsupported bpp: %d",bpp);
 		}
@@ -177,5 +196,19 @@ static inline BOOL AlphaInfoIsNone(CGImageAlphaInfo alphaInfo){
 	return self;
 }
 
+-(id)initWithWidth:(uint32_t)width height:(uint32_t)height color:(glm::vec4)color{
+	NSMutableData * data = [NSMutableData dataWithLength:width*height*4];
+	uint8_t * d = (uint8_t *)data.bytes;
+	uint32_t area = width*height;
+	for(int i=0;i<area;i++){
+		d[0] = 255 * color.r;
+		d[1] = 255 * color.g;
+		d[2] = 255 * color.b;
+		d[3] = 255 * color.a;
+		d+=4;
+	}
+	self = [self initWithWidth:width height:height format:GL_RGBA data:data];
+	return self;
+}
 
 @end

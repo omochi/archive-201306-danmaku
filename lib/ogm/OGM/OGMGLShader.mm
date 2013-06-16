@@ -33,14 +33,9 @@
 -(void)dispatchElementRender:(OGMGLElement *)element{
 	@throw OGMExceptionMake(NSGenericException,@"can't render this element");
 }
--(void)prepare{
+-(void)render{
 	
 }
-
--(void)clear{
-	
-}
-
 
 
 @end

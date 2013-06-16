@@ -22,6 +22,8 @@
 @property(nonatomic,readonly)GLenum wrapS;
 @property(nonatomic,readonly)GLenum wrapT;
 
+-(id)initWithImage:(OGMGLImage *)image;
+
 -(void)prepare;
 
 -(void)updateImage:(OGMGLImage *)image;

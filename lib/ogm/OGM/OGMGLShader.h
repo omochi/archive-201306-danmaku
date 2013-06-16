@@ -18,11 +18,7 @@
 //overrideしてElementのrenderWith<T>を呼ぶ
 -(void)dispatchElementRender:(OGMGLElement *)element;
 
-//描画直前に呼ぶ
--(void)prepare;
-//描画後に呼ぶ
--(void)clear;
-
+-(void)render;
 
 
 @end

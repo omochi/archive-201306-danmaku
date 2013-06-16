@@ -6,8 +6,6 @@
 //  Copyright (c) 2013年 com.omochimetaru. All rights reserved.
 //
 
-
-
 #import "OGMGLVertexBuffer.h"
 
 #import "OGMMemoryUtil.h"
@@ -37,6 +35,11 @@
 		s = OGMMemoryByteOffset(s,size);
 		d = OGMMemoryByteOffset(d,self.stride);
 	}
+}
+
++(void)clear{
+	glBindBuffer(GL_ARRAY_BUFFER,0);
+	OGMGLAssert(@"glBindBuffer/GL_ARRAY_BUFFER/0");
 }
 
 @end

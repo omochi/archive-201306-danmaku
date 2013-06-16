@@ -16,4 +16,6 @@
 
 -(void)setIndexList:(OGMTypeBuffer *)list;
 
++(void)clear;
+
 @end

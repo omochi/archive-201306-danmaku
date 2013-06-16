@@ -15,7 +15,13 @@
 @property(nonatomic,readonly)GLenum format;
 @property(nonatomic,readonly)NSData * data;
 
+-(id)initWithWidth:(uint32_t)width height:(uint32_t)height format:(GLenum)format data:(NSData *)data;
+
 -(id)initWithUIImage:(UIImage *)image;
 -(id)initWithCGImage:(CGImageRef)image;
+
+#ifdef __cplusplus
+-(id)initWithWidth:(uint32_t)width height:(uint32_t)height color:(glm::vec4)color;
+#endif
 
 @end

@@ -33,4 +33,9 @@
 	}
 }
 
++(void)clear{
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
+	OGMGLAssert(@"glBindBuffer/GL_ELEMENT_ARRAY_BUFFER/0");
+}
+
 @end

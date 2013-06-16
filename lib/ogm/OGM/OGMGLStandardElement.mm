@@ -28,53 +28,10 @@
 }
 
 -(void)renderWithStandardShader:(OGMGLStandardShader *)shader{
-	OGMGLStandardVertexFormat * format = (OGMGLStandardVertexFormat *)self.vertices.vertexFormat;
-	
-	[shader prepare];
-	
-	int posIndex = [shader locationOfVar:OGMGLStandardShaderVar_pos];
-	int colorIndex = [shader locationOfVar:OGMGLStandardShaderVar_color];
-	int uvIndex = [shader locationOfVar:OGMGLStandardShaderVar_texture];
-	
-	glActiveTexture(GL_TEXTURE0 + 0);
-	OGMGLAssert(@"glActiveTexture");
-	
-	[self.texture prepare];
-	
-	glUniform1i([shader locationOfVar:OGMGLStandardShaderVar_texture], 0);
-	OGMGLAssert(@"glUniform/texture");
-	
-	[self.vertices prepare];
-	
-	glEnableVertexAttribArray(posIndex);
-	OGMGLAssert(@"glEnableVertexAttribArray/pos");
-	glVertexAttribPointer(posIndex,3,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.posOffset);
-	OGMGLAssert(@"glVertexAttribPointer/pos");
-	
-#warning todo colorEnabled
-	if(format.hasColor){
-		glEnableVertexAttribArray(colorIndex);
-		OGMGLAssert(@"glEnableVertexAttribArray/color");
-		glVertexAttribPointer(colorIndex,4,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.colorOffset);
-		OGMGLAssert(@"glVertexAttribPointer/color");
-	}
-
-	glEnableVertexAttribArray(uvIndex);
-	OGMGLAssert(@"glEnableVertexAttribArray/uv");
-	glVertexAttribPointer(uvIndex,3,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.uvOffset);
-	OGMGLAssert(@"glVertexAttribPointer/uv");
-	
-	
-#warning todo uv,normal
-
-	[self.indices prepare];
-	
-	glDrawElements(self.indices.drawMode,self.indices.size,GL_UNSIGNED_SHORT,0);
-	OGMGLAssert(@"glDrawElements");
-	
-	[shader clear];
-	
-
+	shader.vertexBuffer = self.vertices;
+	shader.indexBuffer = self.indices;
+	shader.texture = self.texture;
+	[shader render];
 }
 
 
@@ -113,7 +70,9 @@ OGMGLStandardElement  * OGMGLQuadElementMake(OGMGLStandardVertexFormat * format,
 	element.vertices = vertices;
 	element.indices = indices;
 	
-	[element setColor:glm::vec4(1,1,1,1)];
+	if(format.hasColor){
+		[element setColor:glm::vec4(1,1,1,1)];
+	}
 	return element;
 }
 

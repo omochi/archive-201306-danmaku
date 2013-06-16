@@ -36,6 +36,14 @@
 	return self;
 }
 
+-(id)initWithImage:(OGMGLImage *)image{
+	self = [self init];
+	if(self){
+		[self updateImage:image];
+	}
+	return self;
+}
+
 -(void)prepare{
 	if(_glTexId == 0){
 		glGenTextures(1, &_glTexId);
@@ -135,9 +143,7 @@
 }
 
 +(OGMGLTexture *)textureWithUIImage:(UIImage *)image{
-	OGMGLTexture * texture = [[OGMGLTexture alloc]init];
-	[texture updateImage:[[OGMGLImage alloc]initWithUIImage:image]];
-	return texture;
+	return [[OGMGLTexture alloc]initWithImage:[[OGMGLImage alloc]initWithUIImage:image]];
 }
 
 @end

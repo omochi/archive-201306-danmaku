@@ -56,6 +56,19 @@ void OGMGLVertexBufferSetNormalList(OGMGLVertexBuffer *buffer,OGMTypeBuffer *lis
 	return format;
 }
 
++(OGMGLStandardVertexFormat *)formatPT{
+	static OGMGLStandardVertexFormat *format = nil;
+	if(!format){
+#define _VT OGMGLStandardVertexPT
+		format = [[OGMGLStandardVertexFormat alloc]initWithType:@encode(_VT)];
+		format->_posOffset 		= offsetof(_VT,pos);
+		format->_hasUv 			= YES;
+		format->_uvOffset		= offsetof(_VT,uv);
+#undef _VT
+	}
+	return format;
+}
+
 +(OGMGLStandardVertexFormat *)formatPCT{
 	static OGMGLStandardVertexFormat *format = nil;
 	if(!format){
@@ -108,6 +121,9 @@ void OGMGLVertexBufferSetNormalList(OGMGLVertexBuffer *buffer,OGMTypeBuffer *lis
 @interface OGMGLStandardShader()
 
 @property(nonatomic,assign)GLuint glProgId;
+@property(nonatomic,strong)OGMGLTexture * dummyWhiteTexture;
+@property(nonatomic,strong)OGMTypeBuffer * dummyWhiteBuffer;
+@property(nonatomic,strong)OGMTypeBuffer * dummyUvBuffer;
 
 @end
 
@@ -115,7 +131,13 @@ void OGMGLVertexBufferSetNormalList(OGMGLVertexBuffer *buffer,OGMTypeBuffer *lis
 -(id)init{
 	self = [super initWithLocationNum:_SV(Max)];
 	if(self){
-
+		_dummyWhiteBuffer = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec4)];
+		_dummyUvBuffer = [[OGMTypeBuffer alloc]initWithObjCType:@encode(glm::vec2)];
+		
+		OGMGLImage *whiteImage = [[OGMGLImage alloc]initWithWidth:1 height:1 color:glm::vec4(1,1,1,1)];
+		_dummyWhiteTexture = [[OGMGLTexture alloc]initWithImage:whiteImage];
+		[_dummyWhiteTexture updateWrapS:GL_REPEAT];
+		[_dummyWhiteTexture updateWrapT:GL_REPEAT];
 	}
 	return self;
 }
@@ -163,26 +185,79 @@ void OGMGLVertexBufferSetNormalList(OGMGLVertexBuffer *buffer,OGMTypeBuffer *lis
 	
 	glUseProgram(_glProgId);
 	OGMGLAssert(@"glUseProgram");
+}
+
+-(void)render{
+	[self prepare];
+	
+	int posIndex = [self locationOfVar:OGMGLStandardShaderVar_pos];
+	int colorIndex = [self locationOfVar:OGMGLStandardShaderVar_color];
+	int uvIndex = [self locationOfVar:OGMGLStandardShaderVar_texture];
+	
+	glEnableVertexAttribArray(posIndex);
+	OGMGLAssert(@"glEnableVertexAttribArray/pos");
+	glEnableVertexAttribArray(colorIndex);
+	OGMGLAssert(@"glEnableVertexAttribArray/color");
+	glEnableVertexAttribArray(uvIndex);
+	OGMGLAssert(@"glEnableVertexAttribArray/uv");
 	
 	glUniformMatrix4fv([self locationOfVar:_SV(projection)],1,GL_FALSE,glm::value_ptr(_projection));
 	OGMGLAssert(@"glUniformMatrix/projection");
 	glUniformMatrix4fv([self locationOfVar:_SV(modelView)],1,GL_FALSE,glm::value_ptr(_modelView));
 	OGMGLAssert(@"glUniformMatrix/modelView");
 	
-}
-
--(void)clear{
-	glDisableVertexAttribArray([self locationOfVar:_SV(pos)]);
-	OGMGLAssert(@"glDisableVertexAttribArray/pos");
-	glDisableVertexAttribArray([self locationOfVar:_SV(color)]);
-	OGMGLAssert(@"glDisableVertexAttribArray/color");
-	glDisableVertexAttribArray([self locationOfVar:_SV(uv)]);
-	OGMGLAssert(@"glDisableVertexAttribArray/uv");
-#warning todo
-//	glDisableVertexAttribArray([self locationOfVar:_SV(uv)]);
-//	OGMGLAssert(@"glDisableVertexAttribArray/uv");
-//	glDisableVertexAttribArray([self locationOfVar:_SV(normal)]);
-//	OGMGLAssert(@"glDisableVertexAttribArray/normal");
+	glActiveTexture(GL_TEXTURE0 + 0);
+	OGMGLAssert(@"glActiveTexture");
+	
+	if(self.texture){
+		[self.texture prepare];
+	}else{
+		[self.dummyWhiteTexture prepare];
+	}
+	
+	glUniform1i([self locationOfVar:OGMGLStandardShaderVar_texture], 0);
+	OGMGLAssert(@"glUniform/texture");
+	
+	[self.vertexBuffer prepare];
+	OGMGLStandardVertexFormat * format = (OGMGLStandardVertexFormat *)self.vertexBuffer.vertexFormat;
+	
+	glVertexAttribPointer(posIndex,3,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.posOffset);
+	OGMGLAssert(@"glVertexAttribPointer/pos");
+	
+	if(format.hasColor){
+		glVertexAttribPointer(colorIndex,4,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.colorOffset);
+		OGMGLAssert(@"glVertexAttribPointer/color");
+	}
+	if(format.hasUv){
+		glVertexAttribPointer(uvIndex,3,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.uvOffset);
+		OGMGLAssert(@"glVertexAttribPointer/uv");
+	}
+	
+	[OGMGLVertexBuffer clear];
+	
+	if(!format.hasColor){
+		self.dummyWhiteBuffer.size = self.vertexBuffer.size;
+		glm::vec4 *color = (glm::vec4 *)self.dummyWhiteBuffer.ptr;
+		for(int i=0;i<self.dummyWhiteBuffer.size;i++,color++){
+			*color = glm::vec4(1.0,1.0,1.0,1.0);
+		}
+		glVertexAttribPointer(colorIndex,4,GL_FLOAT,GL_FALSE,self.dummyWhiteBuffer.typeSize,self.dummyWhiteBuffer.ptr);
+		OGMGLAssert(@"glVertexAttribPointer/color");
+	}
+	if(!format.hasUv){
+		self.dummyUvBuffer.size = self.vertexBuffer.size;
+		glm::vec2 *uv = (glm::vec2 *)self.dummyUvBuffer.ptr;
+		for(int i=0;i<self.dummyUvBuffer.size;i++,uv++){
+			*uv = glm::vec2(0.0,0.0);
+		}
+		glVertexAttribPointer(uvIndex,2,GL_FLOAT,GL_FALSE,self.dummyUvBuffer.typeSize,self.dummyUvBuffer.ptr);
+		OGMGLAssert(@"glVertexAttribPointer/uv");
+	}
+	
+	[self.indexBuffer prepare];
+		
+	glDrawElements(self.indexBuffer.drawMode,self.indexBuffer.size,GL_UNSIGNED_SHORT,0);
+	OGMGLAssert(@"glDrawElements");
 }
 
 @end

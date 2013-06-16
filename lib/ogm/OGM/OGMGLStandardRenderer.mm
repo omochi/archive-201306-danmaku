@@ -36,6 +36,8 @@
 -(void)dispatchElementRender:(OGMGLElement *)element{
 	if([element conformsToProtocol:@protocol(OGMGLStandardRenderable)]){
 		[(id)element renderWithStandardRenderer:self];
+	}else{
+		[super dispatchElementRender:element];
 	}
 }
 

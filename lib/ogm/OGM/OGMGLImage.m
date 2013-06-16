@@ -26,12 +26,6 @@ static inline void PixelRotL(uint8_t px[4]){
 	px[3] = tmp[3];
 }
 
-static inline uint32_t U32Swap(uint32_t x){
-	return (x << 24) | ((x & 0xFF00) << 8) | ((x >> 8) & 0xFF00) | (x >> 24);
-};
-static inline uint32_t U32RotLeft8(uint32_t x){
-	return (x << 8) | (x >> 24);
-};
 static inline BOOL AlphaInfoIsFirst(CGImageAlphaInfo alphaInfo){
 	return alphaInfo == kCGImageAlphaFirst ||
 	alphaInfo == kCGImageAlphaPremultipliedFirst ||

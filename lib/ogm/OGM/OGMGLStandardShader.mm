@@ -132,8 +132,8 @@ void OGMGLVertexBufferSetNormalList(OGMGLVertexBuffer *buffer,OGMTypeBuffer *lis
 	NSError * error ;
 
 	if(!_glProgId){
-		NSString * vshPath = [[NSBundle mainBundle] pathForResource:@"OGMGLColorShader" ofType:@"vsh"];
-		NSString * fshPath = [[NSBundle mainBundle] pathForResource:@"OGMGLColorShader" ofType:@"fsh"];
+		NSString * vshPath = [[NSBundle mainBundle] pathForResource:@"OGMGLTextureShader" ofType:@"vsh"];
+		NSString * fshPath = [[NSBundle mainBundle] pathForResource:@"OGMGLTextureShader" ofType:@"fsh"];
 		_glProgId = OGMGLBuildProgramWithPaths(vshPath,fshPath,&error);
 		if(!_glProgId)@throw OGMExceptionMakeWithError(error);
 		
@@ -157,6 +157,8 @@ void OGMGLVertexBufferSetNormalList(OGMGLVertexBuffer *buffer,OGMTypeBuffer *lis
 		_BIND_LU(modelView);
 		_BIND_LV(pos);
 		_BIND_LV(color);
+		_BIND_LV(uv);
+		_BIND_LU(texture);
 	}
 	
 	glUseProgram(_glProgId);
@@ -174,6 +176,8 @@ void OGMGLVertexBufferSetNormalList(OGMGLVertexBuffer *buffer,OGMTypeBuffer *lis
 	OGMGLAssert(@"glDisableVertexAttribArray/pos");
 	glDisableVertexAttribArray([self locationOfVar:_SV(color)]);
 	OGMGLAssert(@"glDisableVertexAttribArray/color");
+	glDisableVertexAttribArray([self locationOfVar:_SV(uv)]);
+	OGMGLAssert(@"glDisableVertexAttribArray/uv");
 #warning todo
 //	glDisableVertexAttribArray([self locationOfVar:_SV(uv)]);
 //	OGMGLAssert(@"glDisableVertexAttribArray/uv");

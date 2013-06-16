@@ -11,12 +11,41 @@
 #import "OGMErrorUtil.h"
 #import "OGMLog.h"
 
+static inline void PixelSwap(uint8_t px[4]){
+	uint8_t tmp[4] = { px[3],px[2],px[1],px[0] };
+	px[0] = tmp[0];
+	px[1] = tmp[1];
+	px[2] = tmp[2];
+	px[3] = tmp[3];
+}
+static inline void PixelRotL(uint8_t px[4]){
+	uint8_t tmp[4] = { px[1],px[2],px[3],px[0] };
+	px[0] = tmp[0];
+	px[1] = tmp[1];
+	px[2] = tmp[2];
+	px[3] = tmp[3];
+}
+
 static inline uint32_t U32Swap(uint32_t x){
 	return (x << 24) | ((x & 0xFF00) << 8) | ((x >> 8) & 0xFF00) | (x >> 24);
 };
 static inline uint32_t U32RotLeft8(uint32_t x){
 	return (x << 8) | (x >> 24);
 };
+static inline BOOL AlphaInfoIsFirst(CGImageAlphaInfo alphaInfo){
+	return alphaInfo == kCGImageAlphaFirst ||
+	alphaInfo == kCGImageAlphaPremultipliedFirst ||
+	alphaInfo == kCGImageAlphaNoneSkipFirst;
+}
+static inline BOOL AlphaInfoIsPremultiplied(CGImageAlphaInfo alphaInfo){
+	return alphaInfo == kCGImageAlphaPremultipliedFirst ||
+	alphaInfo == kCGImageAlphaPremultipliedLast;
+}
+static inline BOOL AlphaInfoIsNone(CGImageAlphaInfo alphaInfo){
+	return alphaInfo == kCGImageAlphaNoneSkipFirst ||
+	alphaInfo == kCGImageAlphaNoneSkipLast ||
+	alphaInfo == kCGImageAlphaNone;
+}
 
 @implementation OGMGLImage
 
@@ -55,42 +84,19 @@ static inline uint32_t U32RotLeft8(uint32_t x){
 		}
 		
 		if(bpp == 32){
-			BOOL alphaPremultiplied = NO;
-			BOOL alphaFirst = NO;
-			BOOL swapByteOrder = NO;
-			BOOL alphaNone = NO;
+			BOOL alphaPremultiplied = AlphaInfoIsPremultiplied(alphaInfo);
+			BOOL alphaFirst = AlphaInfoIsFirst(alphaInfo);
+			BOOL alphaNone = AlphaInfoIsNone(alphaInfo);
 			
-			if(byteOrder == kCGBitmapByteOrderDefault)byteOrder = kCGBitmapByteOrder32Host;//あってるん？
+			BOOL swapByteOrder = NO;
+			
+			if(byteOrder == kCGBitmapByteOrderDefault)byteOrder = kCGBitmapByteOrder32Big;//あってるん？
 			if(byteOrder == kCGBitmapByteOrder16Big ||
 			   byteOrder == kCGBitmapByteOrder16Little){
 				@throw OGMExceptionMake(NSGenericException,@"unsupported");
 			}
 			if(byteOrder == kCGBitmapByteOrder32Little){
 				swapByteOrder = YES;
-			}
-			
-			switch (alphaInfo) {
-				case kCGImageAlphaPremultipliedFirst:
-					alphaFirst = YES;
-					alphaPremultiplied = YES;
-					break;
-				case kCGImageAlphaFirst:
-					alphaFirst = YES;
-					break;
-				case kCGImageAlphaNoneSkipFirst:
-					alphaFirst = YES;
-					alphaNone = YES;
-					break;
-				case kCGImageAlphaPremultipliedLast:
-					alphaPremultiplied = YES;
-					break;
-				case kCGImageAlphaLast:
-					break;
-				case kCGImageAlphaNoneSkipLast:
-					alphaNone = YES;
-					break;
-				default:
-					@throw OGMExceptionMake(NSGenericException,@"inconsistent alpha info for bpp32: %d",alphaInfo);
 			}
 			
 			OGMLog(@"bpp=%d,byteOrder=%x,alphaFirst=%d,alphaPremultiplied=%d,alphaNone=%d\n",
@@ -100,46 +106,38 @@ static inline uint32_t U32RotLeft8(uint32_t x){
 			
 			if(alphaNone){
 				_format = GL_RGB;
-				_data = [NSData dataWithBytes:NULL length:_width*_height*3];
+				_data = [NSMutableData dataWithLength:_width*_height*3];
 			}else{
 				_format = GL_RGBA;
-				_data = [NSData dataWithBytes:NULL length:_width*_height*4];
+				_data = [NSMutableData dataWithLength:_width*_height*4];
 			}
 			
 			uint8_t *s = (uint8_t *)imageData.bytes;
 			uint8_t *d = (uint8_t *)_data.bytes;
 			
-			//リトルエンディアンならキャスト時点でスワップするので
-			long hostByteOrder = NSHostByteOrder();
-			if(hostByteOrder == NS_UnknownByteOrder){
-				@throw OGMExceptionMake(NSGenericException,@"unsupported host byte order");
-			}
-			if(hostByteOrder == NS_LittleEndian){
-				swapByteOrder = !swapByteOrder;
-			}
-			
 			for(int y=0;y<_height;y++){
 				uint8_t * row = s;
 				for(int x=0;x<_width;x++){
-					uint32_t ss = *(uint32_t *)s;
-					if(swapByteOrder)ss = U32Swap(ss);
-					if(alphaFirst)ss = U32RotLeft8(ss);
+					uint8_t pixel[4] = { s[0],s[1],s[2],s[3] };
+					if(swapByteOrder)PixelSwap(pixel);
+					if(alphaFirst)PixelRotL(pixel);
 					
 					if(alphaNone){
-						d[0] = (ss >> 24);
-						d[1] = (ss >> 16) & 0xFF;
-						d[2] = (ss >> 8) & 0xFF;
+						d[0] = pixel[0];
+						d[1] = pixel[1];
+						d[2] = pixel[2];
 						d+=3;
 					}else{
-						d[0] = (ss >> 24);
-						d[1] = (ss >> 16) & 0xFF;
-						d[2] = (ss >> 8) & 0xFF;
-						d[3] = ss & 0xFF;
 						if(alphaPremultiplied){
-							d[0] = ((int)d[0] * 255 / d[3]) & 0xFF;
-							d[1] = ((int)d[1] * 255 / d[3]) & 0xFF;
-							d[2] = ((int)d[2] * 255 / d[3]) & 0xFF;
+							d[0] = ((int)pixel[0] * 255 / pixel[3]) % 0xFF;
+							d[1] = ((int)pixel[1] * 255 / pixel[3]) % 0xFF;
+							d[2] = ((int)pixel[2] * 255 / pixel[3]) % 0xFF;
+						}else{
+							d[0] = pixel[0];
+							d[1] = pixel[1];
+							d[2] = pixel[2];
 						}
+						d[3] = pixel[3];
 						d+=4;
 					}
 					s += 4;
@@ -161,7 +159,7 @@ static inline uint32_t U32RotLeft8(uint32_t x){
 			OGMLog(@"bpp=%d\n",bpp);
 			
 			_format = GL_RGB;
-			_data = [NSData dataWithBytes:NULL length:_width*_height*3];
+			_data = [NSMutableData dataWithLength:_width*_height*3];
 			
 			uint8_t *s = (uint8_t *)imageData.bytes;
 			uint8_t *d = (uint8_t *)_data.bytes;

@@ -34,6 +34,15 @@
 	
 	int posIndex = [shader locationOfVar:OGMGLStandardShaderVar_pos];
 	int colorIndex = [shader locationOfVar:OGMGLStandardShaderVar_color];
+	int uvIndex = [shader locationOfVar:OGMGLStandardShaderVar_texture];
+	
+	glActiveTexture(GL_TEXTURE0 + 0);
+	OGMGLAssert(@"glActiveTexture");
+	
+	[self.texture prepare];
+	
+	glUniform1i([shader locationOfVar:OGMGLStandardShaderVar_texture], 0);
+	OGMGLAssert(@"glUniform/texture");
 	
 	[self.vertices prepare];
 	
@@ -49,6 +58,12 @@
 		glVertexAttribPointer(colorIndex,4,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.colorOffset);
 		OGMGLAssert(@"glVertexAttribPointer/color");
 	}
+
+	glEnableVertexAttribArray(uvIndex);
+	OGMGLAssert(@"glEnableVertexAttribArray/uv");
+	glVertexAttribPointer(uvIndex,3,GL_FLOAT,GL_FALSE,format.stride,(const GLvoid *)format.uvOffset);
+	OGMGLAssert(@"glVertexAttribPointer/uv");
+	
 	
 #warning todo uv,normal
 
@@ -58,6 +73,8 @@
 	OGMGLAssert(@"glDrawElements");
 	
 	[shader clear];
+	
+
 }
 
 
@@ -98,5 +115,17 @@ OGMGLStandardElement  * OGMGLQuadElementMake(OGMGLStandardVertexFormat * format,
 	
 	[element setColor:glm::vec4(1,1,1,1)];
 	return element;
+}
+
+void OGMGLQuadElementUpdateTexture(OGMGLStandardElement * quad,OGMGLTexture *texture){
+	float u1 = texture.imageWidth / (float)texture.width;
+	float v1 = texture.imageHeight / (float)texture.height;
+	OGMGLVertexBufferSetUvList(quad.vertices,
+							   OGM_TYPEBUFFER_MAKE(glm::vec2,
+												   glm::vec2(0,0),
+												   glm::vec2(0,v1),
+												   glm::vec2(u1,v1),
+												   glm::vec2(u1,0)));
+	quad.texture = texture;
 }
 

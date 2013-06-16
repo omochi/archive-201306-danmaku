@@ -75,6 +75,10 @@
 	}
 }
 
+-(BOOL)dataReleased{
+	return (_glBufId != 0) && !_buffer;
+}
+
 -(void)updateSize:(uint32_t)size{
 	[self updateSize:size initOnly:NO];
 }

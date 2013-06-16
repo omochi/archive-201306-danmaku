@@ -31,4 +31,6 @@
 -(void)updateWrapS:(GLenum)wrapS;
 -(void)updateWrapT:(GLenum)wrapT;
 
++(OGMGLTexture *)textureWithUIImage:(UIImage *)image;
+
 @end

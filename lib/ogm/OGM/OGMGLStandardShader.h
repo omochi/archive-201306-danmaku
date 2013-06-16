@@ -75,6 +75,8 @@ typedef enum OGMGLStandardShaderVar{
 	_SV(modelView),
 	_SV(pos),
 	_SV(color),
+	_SV(uv),
+	_SV(texture),
 	_SV(Max)
 }OGMGLStandardShaderVar;
 #undef _SV

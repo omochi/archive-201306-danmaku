@@ -134,4 +134,10 @@
 	}
 }
 
++(OGMGLTexture *)textureWithUIImage:(UIImage *)image{
+	OGMGLTexture * texture = [[OGMGLTexture alloc]init];
+	[texture updateImage:[[OGMGLImage alloc]initWithUIImage:image]];
+	return texture;
+}
+
 @end

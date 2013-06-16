@@ -37,8 +37,6 @@
 		D687BD801768BFEE001C6759 /* OGMObjCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD7F1768BFEC001C6759 /* OGMObjCUtil.m */; };
 		D687BD83176A1ED8001C6759 /* OGMGLImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = D687BD82176A1ED7001C6759 /* OGMGLImage.mm */; };
 		D687BD86176B77E8001C6759 /* OGMGLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = D687BD85176B77E6001C6759 /* OGMGLTexture.m */; };
-		D6A4AAC9175F77B200BA9E4A /* OGMGLColorShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D6F175E414D0065DAC6 /* OGMGLColorShader.vsh */; };
-		D6A4AACA175F77B200BA9E4A /* OGMGLColorShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D6344D71175E41640065DAC6 /* OGMGLColorShader.fsh */; };
 		D6A4AACD175F882600BA9E4A /* OGMGLReleaser.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACC175F882600BA9E4A /* OGMGLReleaser.m */; };
 		D6A4AAD0175F94DB00BA9E4A /* OGMBlockUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */; };
 		D6A4AAD6175FA67900BA9E4A /* OGMGLVertexBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */; };
@@ -306,8 +304,6 @@
 		D6344D69175E26390065DAC6 /* OGMGLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLUtil.h; sourceTree = "<group>"; };
 		D6344D6A175E26390065DAC6 /* OGMGLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMGLUtil.m; sourceTree = "<group>"; };
 		D6344D6D175E28AE0065DAC6 /* OGMCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMCommon.m; sourceTree = "<group>"; };
-		D6344D6F175E414D0065DAC6 /* OGMGLColorShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = OGMGLColorShader.vsh; sourceTree = "<group>"; };
-		D6344D71175E41640065DAC6 /* OGMGLColorShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = OGMGLColorShader.fsh; sourceTree = "<group>"; };
 		D6344D73175E50030065DAC6 /* OGMErrorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMErrorUtil.h; sourceTree = "<group>"; };
 		D6344D74175E50030065DAC6 /* OGMErrorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMErrorUtil.m; sourceTree = "<group>"; };
 		D6344D76175E57260065DAC6 /* OGM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGM.h; sourceTree = "<group>"; };
@@ -750,8 +746,6 @@
 				D687BD791768B8D7001C6759 /* OGMGLShader.mm */,
 				D6344D67175E23CD0065DAC6 /* OGMGLStandardShader.h */,
 				D6344D66175E23CD0065DAC6 /* OGMGLStandardShader.mm */,
-				D6344D6F175E414D0065DAC6 /* OGMGLColorShader.vsh */,
-				D6344D71175E41640065DAC6 /* OGMGLColorShader.fsh */,
 				D62970F7176E07E100377BCB /* OGMGLColorShader.h */,
 				D62970F8176E07E100377BCB /* OGMGLColorShader.mm */,
 				D6FE3601176E012D00F46E39 /* OGMGLRenderer.h */,
@@ -834,8 +828,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6A4AAC9175F77B200BA9E4A /* OGMGLColorShader.vsh in Resources */,
-				D6A4AACA175F77B200BA9E4A /* OGMGLColorShader.fsh in Resources */,
 				D6FE35FA176CE50800F46E39 /* OGMGLTextureShader.vsh in Resources */,
 				D6FE35FC176CE5F600F46E39 /* OGMGLTextureShader.fsh in Resources */,
 				D63447CC175CCF250065DAC6 /* Default-568h@2x.png in Resources */,

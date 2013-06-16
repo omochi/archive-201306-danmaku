@@ -12,14 +12,30 @@
 
 #define _SV(x) OGMGLColorShaderVar_##x
 
+NSString * const OGMGLColorVertexShaderSource = @"\
+uniform mat4 projection;\
+uniform mat4 modelView;\
+attribute vec4 pos;\
+attribute lowp vec4 color;\
+varying lowp vec4 vColor;\
+void main(void){\
+    gl_Position = projection * modelView * pos;\
+	vColor = color;\
+}\
+";
+
+NSString * const OGMGLColorFragmentShaderSource = @"\
+varying lowp vec4 vColor;\
+void main(void){\
+	gl_FragColor = vColor;\
+}\
+";
+
 @implementation OGMGLColorShader
 
 -(id)init{
-	NSString * vshPath = [[NSBundle mainBundle]
-						  pathForResource:NSStringFromClass([OGMGLColorShader class]) ofType:@"vsh"];
-	NSString * fshPath = [[NSBundle mainBundle]
-						  pathForResource:NSStringFromClass([OGMGLColorShader class]) ofType:@"fsh"];
-	return [super initWithVertexShaderPath:vshPath fragmentShaderPath:fshPath locationNum:_SV(Max)];
+	return [super initWithVertexShader:OGMGLColorVertexShaderSource
+						fragmentShader:OGMGLColorFragmentShaderSource locationNum:_SV(Max)];
 }
 
 -(void)onBuild{

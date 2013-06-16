@@ -37,6 +37,12 @@
 	return [self initWithVertexShader:vsh fragmentShader:fsh locationNum:locationNum];
 }
 
+-(id)initWithShaderName:(NSString *)name locationNum:(uint32_t)locationNum{
+	return [self initWithVertexShaderPath:[[NSBundle mainBundle]pathForResource:name ofType:@"vsh"]
+					   fragmentShaderPath:[[NSBundle mainBundle]pathForResource:name ofType:@"fsh"]
+							  locationNum:locationNum];
+}
+
 
 -(GLint)locationOfVar:(int)var{
 	return static_cast<GLint*>(_glLocationTable.ptr)[var];

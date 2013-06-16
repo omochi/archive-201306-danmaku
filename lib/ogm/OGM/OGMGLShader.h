@@ -22,6 +22,8 @@
 		   fragmentShaderPath:(NSString *)fragmentShaderPath
 				  locationNum:(uint32_t)locationNum;
 
+-(id)initWithShaderName:(NSString *)name locationNum:(uint32_t)locationNum;
+
 -(GLint)locationOfVar:(int)var;
 
 //overrideしてElementのrenderWith<T>を呼ぶ

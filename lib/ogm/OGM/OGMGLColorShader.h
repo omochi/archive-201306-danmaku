@@ -10,6 +10,9 @@
 
 #import "OGMGLShader.h"
 
+extern NSString * const OGMGLColorVertexShaderSource;
+extern NSString * const OGMGLColorFragmentShaderSource;
+
 #define _SV(x) OGMGLColorShaderVar_##x
 typedef enum OGMGLColorShaderVar{
 	_SV(projection) = 0,

@@ -123,9 +123,9 @@ static inline BOOL AlphaInfoIsNone(CGImageAlphaInfo alphaInfo){
 						d+=3;
 					}else{
 						if(alphaPremultiplied){
-							d[0] = ((int)pixel[0] * 255 / pixel[3]) % 0xFF;
-							d[1] = ((int)pixel[1] * 255 / pixel[3]) % 0xFF;
-							d[2] = ((int)pixel[2] * 255 / pixel[3]) % 0xFF;
+							d[0] = MIN((int)pixel[0] * 255 / pixel[3],0xFF);
+							d[1] = MIN((int)pixel[1] * 255 / pixel[3],0xFF);
+							d[2] = MIN((int)pixel[2] * 255 / pixel[3],0xFF);
 						}else{
 							d[0] = pixel[0];
 							d[1] = pixel[1];

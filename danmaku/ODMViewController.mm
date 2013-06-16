@@ -51,7 +51,7 @@
 													  glm::vec4(1,1,1,1))
 								  );
 	OGMGLQuadElementUpdateTexture(self.quadElement,
-								  [OGMGLTexture textureWithUIImage:[UIImage imageNamed:@"BF7E3Faa"]]);
+								  [OGMGLTexture textureWithUIImage:[UIImage imageNamed:@"redbull-miku"]]);
 	
 	
 }

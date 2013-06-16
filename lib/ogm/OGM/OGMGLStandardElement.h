@@ -8,11 +8,13 @@
 
 #import "OGMGLElement.h"
 #import "OGMGLStandardShader.h"
+#import "OGMGLStandardRenderer.h"
+
 #import "OGMGLVertexBuffer.h"
 #import "OGMGLIndexBuffer.h"
 #import "OGMGLTexture.h"
 
-@interface OGMGLStandardElement : OGMGLElement<OGMGLStandardShaderRenderable>
+@interface OGMGLStandardElement : OGMGLElement<OGMGLStandardRenderable>
 
 @property(nonatomic,strong)OGMGLVertexBuffer * vertices;
 @property(nonatomic,strong)OGMGLIndexBuffer * indices;

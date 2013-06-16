@@ -12,7 +12,7 @@
 
 @interface ODMViewController ()
 @property(nonatomic,strong)EAGLContext *glContext;
-@property(nonatomic,strong)OGMGLStandardShader * shader;
+@property(nonatomic,strong)OGMGLStandardRenderer * renderer;
 @property(nonatomic,strong)OGMGLStandardElement * quadElement;
 @end
 
@@ -37,7 +37,7 @@
 	
 	self.preferredFramesPerSecond = 60;
 	
-	self.shader = [[OGMGLStandardShader alloc]init];
+	self.renderer = [[OGMGLStandardRenderer alloc]init];
 	self.quadElement = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPCT],CGRectMake(0.1, 0.1, 0.8, 0.8));
 	
 	OGMGLVertexBufferSetColorList(self.quadElement.vertices,
@@ -61,10 +61,10 @@
 	glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	self.shader.projection = glm::mat4(1);
-	self.shader.modelView = glm::mat4(1);
+	self.renderer.projection = glm::mat4(1);
+	self.renderer.modelView = glm::mat4(1);
 	
-	[self.quadElement renderWithStandardShader:self.shader];
+	[self.quadElement renderWithStandardRenderer:self.renderer];
 	
 }
 

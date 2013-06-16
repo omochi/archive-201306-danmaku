@@ -34,6 +34,12 @@
 	[shader render];
 }
 
+-(void)renderWithStandardRenderer:(OGMGLStandardRenderer *)renderer{
+	renderer.vertices = self.vertices;
+	renderer.indices = self.indices;
+	renderer.texture = self.texture;
+	[renderer render];
+}
 
 @end
 

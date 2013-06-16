@@ -10,13 +10,24 @@
 
 @class OGMGLElement;
 
-@interface OGMGLShader : NSObject
+@interface OGMGLShader : NSObject{
+@protected
+	GLuint _glProgId;
+}
 
--(id)initWithLocationNum:(uint32_t)locationNum;
+-(id)initWithVertexShader:(NSString *)vertexShader
+		   fragmentShader:(NSString *)fragmentShader locationNum:(uint32_t)locationNum;
+
+-(id)initWithVertexShaderPath:(NSString *)vertexShaderPath
+		   fragmentShaderPath:(NSString *)fragmentShaderPath
+				  locationNum:(uint32_t)locationNum;
+
 -(GLint)locationOfVar:(int)var;
 
 //overrideしてElementのrenderWith<T>を呼ぶ
 -(void)dispatchElementRender:(OGMGLElement *)element;
+
+-(void)prepare;
 
 -(void)render;
 

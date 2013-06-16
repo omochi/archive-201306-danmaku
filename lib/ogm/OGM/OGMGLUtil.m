@@ -161,3 +161,14 @@ GLuint OGMGLBuildProgramWithPaths(NSString *vshPath,NSString *fshPath,NSError **
 	if(!fshSource)return 0;
 	return OGMGLBuildProgram(vshSource, fshSource, error);
 }
+
+GLuint OGMGLGetUniformLocation(GLuint program,const char * var){
+	GLuint loc = glGetUniformLocation(program, var);
+	OGMGLAssert(@"glGetUniformLocation");
+	return loc;
+}
+GLuint OGMGLGetAttribLocation(GLuint program,const char *var){
+	GLuint loc = glGetAttribLocation(program, var);
+	OGMGLAssert(@"glGetAttribLocation");
+	return loc;
+}

@@ -33,6 +33,9 @@ GLuint OGMGLLinkProgram(GLuint vsh,GLuint fsh,NSError **error);
 GLuint OGMGLBuildProgram(NSString * vshSource,NSString * fshSource,NSError **error);
 GLuint OGMGLBuildProgramWithPaths(NSString *vshPath,NSString *fshPath,NSError **error);
 
+//ただのassert付き
+GLuint OGMGLGetUniformLocation(GLuint program,const char * var);
+GLuint OGMGLGetAttribLocation(GLuint program,const char *var);
 
 
 OGM_EXTERN_C_END

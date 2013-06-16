@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D62970F6176E05D000377BCB /* OGMGLStandardVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = D62970F5176E05D000377BCB /* OGMGLStandardVertex.mm */; };
+		D62970F9176E07E100377BCB /* OGMGLColorShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = D62970F8176E07E100377BCB /* OGMGLColorShader.mm */; };
 		D6344793175CCE550065DAC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344792175CCE550065DAC6 /* UIKit.framework */; };
 		D6344795175CCE550065DAC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344794175CCE550065DAC6 /* Foundation.framework */; };
 		D6344797175CCE550065DAC6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6344796175CCE550065DAC6 /* CoreGraphics.framework */; };
@@ -46,9 +48,15 @@
 		D6FE35FC176CE5F600F46E39 /* OGMGLTextureShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35FB176CE5F600F46E39 /* OGMGLTextureShader.fsh */; };
 		D6FE35FE176D042D00F46E39 /* C08040FF.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35FD176D042D00F46E39 /* C08040FF.png */; };
 		D6FE3600176DBBC000F46E39 /* BF7E3Faa.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35FF176DBBC000F46E39 /* BF7E3Faa.png */; };
+		D6FE3603176E012F00F46E39 /* OGMGLRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6FE3602176E012D00F46E39 /* OGMGLRenderer.mm */; };
+		D6FE3606176E026100F46E39 /* OGMGLStandardRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6FE3605176E026000F46E39 /* OGMGLStandardRenderer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D62970F4176E05D000377BCB /* OGMGLStandardVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLStandardVertex.h; sourceTree = "<group>"; };
+		D62970F5176E05D000377BCB /* OGMGLStandardVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLStandardVertex.mm; sourceTree = "<group>"; };
+		D62970F7176E07E100377BCB /* OGMGLColorShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLColorShader.h; sourceTree = "<group>"; };
+		D62970F8176E07E100377BCB /* OGMGLColorShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLColorShader.mm; sourceTree = "<group>"; };
 		D634478F175CCE550065DAC6 /* Danmaku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Danmaku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6344792175CCE550065DAC6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6344794175CCE550065DAC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -341,6 +349,10 @@
 		D6FE35FB176CE5F600F46E39 /* OGMGLTextureShader.fsh */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = OGMGLTextureShader.fsh; sourceTree = "<group>"; };
 		D6FE35FD176D042D00F46E39 /* C08040FF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C08040FF.png; sourceTree = "<group>"; };
 		D6FE35FF176DBBC000F46E39 /* BF7E3Faa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BF7E3Faa.png; sourceTree = "<group>"; };
+		D6FE3601176E012D00F46E39 /* OGMGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLRenderer.h; sourceTree = "<group>"; };
+		D6FE3602176E012D00F46E39 /* OGMGLRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLRenderer.mm; sourceTree = "<group>"; };
+		D6FE3604176E025F00F46E39 /* OGMGLStandardRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLStandardRenderer.h; sourceTree = "<group>"; };
+		D6FE3605176E026000F46E39 /* OGMGLStandardRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLStandardRenderer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -720,8 +732,6 @@
 				D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */,
 				D6344D69175E26390065DAC6 /* OGMGLUtil.h */,
 				D6344D6A175E26390065DAC6 /* OGMGLUtil.m */,
-				D6344D6F175E414D0065DAC6 /* OGMGLColorShader.vsh */,
-				D6344D71175E41640065DAC6 /* OGMGLColorShader.fsh */,
 				D6FE35F9176CE50800F46E39 /* OGMGLTextureShader.vsh */,
 				D6FE35FB176CE5F600F46E39 /* OGMGLTextureShader.fsh */,
 				D6344D76175E57260065DAC6 /* OGM.h */,
@@ -740,6 +750,16 @@
 				D687BD791768B8D7001C6759 /* OGMGLShader.mm */,
 				D6344D67175E23CD0065DAC6 /* OGMGLStandardShader.h */,
 				D6344D66175E23CD0065DAC6 /* OGMGLStandardShader.mm */,
+				D6344D6F175E414D0065DAC6 /* OGMGLColorShader.vsh */,
+				D6344D71175E41640065DAC6 /* OGMGLColorShader.fsh */,
+				D62970F7176E07E100377BCB /* OGMGLColorShader.h */,
+				D62970F8176E07E100377BCB /* OGMGLColorShader.mm */,
+				D6FE3601176E012D00F46E39 /* OGMGLRenderer.h */,
+				D6FE3602176E012D00F46E39 /* OGMGLRenderer.mm */,
+				D62970F4176E05D000377BCB /* OGMGLStandardVertex.h */,
+				D62970F5176E05D000377BCB /* OGMGLStandardVertex.mm */,
+				D6FE3604176E025F00F46E39 /* OGMGLStandardRenderer.h */,
+				D6FE3605176E026000F46E39 /* OGMGLStandardRenderer.mm */,
 				D687BD631764CFE1001C6759 /* OGMGLElement.h */,
 				D687BD641764CFE1001C6759 /* OGMGLElement.mm */,
 				D687BD601764CD75001C6759 /* OGMGLStandardElement.h */,
@@ -858,6 +878,10 @@
 				D687BD801768BFEE001C6759 /* OGMObjCUtil.m in Sources */,
 				D687BD83176A1ED8001C6759 /* OGMGLImage.mm in Sources */,
 				D687BD86176B77E8001C6759 /* OGMGLTexture.m in Sources */,
+				D6FE3603176E012F00F46E39 /* OGMGLRenderer.mm in Sources */,
+				D6FE3606176E026100F46E39 /* OGMGLStandardRenderer.mm in Sources */,
+				D62970F6176E05D000377BCB /* OGMGLStandardVertex.mm in Sources */,
+				D62970F9176E07E100377BCB /* OGMGLColorShader.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,4 +25,5 @@
 #import "OGMGLStandardShader.h"
 #import "OGMGLElement.h"
 #import "OGMGLStandardElement.h"
-
+#import "OGMGLRenderer.h"
+#import "OGMGLStandardRenderer.h"

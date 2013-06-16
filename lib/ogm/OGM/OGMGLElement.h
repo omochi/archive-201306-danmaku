@@ -9,6 +9,7 @@
 #import "OGMGLUtil.h"
 
 #import "OGMGLShader.h"
+#import "OGMGLRenderer.h"
 
 @interface OGMGLElement : NSObject
 

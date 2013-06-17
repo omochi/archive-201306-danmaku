@@ -10,8 +10,11 @@
 
 #import "OGMGLShader.h"
 #import "OGMGLRenderer.h"
+#import "OGMGLMatrixStack.h"
 
 @interface OGMGLElement : NSObject
+
+@property(nonatomic,readonly)OGMGLMatrixStack * transform;
 
 -(void)renderWithShader:(OGMGLShader *)shader;
 

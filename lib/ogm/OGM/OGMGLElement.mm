@@ -11,6 +11,14 @@
 
 @implementation OGMGLElement
 
+-(id)init{
+	self = [super init];
+	if(self){
+		_transform = [[OGMGLMatrixStack alloc]init];
+	}
+	return self;
+}
+
 -(void)renderWithShader:(OGMGLShader *)shader{
 	@throw OGMExceptionMake(NSGenericException,@"unimplemented");
 }

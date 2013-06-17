@@ -22,8 +22,6 @@
 
 @interface OGMGLStandardRenderer : OGMGLRenderer
 
-@property(nonatomic,assign)glm::mat4 projection;
-@property(nonatomic,assign)glm::mat4 modelView;
 @property(nonatomic,strong)OGMGLVertexBuffer * vertices;
 @property(nonatomic,strong)OGMGLIndexBuffer * indices;
 @property(nonatomic,strong)OGMGLTexture * texture;

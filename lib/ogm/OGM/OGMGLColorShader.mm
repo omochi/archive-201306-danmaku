@@ -36,6 +36,7 @@ void main(void){\
 -(id)init{
 	return [super initWithVertexShader:OGMGLColorVertexShaderSource
 						fragmentShader:OGMGLColorFragmentShaderSource locationNum:_SV(Max)];
+
 }
 
 -(void)onBuild{

@@ -76,8 +76,8 @@
 	glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	self.renderer.projection = glm::mat4(1);
-	self.renderer.modelView = glm::mat4(1);
+	self.renderer.projection.top = glm::mat4(1);
+	self.renderer.modelView.top = glm::mat4(1);
 	
 	//テクスチャシェーダー
 	[self.quadElement renderWithStandardRenderer:self.renderer];

@@ -69,8 +69,8 @@
 		colorLoc = [shader locationOfVar:OGMGLColorShaderVar_color];
 	}
 
-	OGMGLUniformMatrix4fv(projectionLoc,1,glm::value_ptr(_projection));
-	OGMGLUniformMatrix4fv(modelViewLoc,1,glm::value_ptr(_modelView));
+	OGMGLUniformMatrix4fv(projectionLoc,1,glm::value_ptr(*[self.projection topPtr]));
+	OGMGLUniformMatrix4fv(modelViewLoc,1,glm::value_ptr(*[self.modelView topPtr]));
 
 	if(self.texture){
 		[self.texture prepareWithUnit:0];

@@ -28,10 +28,15 @@
 }
 
 -(void)renderWithStandardRenderer:(OGMGLStandardRenderer *)renderer{
+	[renderer.modelView push];
+	
+	renderer.modelView.top *= self.transform.top;
 	renderer.vertices = self.vertices;
 	renderer.indices = self.indices;
 	renderer.texture = self.texture;
 	[renderer render];
+	
+	[renderer.modelView pop];
 }
 
 @end

@@ -65,8 +65,6 @@
 
 
 -(void)prepare{
-
-	
 	if(!_glProgId){
 		NSError * error ;
 		_glProgId = OGMGLBuildProgram(self.vertexShader,self.fragmentShader,&error);

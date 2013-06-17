@@ -113,11 +113,11 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 }
 
 -(void)spliceAt:(uint32_t)index len:(uint32_t)len items:(void *)items itemsNum:(uint32_t)itemsNum{
-	if(index+len >= _size)@throw OGMExceptionMake(NSRangeException,@"out of range: index=%d,len=%d,size=%d",index,len,_size);
+	if(index+len > _size)@throw OGMExceptionMake(NSRangeException,@"out of range: index=%d,len=%d,size=%d",index,len,_size);
 	int32_t size = _size - len + itemsNum;
 	if(size >= _size){
 		[self reserve:size];
-		self.size = size;
+
 		memmove(ptrAt(_ptr,_typeSize,index+itemsNum),
 				ptrAt(_ptr,_typeSize,index+len),memLen(_typeSize,_size-(index+len)));
 		memmove(ptrAt(_ptr,_typeSize,index),items,memLen(_typeSize,itemsNum));
@@ -125,8 +125,8 @@ static inline void * ptrAt(void *p,size_t tsz,uint32_t idx){ return u8p(p) + mem
 		memmove(ptrAt(_ptr,_typeSize,index),items,memLen(_typeSize,itemsNum));
 		memmove(ptrAt(_ptr,_typeSize,index+itemsNum),
 				ptrAt(_ptr,_typeSize,index+len),memLen(_typeSize,_size-(index+len)));
-		self.size = size;
 	}
+	self.size = size;
 }
 
 -(void)removeAt:(uint32_t)index len:(uint32_t)len{

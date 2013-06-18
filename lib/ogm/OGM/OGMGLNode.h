@@ -12,7 +12,7 @@
 
 @property(nonatomic,readonly)OGMGLStandardElement * element;
 
-@property(nonatomic,readonly)OGMGLNode * parent;
+@property(nonatomic,weak,readonly)OGMGLNode * parent;
 
 @property(nonatomic,assign)glm::vec3 pos;
 @property(nonatomic,assign)glm::quat rot;

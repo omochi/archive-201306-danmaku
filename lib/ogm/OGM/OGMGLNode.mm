@@ -9,13 +9,16 @@
 #import "OGMGLNode.h"
 #import "OGMErrorUtil.h"
 
-@interface OGMGLNode()
+@interface OGMGLNode(){
+	BOOL _transformDirty;
+	glm::mat4 _transform;
+	BOOL _worldTransformDirty;
+	glm::mat4 _worldTransform;
+}
 @property(nonatomic,strong)NSMutableArray * mutableChildren;
 
-@property(nonatomic,assign)BOOL transformDirty;
-@property(nonatomic,assign)glm::mat4 transform;
-@property(nonatomic,assign)BOOL worldTransformDirty;
-@property(nonatomic,assign)glm::mat4 worldTransform;
+-(void)notifyTransformDirty;
+-(void)notifyWorldTransformDirty;
 @end
 
 @implementation OGMGLNode
@@ -36,26 +39,22 @@
 	return self;
 }
 
--(void)setTransformDirty:(BOOL)transformDirty{
-	if(transformDirty){
-		self.worldTransformDirty = YES;
-	}
-	_transformDirty = transformDirty;
+-(void)notifyTransformDirty{
+	[self notifyWorldTransformDirty];
+	_transformDirty = YES;
 }
 
--(void)setWorldTransformDirty:(BOOL)worldTransformDirty{
-	if(worldTransformDirty){
-		for(OGMGLNode * child in _mutableChildren){
-			if(!child.worldTransformDirty)child.worldTransformDirty = YES;
-		}
+-(void)notifyWorldTransformDirty{
+	for(OGMGLNode * child in _mutableChildren){
+		if(!child->_worldTransformDirty)[child notifyWorldTransformDirty];
 	}
-	_worldTransformDirty = worldTransformDirty;
+	_worldTransformDirty = YES;
 }
 
 -(void)setParent:(OGMGLNode *)parent{
 	if(_parent && parent)@throw OGMExceptionMake(NSGenericException,@"already has parent");
 	_parent = parent;
-	self.worldTransformDirty = YES;
+	[self notifyWorldTransformDirty];
 }
 
 -(NSArray *)children{
@@ -74,15 +73,15 @@
 }
 
 -(void)setPos:(glm::vec3)pos{
-	self.transformDirty = YES;
+	[self notifyTransformDirty];
 	_pos = pos;
 }
 -(void)setRot:(glm::quat)rot{
-	self.transformDirty = YES;
+	[self notifyTransformDirty];
 	_rot = rot;
 }
 -(void)setScale:(glm::vec3)scale{
-	self.transformDirty = YES;
+	[self notifyTransformDirty];
 	_scale = scale;
 }
 

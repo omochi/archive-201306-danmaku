@@ -13,9 +13,14 @@
 @interface ODMViewController ()
 @property(nonatomic,strong)EAGLContext *glContext;
 @property(nonatomic,strong)OGMGLStandardRenderer * renderer;
-@property(nonatomic,strong)OGMGLStandardElement * quadElement;
-@property(nonatomic,strong)OGMGLStandardElement * colorQuad;
-@property(nonatomic,strong)OGMGLStandardElement * textureQuad;
+
+
+@property(nonatomic,strong)OGMGLNode * worldNode;
+@property(nonatomic,strong)OGMGLCameraNode * camera2d;
+@property(nonatomic,strong)OGMGLNode * colorTextureQuad;
+@property(nonatomic,strong)OGMGLNode * colorQuad;
+@property(nonatomic,strong)OGMGLNode * textureQuad;
+
 
 @end
 
@@ -41,31 +46,71 @@
 	self.preferredFramesPerSecond = 60;
 	
 	self.renderer = [[OGMGLStandardRenderer alloc]init];
-	self.quadElement = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPCT],CGRectMake(0.1, 0.1, 0.8, 0.8));
 	
-	OGMGLVertexBufferSetColorList(self.quadElement.vertices,
-								  OGM_TYPEBUFFER_MAKE(glm::vec4,
-													  glm::vec4(1,0,0,1),
-													  glm::vec4(1,1,0,1),
-													  glm::vec4(0,1,0,1),
-													  glm::vec4(0,0,1,1))
-								  );
-	OGMGLQuadElementUpdateTexture(self.quadElement,
-								  [OGMGLTexture textureWithUIImage:[UIImage imageNamed:@"redbull-miku"]]);
+	OGMGLTexture * mikuTexture = [OGMGLTexture textureWithUIImage:[UIImage imageNamed:@"redbull-miku"]];
+
+	self.worldNode = [[OGMGLNode alloc]init];
 	
-	self.colorQuad = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPC],CGRectMake(-0.9,0.1, 0.8,0.8));
-	OGMGLVertexBufferSetColorList(self.colorQuad.vertices,
-								  OGM_TYPEBUFFER_MAKE(glm::vec4,
-													  glm::vec4(1,0,0,1),
-													  glm::vec4(1,1,0,1),
-													  glm::vec4(0,1,0,1),
-													  glm::vec4(0,0,1,1))
-								  );
+	{
+		self.camera2d = [[OGMGLCameraNode alloc]init];
+		self.camera2d.pos = glm::vec3(0,0,10);
+		[self.worldNode addChild:self.camera2d];
+	}
 	
-	self.textureQuad = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPT],CGRectMake(0.1,-0.9, 0.8,0.8));
-	OGMGLQuadElementUpdateTexture(self.textureQuad,
-								  [OGMGLTexture textureWithUIImage:[UIImage imageNamed:@"redbull-miku"]]);
+	{
+		OGMGLStandardElement * elem  = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPCT]);
+		OGMGLVertexBufferSetColorList(elem.vertices,
+									  OGM_TYPEBUFFER_MAKE(glm::vec4,
+														  glm::vec4(1,0,0,1),
+														  glm::vec4(1,1,0,1),
+														  glm::vec4(0,1,0,1),
+														  glm::vec4(0,0,1,1))
+									  );
+		OGMGLQuadElementUpdateTexture(elem,mikuTexture);
+		
+		self.colorTextureQuad = [[OGMGLNode alloc]initWithElement:elem];
+		self.colorTextureQuad.scale = glm::vec3(100);
+		[self.worldNode addChild:self.colorTextureQuad];
+	}
 	
+	{
+		OGMGLStandardElement * elem = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPC]);
+		OGMGLVertexBufferSetColorList(elem.vertices,
+									  OGM_TYPEBUFFER_MAKE(glm::vec4,
+														  glm::vec4(1,0,0,1),
+														  glm::vec4(1,1,0,1),
+														  glm::vec4(0,1,0,1),
+														  glm::vec4(0,0,1,1))
+									  );
+	
+		self.colorQuad = [[OGMGLNode alloc]initWithElement:elem];
+		self.colorQuad.pos = glm::vec3(120,0,0);
+		self.colorQuad.scale = glm::vec3(100);
+		[self.worldNode addChild:self.colorQuad];
+	}
+	
+	{
+		OGMGLStandardElement * elem = OGMGLQuadElementMake([OGMGLStandardVertexFormat formatPT]);
+		OGMGLQuadElementUpdateTexture(elem,mikuTexture);
+		
+		self.textureQuad = [[OGMGLNode alloc]initWithElement:elem];
+		self.textureQuad.pos = glm::vec3(0,120,0);
+		self.textureQuad.scale = glm::vec3(100);
+
+		[self.worldNode addChild:self.textureQuad];
+	}
+	
+
+	
+}
+
+-(void)viewDidLayoutSubviews{
+	[super viewDidLayoutSubviews];
+	
+	CGRect bounds = self.view.bounds;
+	float width = CGRectGetWidth(bounds);
+	float height = CGRectGetHeight(bounds);
+	self.camera2d.projection = glm::ortho<float>(-width/2.0,width/2.0,-height/2.0,height/2.0,0,-100.0);
 }
 
 -(void)update{
@@ -75,19 +120,12 @@
 -(void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
 	glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	self.renderer.projection.top = glm::mat4(1);
-	self.renderer.modelView.top = glm::mat4(1);
-	
-	//テクスチャシェーダー
-	[self.quadElement renderWithStandardRenderer:self.renderer];
-	
-	//カラーシェーダー
-	[self.colorQuad renderWithStandardRenderer:self.renderer];
-	
-	//テクスチャシェーダー+自動白
-	[self.textureQuad renderWithStandardRenderer:self.renderer];
-	
+		
+	self.renderer.projection.top = self.camera2d.projectionTransform;
+
+	[self.colorTextureQuad renderWithRenderer:self.renderer];
+	[self.colorQuad renderWithRenderer:self.renderer];
+	[self.textureQuad renderWithRenderer:self.renderer];	
 }
 
 @end

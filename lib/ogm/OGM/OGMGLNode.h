@@ -10,7 +10,7 @@
 
 @interface OGMGLNode : NSObject
 
-@property(nonatomic,readonly)OGMGLStandardElement * element;
+@property(nonatomic,readonly)NSMutableArray * elements;
 
 @property(nonatomic,weak,readonly)OGMGLNode * parent;
 
@@ -18,15 +18,21 @@
 @property(nonatomic,assign)glm::quat rot;
 @property(nonatomic,assign)glm::vec3 scale;
 
--(id)initWithElement:(OGMGLStandardElement *)element;
+-(id)init;
+-(id)initWithElement:(OGMGLElement *)element;
 
 -(NSArray *)children;
 -(void)addChild:(OGMGLNode *)node;
 -(void)insertChild:(OGMGLNode *)node atIndex:(uint32_t)index;
 -(void)removeChild:(OGMGLNode *)node;
 
+//親座標系でのローカル変換
 -(glm::mat4)transform;
 
+//ルートノードからの変換
 -(glm::mat4)worldTransform;
+
+
+-(void)renderWithRenderer:(OGMGLRenderer *)renderer;
 
 @end

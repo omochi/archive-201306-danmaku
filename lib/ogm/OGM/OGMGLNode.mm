@@ -23,11 +23,11 @@
 
 @implementation OGMGLNode
 
--(id)initWithElement:(OGMGLStandardElement *)element{
+-(id)init{
 	self = [super init];
 	if(self){
-		_element = element;
 		_mutableChildren = [NSMutableArray array];
+		_elements = [NSMutableArray array];
 		
 		_pos = glm::vec3(0);
 		_rot = glm::quat(0,glm::vec3(1,0,0));
@@ -35,6 +35,14 @@
 		
 		_transformDirty = YES;
 		_worldTransformDirty = YES;
+	}
+	return self;
+}
+
+-(id)initWithElement:(OGMGLElement *)element{
+	self = [self init];
+	if(self){
+		[_elements addObject:element];
 	}
 	return self;
 }
@@ -61,7 +69,7 @@
 	return _mutableChildren;
 }
 -(void)addChild:(OGMGLNode *)node{
-	[self insertChild:node atIndex:_mutableChildren.count - 1];
+	[self insertChild:node atIndex:_mutableChildren.count];
 }
 -(void)insertChild:(OGMGLNode *)node atIndex:(uint32_t)index{
 	node.parent = self;
@@ -106,6 +114,15 @@
 		}
 	}
 	return _worldTransform;
+}
+
+-(void)renderWithRenderer:(OGMGLRenderer *)renderer{
+	[renderer.modelView push];
+	renderer.modelView.top = self.worldTransform;
+	for(OGMGLElement * element in self.elements){
+		[element renderWithRenderer:renderer];
+	}
+	[renderer.modelView pop];
 }
 
 @end

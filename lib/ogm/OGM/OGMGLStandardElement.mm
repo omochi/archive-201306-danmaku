@@ -41,8 +41,12 @@
 
 @end
 
+OGMGLStandardElement * OGMGLQuadElementMake(OGMGLStandardVertexFormat * format){
+	return OGMGLQuadElementMakeWithRect(format,CGRectMake(-0.5,-0.5,1.0,1.0));
+}
+
 // 左上、左下、右下、右上
-OGMGLStandardElement  * OGMGLQuadElementMake(OGMGLStandardVertexFormat * format,CGRect quad){
+OGMGLStandardElement * OGMGLQuadElementMakeWithRect(OGMGLStandardVertexFormat * format,CGRect quad){
 	OGMGLVertexBuffer * vertices = [[OGMGLVertexBuffer alloc]initWithVertexFormat:format usage:GL_DYNAMIC_DRAW keepData:YES];
 	
 	OGMGLVertexBufferSetPosList(vertices,

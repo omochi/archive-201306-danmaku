@@ -25,8 +25,10 @@
 
 @end
 
+OGMGLStandardElement * OGMGLQuadElementMake(OGMGLStandardVertexFormat * format);
+
 //GL_DYNAMIC_DRAW + keepDataで作られる。
-OGMGLStandardElement  * OGMGLQuadElementMake(OGMGLStandardVertexFormat * format,CGRect quad);
+OGMGLStandardElement * OGMGLQuadElementMakeWithRect(OGMGLStandardVertexFormat * format,CGRect quad);
 
 //UVを更新する。
 void OGMGLQuadElementUpdateTexture(OGMGLStandardElement * quad,OGMGLTexture *texture);

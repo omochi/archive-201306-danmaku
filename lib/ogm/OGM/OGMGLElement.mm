@@ -19,8 +19,8 @@
 	return self;
 }
 
--(void)renderWithShader:(OGMGLShader *)shader{
-	@throw OGMExceptionMake(NSGenericException,@"unimplemented");
+-(void)renderWithRenderer:(OGMGLRenderer *)renderer{
+	[renderer dispatchElementRender:self];
 }
 
 @end

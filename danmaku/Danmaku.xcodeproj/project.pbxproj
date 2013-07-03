@@ -43,6 +43,8 @@
 		D6A4AAD0175F94DB00BA9E4A /* OGMBlockUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AACF175F94DB00BA9E4A /* OGMBlockUtil.m */; };
 		D6A4AAD6175FA67900BA9E4A /* OGMGLVertexBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */; };
 		D6A4AAD9175FA77D00BA9E4A /* OGMTypeBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */; };
+		D6FD5B5517848AD100672DA7 /* OGMGLCameraNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6FD5B5417848AD000672DA7 /* OGMGLCameraNode.mm */; };
+		D6FD5B5817848F5E00672DA7 /* OGMMathUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6FD5B5717848F5E00672DA7 /* OGMMathUtil.mm */; };
 		D6FE35F8176CB0D600F46E39 /* redbull-miku.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35F7176CB0D600F46E39 /* redbull-miku.png */; };
 		D6FE35FE176D042D00F46E39 /* C08040FF.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35FD176D042D00F46E39 /* C08040FF.png */; };
 		D6FE3600176DBBC000F46E39 /* BF7E3Faa.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FE35FF176DBBC000F46E39 /* BF7E3Faa.png */; };
@@ -344,6 +346,10 @@
 		D6A4AAD5175FA67900BA9E4A /* OGMGLVertexBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLVertexBuffer.mm; sourceTree = "<group>"; };
 		D6A4AAD7175FA77C00BA9E4A /* OGMTypeBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMTypeBuffer.h; sourceTree = "<group>"; };
 		D6A4AAD8175FA77C00BA9E4A /* OGMTypeBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGMTypeBuffer.m; sourceTree = "<group>"; };
+		D6FD5B5317848AD000672DA7 /* OGMGLCameraNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMGLCameraNode.h; sourceTree = "<group>"; };
+		D6FD5B5417848AD000672DA7 /* OGMGLCameraNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMGLCameraNode.mm; sourceTree = "<group>"; };
+		D6FD5B5617848F5D00672DA7 /* OGMMathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMMathUtil.h; sourceTree = "<group>"; };
+		D6FD5B5717848F5E00672DA7 /* OGMMathUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGMMathUtil.mm; sourceTree = "<group>"; };
 		D6FE35F7176CB0D600F46E39 /* redbull-miku.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redbull-miku.png"; sourceTree = "<group>"; };
 		D6FE35FD176D042D00F46E39 /* C08040FF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C08040FF.png; sourceTree = "<group>"; };
 		D6FE35FF176DBBC000F46E39 /* BF7E3Faa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BF7E3Faa.png; sourceTree = "<group>"; };
@@ -719,6 +725,8 @@
 				D687BD66176624EB001C6759 /* OGMPPMacro.h */,
 				D687BD751767EBAC001C6759 /* OGMMemoryUtil.h */,
 				D687BD761767EBAD001C6759 /* OGMMemoryUtil.m */,
+				D6FD5B5617848F5D00672DA7 /* OGMMathUtil.h */,
+				D6FD5B5717848F5E00672DA7 /* OGMMathUtil.mm */,
 				D687BD7E1768BFEB001C6759 /* OGMObjCUtil.h */,
 				D687BD7F1768BFEC001C6759 /* OGMObjCUtil.m */,
 				D6344D77175E5F690065DAC6 /* OGMLog.h */,
@@ -766,6 +774,8 @@
 				D687BD85176B77E6001C6759 /* OGMGLTexture.m */,
 				D62971031770B86400377BCB /* OGMGLNode.h */,
 				D62971041770B86500377BCB /* OGMGLNode.mm */,
+				D6FD5B5317848AD000672DA7 /* OGMGLCameraNode.h */,
+				D6FD5B5417848AD000672DA7 /* OGMGLCameraNode.mm */,
 			);
 			path = OGM;
 			sourceTree = "<group>";
@@ -878,6 +888,8 @@
 				D62970FC176E152600377BCB /* OGMGLTextureShader.mm in Sources */,
 				D6297102176F730B00377BCB /* OGMGLMatrixStack.mm in Sources */,
 				D62971051770B86700377BCB /* OGMGLNode.mm in Sources */,
+				D6FD5B5517848AD100672DA7 /* OGMGLCameraNode.mm in Sources */,
+				D6FD5B5817848F5E00672DA7 /* OGMMathUtil.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

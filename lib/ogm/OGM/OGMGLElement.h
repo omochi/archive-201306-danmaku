@@ -16,6 +16,7 @@
 
 @property(nonatomic,readonly)OGMGLMatrixStack * transform;
 
--(void)renderWithShader:(OGMGLShader *)shader;
+//rendererのdispatchElementRenderを呼ぶ
+-(void)renderWithRenderer:(OGMGLRenderer *)renderer;
 
 @end
